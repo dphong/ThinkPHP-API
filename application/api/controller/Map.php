@@ -111,6 +111,7 @@ class Map extends Controller{
                 $map = new Maps();
                 $map->lng = Request::instance()->isGet() ? input('get.lng') : input('post.lng');
                 $map->lat = Request::instance()->isGet() ? input('get.lat') : input('post.lat');
+                $map->code = Request::instance()->isGet() ? input('get.code') : input('post.code');
                 //echo $user->user_id;
                 $map->uid = $user->user_id;
                 //$map->add_time = time();

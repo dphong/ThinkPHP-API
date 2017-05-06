@@ -1,9 +1,10 @@
 {include file="index/header2" title="数据查询"  keywords="物联网智能管理平台" div="centre" /}
-    <table class="table1">
+    <table class="table1" border="1">
         <tr id="lng">
             <th style="width:25%">经度</th>
             <th style="width:25%">纬度</th>
-            <th style="width:50%">时间</th>
+            <th style="width:25%">信息</th>
+            <th style="width:25%">时间</th>
         </tr>
         {foreach $list as $data => $v}
         <tr id="lat">
@@ -12,6 +13,9 @@
             </td>
             <td>
                 {$v->lat}
+            </td>
+            <td>
+                {$v->code}
             </td>
             <td>
                 {$v->create_time}

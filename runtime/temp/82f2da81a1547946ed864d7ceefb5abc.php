@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"D:\web\api\public/../application/api\view\map\show.html";i:1490531495;s:60:"D:\web\api\public/../application/api\view\index\header2.html";i:1490531759;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1488630856;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"D:\web\api\public/../application/api\view\map\show.html";i:1494075448;s:60:"D:\web\api\public/../application/api\view\index\header2.html";i:1490531759;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1488630856;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -333,11 +333,12 @@ ul, ol {
 </div>
 <center>
 <div id="centre">
-    <table class="table1">
+    <table class="table1" border="1">
         <tr id="lng">
             <th style="width:25%">经度</th>
             <th style="width:25%">纬度</th>
-            <th style="width:50%">时间</th>
+            <th style="width:25%">信息</th>
+            <th style="width:25%">时间</th>
         </tr>
         <?php foreach($list as $data => $v): ?>
         <tr id="lat">
@@ -346,6 +347,9 @@ ul, ol {
             </td>
             <td>
                 <?php echo $v->lat; ?>
+            </td>
+            <td>
+                <?php echo $v->code; ?>
             </td>
             <td>
                 <?php echo $v->create_time; ?>
