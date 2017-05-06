@@ -1,0 +1,46 @@
+{include file="index/header2" title="数据查询"  keywords="物联网智能管理平台" div="centre" /}
+    <table class="table1" border="1">
+        <tr id="lng">
+            <th style="width:5%">ID</th>
+            <th style="width:11%">RFID卡用户区</th>
+            <th style="width:11%">EPC号</th>
+            <th style="width:11%">EPC长度</th>
+            <th style="width:11%">RFID卡保留区</th>
+            <th style="width:11%">RFID卡EPC区</th>
+            <th style="width:10%">RFID卡TID区</th>
+            <th style="width:20%">创建时间</th>
+            <th style="width:10%">IP</th>
+        </tr>
+        {foreach $list as $data => $v}
+        <tr id="lat">
+            <td>
+                {$v->rfid_id}
+            </td>
+            <td>
+                {$v->c_user}
+            </td>
+            <td>
+                {$v->epc_id}
+            </td>
+            <td>
+                {$v->id_length}
+            </td>
+            <td>
+                {$v->c_reserve}
+            </td>
+            <td>
+                {$v->c_epc}
+            </td>
+            <td>
+                {$v->c_tid}
+            </td>
+            <td>
+                {$v->create_time}
+            </td>
+            <td>
+                {$v->ip}
+            </td>
+        </tr>
+        {/foreach}
+    </table>
+{include file="index/footer" /}

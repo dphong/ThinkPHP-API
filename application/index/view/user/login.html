@@ -1,0 +1,12 @@
+{include file="index/header" title="用户登录"  keywords="物联网智能管理平台" /}
+
+<h2>用户登录</h2>
+<FORM method="post" class="form" action="{:url('index/user/home')}">
+<INPUT type="text" class="text" name="username" placeholder="用户名/邮箱/手机号" autocomplete="off"><br/>
+<INPUT type="password" class="text" name="password" placeholder="密码" autocomplete="off"><br/>
+<input type="hidden" name="__token__" value="{$Request.token}" />
+<br/>
+<INPUT type="button" class="button button-rounded button-tiny button-primary" value="注册" onclick="window.location=('create')" /> &nbsp;
+<INPUT type="submit" class="button button-rounded button-tiny button-primary" value="登录">
+</FORM>
+{include file="index/footer" /}

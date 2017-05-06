@@ -1,0 +1,27 @@
+{include file="index/header" title="数据查询"  keywords="物联网智能管理平台" /}
+<center>
+    <table class="table1">
+        <tr id="lng">
+            <th>经度</th>
+            <th>纬度</th>
+            <th>时间</th>
+        </tr>
+        {foreach $list as $v}
+        <tr id="lat">
+            <td>
+                <span id="nickname">{$v->lng}</span>
+                <p id="nicknametrerror" style="display: none"><span class="errorLabel" id="lng"></span></p>
+            </td>
+            <td>
+                <span id="telephone">{$v->lat}</span>
+                <p id="telephonetrerror" style="display: none"><span class="errorLabel" id="lat"></span></p>
+            </td>
+            <td>
+                <span id="telephone">{$v->add_time}</span>
+                <p id="telephonetrerror" style="display: none"><span class="errorLabel" id="lat"></span></p>
+            </td>
+        </tr>
+        {/foreach}
+    </table>
+{include file="index/footer" /}
+</center>

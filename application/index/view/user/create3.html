@@ -1,0 +1,29 @@
+{include file="index/header" title="创建用户"  keywords="物联网智能管理平台" /}
+<center>
+<h2>创建用户</h2>
+<FORM method="post" class="form" action="{:url('index/user/add')}">
+    <table>
+        <tr id="usernametr">
+            <th>用户名：</th>
+            <td><INPUT type="text" class="text" name="nickname" placeholder="用户名" autocomplete="off"></td>
+        </tr>
+        <tr id="passwordtr">
+            <th>密码：</th>
+            <td><INPUT type="password" class="text" name="password" placeholder="密码" autocomplete="off"></td>
+        </tr>
+        <th>用户名：</th>
+        <td><INPUT type="password" class="text" name="repassword" placeholder="确认密码" autocomplete="off"></td><br/>
+        <th>用户名：</th>
+        <td><INPUT type="text" class="text" name="email" placeholder="电子邮箱" autocomplete="off"></td><br/>
+        <th>用户名：</th>
+        <td><INPUT type="text" class="text" name="repassword" placeholder="昵称" autocomplete="off"></td><br/>
+        <th>用户名：</th>
+        <td><INPUT type="text" class="text" name="repassword" placeholder="手机号码" autocomplete="off"></td><br/>
+        <th>用户名：</th>
+        <td><input type="hidden" name="__token__" value="{$Request.token}" /></td>
+        <th>用户名：</th>
+        <td><br/><INPUT type="submit" class="button button-rounded button-tiny" value="GO"></td>
+    </table>
+</FORM>
+{include file="index/footer" /}
+</center>

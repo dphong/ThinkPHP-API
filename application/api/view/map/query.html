@@ -1,0 +1,117 @@
+{include file="index/header" title="map数据查询"  keywords="物联网智能管理平台" /}
+<head>
+    <style>
+h3 {
+    padding: 0 15px;
+    font-weight: 800;
+    font-size: 20px;
+    color: #333;
+    line-height: 4em;
+}
+h3 span {
+    border-bottom: solid 1px #333;
+}
+.article table {
+    margin: 0 15px;
+}    
+table {
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+table th {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: left;
+    padding: 0 6px 0 10px;
+    border: 1px solid #ccc;
+    background: #eef4fe;
+}
+table td {
+    height: 30px;
+    font-size: 12px;
+    line-height: 20px;
+    padding: 0 6px 0 10px;
+    border: 1px solid #ccc;
+}
+#mw-content-text p {
+    padding: 0px 15px;
+}
+p {
+    margin: 6px 0;
+    text-align:center;
+}
+.mw-code {
+    padding: 10px 15px;
+    background: #fafafa;
+    margin: 10px 15px;
+}
+.co1 {
+    color: #006600;
+    /*font-style: italic;*/
+}
+    </style>
+</head>
+<h3><span>插入数据接口</span></h3>
+<p><b>请求url</b></p>
+<div class="mw-code">
+<span class="co1">http://api.com/api/map/add &nbsp; &nbsp; // POST请求</span>
+</div>
+<p><br><b>请求参数</b></p>
+<table>
+<tbody>
+    <tr>
+        <th width="80"> 参数名</th>
+        <th width="150"> 参数含义</th>
+        <th width="100"> 类型</th>
+        <th width="220"> 备注</th>
+    </tr>
+    <tr>
+        <td>lng</td>
+        <td>经度</td>
+        <td>float</td>
+        <td>最多6位小数，3位整数，必选</td>
+    </tr>
+    <tr>
+        <td>lat</td>
+        <td>纬度</td>
+        <td>float</td>
+        <td>最多6位小数，3位整数，必选</td>
+    </tr>
+    <tr>
+        <td>apikey</td>
+        <td>用户的访问权限key</td>
+        <td>string(32)</td>
+        <td>必选</td>
+    </tr>
+</tbody>
+</table>
+<p><br><b>响应参数（json格式）</b></p>
+<table>
+<tbody>
+    <tr>
+        <th width="80"> 参数名</th>
+        <th width="150"> 参数含义</th>
+        <th width="100"> 类型</th>
+        <th width="200"> 备注</th>
+    </tr>
+    <tr>
+        <td>status</td>
+        <td>状态码</td>
+        <td>int</td>
+        <td>1 : 成功<br/>-1 : 失败</td>
+    </tr>
+    <tr>
+        <td>message</td>
+        <td>响应的信息</td>
+        <td>int</td>
+        <td>200 : successful<br/>201 : APIKey error<br/>202 : lng error<br/>203 : lat error<br/>204 : data insertion failure</td>
+    </tr>
+</tbody>
+</table>
+<p><br><b>请求响应示例</b></p>
+<p><img src="/static/photo/map/sample-1.png" alt="sample-1.jpg"></p>
+
+
+<br/><br/>
+{include file="index/footer"}

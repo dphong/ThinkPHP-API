@@ -1,0 +1,11 @@
+{--layout name="layout" /--}
+{--__NOLAYOUT__--}
+<h2>用户列表（{$count}）</h2> 
+{volist name="list" id="user" }
+<div class="info">
+ID：{$user.user_id}<br/>
+昵称：{$user.nickname}<br/>
+邮箱：{$user.email}<br/>
+生日：{$user.birthday}<br/>
+</div>
+{/volist}
