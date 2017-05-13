@@ -187,7 +187,7 @@
             box-sizing: border-box;
         font-size:14px;
             font-family: "Century Gothic",Consolas,"Liberation Mono",Courier,Verdana;
-            padding-left: <?php echo (isset($source) && !empty($source)) ? parse_padding($source) : 40;  ?>px;
+            padding-left: 40px;
         }
         .exception .source-code pre li{
             border-left: 1px solid #ddd;

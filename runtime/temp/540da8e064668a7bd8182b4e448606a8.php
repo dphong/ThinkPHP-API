@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\map\index.html";i:1489485759;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1490531455;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1488630856;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\map\index.html";i:1489485759;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1490772130;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1488630856;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"D:\web\api\public/../application/index\view\user\create.html";i:1489455574;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1489754070;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1488630666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"D:\web\api\public/../application/index\view\user\create.html";i:1493898368;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1489754070;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1488630666;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -336,7 +336,7 @@ ul, ol {
 <INPUT type="text" class="text" name="email" placeholder="电子邮箱" autocomplete="off"><span class="reds">*</span><br/>
 <INPUT type="text" class="text" name="nickname" placeholder="昵称" autocomplete="off"> &nbsp;<br/>
 <INPUT type="text" class="text" name="telephone" placeholder="手机号码" autocomplete="off"> &nbsp;<br/>
-<input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
+<input type="hidden" name="flag" value=1 />
 <br/><INPUT type="submit" class="button button-rounded button-tiny button-primary" value="注册">
 </FORM>
 <br/><p>已有账号？<a href="login">登录</a></p>
