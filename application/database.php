@@ -14,12 +14,9 @@ return [
     'type'           => 'mysql',
     // 服务器地址
     'hostname'       => '127.0.0.1',
-   // 'hostname'       => 'iotshow.top',
     // 数据库名
     'database'       => 'demo',
-    //'database'       => 'thinkphp',
     // 用户名
-    //'username'       => 'thinkphp',
     'username'       => 'root',
     // 密码
     'password'       => 'fira306',
