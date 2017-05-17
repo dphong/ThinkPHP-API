@@ -1,11 +1,20 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:68:"C:\www\ThinkPHP-API\public/../application/api\view\map\position.html";i:1494999965;s:68:"C:\www\ThinkPHP-API\public/../application/api\view\index\header.html";i:1494999493;s:68:"C:\www\ThinkPHP-API\public/../application/api\view\index\footer.html";i:1494937825;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>[title]</title>
+<title>GPS位置上传示例</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
 <style>
+body , html,
+/*#all{width:1001px}   overflow:hidden;*/
+#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+#container{height:540px;width:1001px}
+#name{height:28px;width:1000px}
+#result{margin:auto 0;height:33px;}
+#bp10{height:5px}
 body{
     color: #333;
     font: 16px Verdana, "Helvetica Neue", helvetica, Arial, 'Microsoft YaHei', sans-serif;
@@ -279,22 +288,7 @@ ul, ol {
     color: #333;
     margin-bottom: 2px;
 }
-.mini-footer {
-    box-sizing: border-box;
-    margin-top: 20px;
-    padding: 10px;
-    height: 40px;
-    background-color: #bbb;
-    align-items: center;
-}
-a.footer-icp {
-    text-transform: none;
-    text-decoration: none;
-    color: #363636;
-}
-a.footer-icp:hover {
-    color: #777777;
-}
+
 </style>
 <script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 </head>
@@ -305,10 +299,24 @@ a.footer-icp:hover {
         <a href="/" class="logo"><h1 class="logoTxt">IOT</h1></a>
         <ul class="nav">
             <li class="navi"><a href="/" id="service">开发者</a></li>
-            <li class="navi"><a href="/sample" id="cases">API</a></li>
-            <li class="navi"><a href="/map" id="device">设备</a></li>
+            <li class="navi"><a href="sample" id="cases">API</a></li>
+            <li class="navi"><a href="map" id="device">设备</a></li>
         </ul>
-        <script type="text/javascript">
+<?php 
+use think\Request;
+use app\index\model\Users;
+$request = Request::instance();
+if($request->cookie('uid')){
+    $list = Users::get(['user_id'=> $request->cookie('uid')]);
+    $validate = createPasswd($list->user_id . $list->username . $list->zcsj);
+    if($request->cookie('validate') == $validate){
+        $validate = createPasswd($list->user_id . $list->username . $list->zcsj);
+        cookie('uid', $list->user_id, 31536000);
+        cookie('validate', $validate, 2592000);
+    }
+}
+?>
+            <script type="text/javascript">
             function logout(){
                 window.location.href = "logout";
             }
@@ -341,3 +349,49 @@ a.footer-icp:hover {
 </div>
 <center>
 <div id="centre">
+    <div id="centre">
+    <br><h2>GPS位置上传示例</h2><br>
+    <form action="/map" method="post">
+    <table>
+        <tr>
+         <th width="100" height="30" align="right">经度:&nbsp;</th>
+         <td>
+          <input type="text" style="height:20px;width:200px;" name="lng" value="<?php echo $lng; ?>"/><span class="error"> <?php echo $lngErr; ?></span>
+         </td>
+        </tr>
+        <tr>
+         <th width="100" height="30" align="right">纬度:&nbsp;</th>
+         <td>
+          <input type="text" style="height:20px;width:200px;" name="lat" value="<?php echo $lat; ?>"/><span class="error"> <?php echo $latErr; ?></span>
+         </td>
+        </tr>
+        <tr><th height="30"></th><td></td></tr>
+        <tr>
+         <th></th>
+         <td>
+          <input type="submit" value="提&nbsp;交" style="height:25px;width:120px;" />
+         </td>
+        </tr>
+    </table>
+    </form>
+    </div>
+</div>
+</center>
+<footer class="mini-footer" id="bottom">
+    <center>Copyright &copy; <?php echo date("Y");?> 物联网智能管理平台</center>
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight(true) - $('#bottom').offset().top;
+            footerBottom = Math.floor(footerBottom) + 20;
+            $('#bottom').css({'bottom': '-' + footerBottom + 'px', 'position': 'relative'});
+        }
+    };
+    var $ = jQuery;
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
+</footer>
+</body>
+</html>

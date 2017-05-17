@@ -14,6 +14,7 @@ use think\Validate;
 use app\api\model\Maps;
 use app\api\model\Car;
 use think\Request;
+use app\common\util\Myclass;
 /**
  * Description of map
  *
@@ -38,10 +39,17 @@ class Map extends Controller{
         }
         //$data = $request->post('lng');
         //return $data;
+        $request = Request::instance();
         session_start();
         $_SESSION['lngErr'] = "";
         $_SESSION['latErr'] = "";
         $lngErr = $latErr = "";
+        $lng = input('?get.lng')?input('get.lng'):input('post.lng');
+        $lat = input('?get.lat')?input('get.lat'):input('post.lat');
+        if(empty($lng) && empty($lat)){
+            $lng = $_SESSION['lng'];
+            $lat = $_SESSION['lat'];
+        }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if( empty($_POST["lng"])){
                 $lngErr = "  经度是必填的";
@@ -66,16 +74,23 @@ class Map extends Controller{
                 //$this->error('错误提示页面跳转','admin/map/position');
                 echo '<script language=javascript>window.location.href="position"</script>';
             }
-            $point = "point = new BMap.Point($_SESSION(lng),$_SESSION(lat));";
-        } else {
-            $point =  'point = new BMap.Point(117.234877,31.756886);';
+            
         }
         //echo '<script language=javascript>map.centerAndZoom(point,17);</script>';
-        $this->assign('point', $point);
         if (!empty($_SESSION['lng']))
-            $this->assign('setMarker',"setMarker($_SESSION(lng),$_SESSION(lat));");
-        else
+        {
+            $point = "point = new BMap.Point($lng,$lat);";
+            $this->assign('setMarker',"setMarker($lng,$lat);");
+        }
+        else{
+            $point =  'point = new BMap.Point(117.234877,31.756886);';
             $this->assign('setMarker',"setMarker(117.234877,31.756886);");
+        }
+        $this->assign('point', $point);
+        $myclass = new Myclass();
+        $user = $myclass->isLogin();
+        $uid = $request->cookie('uid');
+        $this->assign('user',$user);
         return $this->fetch();
     }
     
@@ -132,17 +147,28 @@ class Map extends Controller{
            
     //只查maps表
     public function show() {
+//        $request = Request::instance();
+//        if($request->cookie('uid'))
+//        {
+//            $uid = $request->cookie('uid');
+//            //$list = Db::name('maps')->where('uid',$uid)->paginate(10);
+//            //$list2 = Maps::all(['uid'=>$uid]);
+//            
+//            //$page = $list->render();
+//            return $this->fetch();
+//        } else {
+//            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
+//            echo '<script language=javascript>window.location.href="/login"</script>';
+//        }
         $request = Request::instance();
-        if($request->cookie('uid'))
-        {
-            $uid = $request->cookie('uid');
-            $list2 = Maps::all(['uid'=>$uid]);
-            $this->assign('list',$list2);
-            return $this->fetch();
-        } else {
-            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
-            echo '<script language=javascript>window.location.href="/login"</script>';
-        }
+        $myclass = new Myclass();
+        $user = $myclass->isLogin();
+        $uid = $request->cookie('uid');
+        $maps = new Maps();
+        $list = $maps->where('uid',$uid)->paginate(10);
+        $this->assign('list',$list);
+        $this->assign('user',$user);
+        return $this->fetch();
         
         //$list = Db::table('tp_maps')->where('uid',$uid)->select();
 //        foreach($list as $key=>$user){
@@ -236,11 +262,6 @@ class Map extends Controller{
             $code = ($convert > 0)? strtoupper($code) : strtolower($code);
         }
         return $code;
-    }
-    
-    //示例教程
-    public function sample() {
-        return view('index/sample');
     }
     
     //示例POST上传

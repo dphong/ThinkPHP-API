@@ -1,26 +1,79 @@
-{include file="index/header2" title="数据查询"  keywords="物联网智能管理平台" div="centre" /}
-    <table class="table1" border="1">
-        <tr id="lng">
-            <th style="width:25%">经度</th>
-            <th style="width:25%">纬度</th>
-            <th style="width:25%">信息</th>
-            <th style="width:25%">时间</th>
+{include file="index/header" title="数据查询"  keywords="物联网智能管理平台" div="centre" /}
+<style>
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:16px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+        text-align:center;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table tr:hover
+{
+    background-color:#bbbbdd;
+}
+a.lefta{
+    float: left;
+    text-align: left;
+}
+
+</style>
+<!--a class="lefta" href="/index/user/data">返回</a-->
+<div class="intro"><a href="/">用户中心</a>&gt;&nbsp;<a href="/index/user/data">查看数据</a>&gt;&nbsp;查看MAP数据</div>
+</br><h2>MAP数据</h2></br></br>
+    <table class="hovertable">
+        <tr id="onmouseover">
+            <th style="width:19%">经度</th>
+            <th style="width:19%">纬度</th>
+            <th style="width:29%">信息</th>
+            <th style="width:33%">时间</th>
         </tr>
-        {foreach $list as $data => $v}
+        {volist name='list' id='v'}
         <tr id="lat">
             <td>
-                {$v->lng}
+                {$v.lng}
             </td>
             <td>
-                {$v->lat}
+                {$v.lat}
             </td>
             <td>
-                {$v->code}
+                {$v.code}
             </td>
             <td>
-                {$v->create_time}
+                {$v.create_time}
             </td>
         </tr>
-        {/foreach}
+        {/volist}
     </table>
+</br></br>
+<style>
+    ul li{
+    float: left; list-style:none;
+}
+</style>
+    {$list->render()}
 {include file="index/footer" /}

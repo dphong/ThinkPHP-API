@@ -1,8 +1,9 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:68:"C:\www\ThinkPHP-API\public/../application/index\view\user\login.html";i:1494898139;s:70:"C:\www\ThinkPHP-API\public/../application/index\view\index\header.html";i:1494898139;s:70:"C:\www\ThinkPHP-API\public/../application/index\view\index\footer.html";i:1494898139;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>[title]</title>
+<title>用户登录</title>
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
 <style>
@@ -279,24 +280,7 @@ ul, ol {
     color: #333;
     margin-bottom: 2px;
 }
-.mini-footer {
-    box-sizing: border-box;
-    margin-top: 20px;
-    padding: 10px;
-    height: 40px;
-    background-color: #bbb;
-    align-items: center;
-}
-a.footer-icp {
-    text-transform: none;
-    text-decoration: none;
-    color: #363636;
-}
-a.footer-icp:hover {
-    color: #777777;
-}
 </style>
-<script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 </head>
 <body>
     
@@ -305,8 +289,8 @@ a.footer-icp:hover {
         <a href="/" class="logo"><h1 class="logoTxt">IOT</h1></a>
         <ul class="nav">
             <li class="navi"><a href="/" id="service">开发者</a></li>
-            <li class="navi"><a href="/sample" id="cases">API</a></li>
-            <li class="navi"><a href="/map" id="device">设备</a></li>
+            <li class="navi"><a href="sample" id="cases">API</a></li>
+            <li class="navi"><a href="map" id="device">设备</a></li>
         </ul>
         <script type="text/javascript">
             function logout(){
@@ -341,3 +325,20 @@ a.footer-icp:hover {
 </div>
 <center>
 <div id="centre">
+
+<h2>用户登录</h2>
+<FORM method="post" class="form" action="<?php echo url('index/user/home'); ?>">
+<INPUT type="text" class="text" name="username" placeholder="用户名/邮箱/手机号" autocomplete="off"><br/>
+<INPUT type="password" class="text" name="password" placeholder="密码" autocomplete="off"><br/>
+<input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
+<br/>
+<INPUT type="button" class="button button-rounded button-tiny button-primary" value="注册" onclick="window.location=('create')" /> &nbsp;
+<INPUT type="submit" class="button button-rounded button-tiny button-primary" value="登录">
+</FORM>
+</div>
+</center>
+<div class="copyright">
+    <center>Copyright &copy; <?php echo date("Y");?> 物联网智能管理平台</center>
+</div>
+</body>
+</html>

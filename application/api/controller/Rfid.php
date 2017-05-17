@@ -13,6 +13,7 @@ use app\api\model\Users;
 use think\Validate;
 use app\api\model\Rfids;
 use think\Request;
+use app\common\util\Myclass;
 /**
  * Description of map
  *
@@ -79,17 +80,30 @@ class Rfid extends Controller{
            
     //只查maps表
     public function show() {
+//        $request = Request::instance();
+//        if($request->cookie('uid'))
+//        {
+//            $uid = $request->cookie('uid');
+//            //$list = Db::name('rfids')->where('uid',$uid)->paginate(10);
+//            $rfid = new Rfids();
+//            $list = $rfid->where('uid',$uid)->paginate(10);
+//            $this->assign('list',$list);
+////            $list2 = Rfids::all(['uid'=>$uid]);
+////            $this->assign('list',$list2);
+//            return $this->fetch();
+//        } else {
+//            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
+//            echo '<script language=javascript>window.location.href="/login"</script>';
+//        }
         $request = Request::instance();
-        if($request->cookie('uid'))
-        {
-            $uid = $request->cookie('uid');
-            $list2 = Rfids::all(['uid'=>$uid]);
-            $this->assign('list',$list2);
-            return $this->fetch();
-        } else {
-            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
-            echo '<script language=javascript>window.location.href="/login"</script>';
-        }
+        $myclass = new Myclass();
+        $user = $myclass->isLogin();
+        $uid = $request->cookie('uid');
+        $rfid = new Rfids();
+        $list = $rfid->where('uid',$uid)->paginate(10);
+        $this->assign('list',$list);
+        $this->assign('user',$user);
+        return $this->fetch();
     }
   
     //数据获取

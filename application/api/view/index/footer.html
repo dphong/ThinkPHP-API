@@ -1,7 +1,20 @@
 </div>
 </center>
-<div class="copyright">
-    <center>Copyright &copy; <?php echo date("Y");?> 物联网智能管理平台</center>
-</div>
+<footer class="mini-footer" id="bottom">
+    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;<a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight(true) - $('#bottom').offset().top;
+            footerBottom = Math.floor(footerBottom) + 20;
+            $('#bottom').css({'bottom': '-' + footerBottom + 'px', 'position': 'relative'});
+        }
+    };
+    var $ = jQuery;
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
+</footer>
 </body>
 </html>

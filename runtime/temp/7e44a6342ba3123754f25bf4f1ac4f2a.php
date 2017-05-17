@@ -1,18 +1,27 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:65:"C:\www\ThinkPHP-API\public/../application/api\view\rfid\show.html";i:1495006945;s:68:"C:\www\ThinkPHP-API\public/../application/api\view\index\header.html";i:1495005268;s:68:"C:\www\ThinkPHP-API\public/../application/api\view\index\footer.html";i:1495005309;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>[title]</title>
+<title>数据查询</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
 <style>
+body , html,
+/*#all{width:1001px}   overflow:hidden;*/
+#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+#container{height:100%;width:1001px}
+#name{height:28px;width:1000px}
+#result{margin:auto 0;height:33px;}
+#bp10{height:5px}
 body{
     color: #333;
     font: 16px Verdana, "Helvetica Neue", helvetica, Arial, 'Microsoft YaHei', sans-serif;
     margin: 0px;
     padding: 0px;
 }
-#centre{height:600px;width:1001px}
+#centre{height:100%;width:1001px}
 a{
     color: #868686;
     cursor: pointer;
@@ -308,25 +317,25 @@ a.footer-icp:hover {
             <li class="navi"><a href="/sample" id="cases">API</a></li>
             <li class="navi"><a href="/map" id="device">设备</a></li>
         </ul>
-        <script type="text/javascript">
+            <script type="text/javascript">
             function logout(){
-                window.location.href = "logout";
+                window.location.href = "/logout";
             }
             function create(){
-                window.location.href = "create";
+                window.location.href = "/create";
             }
             function home(){
                 window.location.href = "/";
             }
             function login(){
-                window.location.href = "login";
+                window.location.href = "/login";
             }
         </script>
         <div class="headr">
             <span class="topTxt">
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"login":"home";?>()" class="username"  title='<?php echo empty($list->username)?"登录":$list->username;?>' ><?php echo empty($list->username)?"登录":$list->username;?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($list->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -341,3 +350,107 @@ a.footer-icp:hover {
 </div>
 <center>
 <div id="centre">
+<style>
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:12px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+        text-align: center;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table tr:hover
+{
+    background-color:#bbbbdd;
+}
+</style>
+<div class="intro"><a href="/">用户中心</a>&gt;&nbsp;<a href="/index/user/data">查看数据</a>&gt;&nbsp;查看RFID数据</div>
+</br><h2>RFID数据</h2></br></br>
+<table class="hovertable">
+        <tr id="lng">
+            <th style="width:5%">ID</th>
+            <th style="width:11%">RFID卡用户区</th>
+            <th style="width:11%">EPC号</th>
+            <th style="width:8%">EPC长度</th>
+            <th style="width:11%">RFID卡保留区</th>
+            <th style="width:11%">RFID卡EPC区</th>
+            <th style="width:10%">RFID卡TID区</th>
+            <th style="width:33%">创建时间</th>
+            <!--th style="width:10%">IP</th-->
+        </tr>
+        <?php if(is_array($list) || $list instanceof \think\Collection): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
+        <tr id="lat">
+            <td>
+                <?php echo $v['rfid_id']; ?>
+            </td>
+            <td>
+                <?php echo $v['c_user']; ?>
+            </td>
+            <td>
+                <?php echo $v['epc_id']; ?>
+            </td>
+            <td>
+                <?php echo $v['id_length']; ?>
+            </td>
+            <td>
+                <?php echo $v['c_reserve']; ?>
+            </td>
+            <td>
+                <?php echo $v['c_epc']; ?>
+            </td>
+            <td>
+                <?php echo $v['c_tid']; ?>
+            </td>
+            <td>
+                <?php echo $v['create_time']; ?>
+            </td>
+            <!--td>
+                {/$v.ip/}
+            </td-->
+        </tr>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
+    </table>
+</br></br>
+<style>
+    ul li{
+    float: left; list-style:none;
+}
+</style>
+    <?php echo $list->render(); ?>
+</div>
+</center>
+<footer class="mini-footer" id="bottom">
+    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;<a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight(true) - $('#bottom').offset().top;
+            footerBottom = Math.floor(footerBottom) + 20;
+            $('#bottom').css({'bottom': '-' + footerBottom + 'px', 'position': 'relative'});
+        }
+    };
+    var $ = jQuery;
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
+</footer>
+</body>
+</html>

@@ -5,6 +5,8 @@ use think\Db;
 use think\Url;
 use app\index\model\Users;
 use think\Validate;
+use think\Request;
+use app\common\util\Myclass;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,6 +29,11 @@ class Index extends Controller{
     
     //API示例
     public function sample() {
-        return view();
+        $request = Request::instance();
+        $myclass = new Myclass();
+        $user = $myclass->isLogin();
+        $this->assign('user',$user);
+        return $this->fetch();
+        //return view('map/sample');
     }
 }
