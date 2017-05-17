@@ -95,6 +95,9 @@ class Rfid extends Controller{
 //            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
 //            echo '<script language=javascript>window.location.href="/login"</script>';
 //        }
+        /*
+         * 修复查看数据界面，已登录用户，状态显示异常，并实现分页   DpHong  2017.5.17
+         */
         $request = Request::instance();
         $myclass = new Myclass();
         $user = $myclass->isLogin();

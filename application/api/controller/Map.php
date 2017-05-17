@@ -37,47 +37,58 @@ class Map extends Controller{
             $data = htmlspecialchars($data);
             return $data;
         }
-        //$data = $request->post('lng');
-        //return $data;
         $request = Request::instance();
-        session_start();
-        $_SESSION['lngErr'] = "";
-        $_SESSION['latErr'] = "";
-        $lngErr = $latErr = "";
-        $lng = input('?get.lng')?input('get.lng'):input('post.lng');
-        $lat = input('?get.lat')?input('get.lat'):input('post.lat');
-        if(empty($lng) && empty($lat)){
-            $lng = $_SESSION['lng'];
-            $lat = $_SESSION['lat'];
+        if( $request->param('lng') && $request->param('lat')){
+            $data = $request->param();
+            $lng = input('?get.lng')?input('get.lng'):input('post.lng');
+            $lat = input('?get.lat')?input('get.lat'):input('post.lat');
+                // 数据验证
+            $result = $this->validate($data,'Position');
+            if (true !== $result) {
+                return json(array(
+                    'status' => -1,
+                    'message'    => $result,
+                ));
+            }
         }
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if( empty($_POST["lng"])){
-                $lngErr = "  经度是必填的";
-            } else {
-                $_SESSION['lng']=test_input($_POST["lng"]);
-                if (!preg_match("/^(((\d|[1-9]\d|1[1-7]\d|0)\.\d{0,4})|(\d|[1-9]\d|1[1-7]\d|0{1,3})|180\.0{0,4}|180)$/",$_SESSION['lng'])){
-                    $lngErr = "  无效的经度格式!";
-                }
-            }
-            if( empty($_POST["lat"])){
-                $latErr = "  纬度是必填的";
-            } else {
-                $_SESSION['lat']=test_input($_POST["lat"]);
-                if (!preg_match("/^([0-8]?\d{1}\.\d{0,4}|90\.0{0,4}|[0-8]?\d{1}|90)$/",$_SESSION['lat'])){
-                    $latErr = "  无效的纬度格式!";
-                }
-            }
-            if ($lngErr != "" || $latErr != ""){
-                //echo '<script language=javascript>window.location.href="position.php"</script>';
-                $_SESSION['lngErr'] = $lngErr;
-                $_SESSION['latErr'] = $latErr;
-                //$this->error('错误提示页面跳转','admin/map/position');
-                echo '<script language=javascript>window.location.href="position"</script>';
-            }
-            
-        }
+        /*
+         * 修复地图展示界面，传参确定地图显示的位置   DpHong  2017.5.17
+         */
+//        } else if(Request::instance()->isPost()){
+//            return json(array(
+//                'status' => -1,
+//                'message'    => "缺少数据",
+//            ));
+//        }
+        
+//        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//            if( empty($_POST["lng"])){
+//                $lngErr = "  经度是必填的";
+//            } else {
+//                $_SESSION['lng']=test_input($_POST["lng"]);
+//                if (!preg_match("/^(((\d|[1-9]\d|1[1-7]\d|0)\.\d{0,4})|(\d|[1-9]\d|1[1-7]\d|0{1,3})|180\.0{0,4}|180)$/",$_SESSION['lng'])){
+//                    $lngErr = "  无效的经度格式!";
+//                }
+//            }
+//            if( empty($_POST["lat"])){
+//                $latErr = "  纬度是必填的";
+//            } else {
+//                $_SESSION['lat']=test_input($_POST["lat"]);
+//                if (!preg_match("/^([0-8]?\d{1}\.\d{0,4}|90\.0{0,4}|[0-8]?\d{1}|90)$/",$_SESSION['lat'])){
+//                    $latErr = "  无效的纬度格式!";
+//                }
+//            }
+//            if ($lngErr != "" || $latErr != ""){
+//                //echo '<script language=javascript>window.location.href="position.php"</script>';
+//                $_SESSION['lngErr'] = $lngErr;
+//                $_SESSION['latErr'] = $latErr;
+//                //$this->error('错误提示页面跳转','admin/map/position');
+//                echo '<script language=javascript>window.location.href="position"</script>';
+//            }
+//            
+//        }
         //echo '<script language=javascript>map.centerAndZoom(point,17);</script>';
-        if (!empty($_SESSION['lng']))
+        if (!empty($lng))
         {
             $point = "point = new BMap.Point($lng,$lat);";
             $this->assign('setMarker',"setMarker($lng,$lat);");
@@ -160,6 +171,9 @@ class Map extends Controller{
 //            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
 //            echo '<script language=javascript>window.location.href="/login"</script>';
 //        }
+        /*
+         * 修复查看数据界面，已登录用户，状态显示异常，并实现分页   DpHong  2017.5.17
+         */
         $request = Request::instance();
         $myclass = new Myclass();
         $user = $myclass->isLogin();
