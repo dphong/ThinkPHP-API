@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\user\login.html";i:1488630721;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1489754070;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1488630666;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\user\login.html";i:1488630721;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -280,7 +280,24 @@ ul, ol {
     color: #333;
     margin-bottom: 2px;
 }
+.mini-footer {
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 10px;
+    height: 40px;
+    background-color: #bbb;
+    align-items: center;
+}
+a.footer-icp {
+    text-transform: none;
+    text-decoration: none;
+    color: #363636;
+}
+a.footer-icp:hover {
+    color: #777777;
+}
 </style>
+<script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 </head>
 <body>
     
@@ -289,8 +306,8 @@ ul, ol {
         <a href="/" class="logo"><h1 class="logoTxt">IOT</h1></a>
         <ul class="nav">
             <li class="navi"><a href="/" id="service">开发者</a></li>
-            <li class="navi"><a href="sample" id="cases">API</a></li>
-            <li class="navi"><a href="map" id="device">设备</a></li>
+            <li class="navi"><a href="/sample" id="cases">API</a></li>
+            <li class="navi"><a href="/map" id="device">设备</a></li>
         </ul>
         <script type="text/javascript">
             function logout(){
@@ -337,8 +354,22 @@ ul, ol {
 </FORM>
 </div>
 </center>
-<div class="copyright">
-    <center>Copyright &copy; <?php echo date("Y");?> 物联网智能管理平台</center>
-</div>
+<footer class="mini-footer" id="bottom">
+    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;
+        <a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight(true) - $('#bottom').offset().top;
+            footerBottom = Math.floor(footerBottom) + 20;
+            $('#bottom').css({'bottom': '-' + footerBottom + 'px', 'position': 'relative'});
+        }
+    };
+    var $ = jQuery;
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
+</footer>
 </body>
 </html>

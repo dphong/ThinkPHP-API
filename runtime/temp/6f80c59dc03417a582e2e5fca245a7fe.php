@@ -1,9 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"D:\web\api\public/../application/api\view\map\show.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:64:"D:\web\api\public/../application/logistics\view\index\index.html";i:1498305018;s:59:"D:\web\api\public/../application/api/view/index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api/view/index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>数据查询</title>
+<title>我要寄件</title>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
@@ -349,84 +349,280 @@ a.footer-icp:hover {
     </div-->
 </div>
 <center>
-<div id="centre">
-<style>
-table.hovertable {
-	font-family: verdana,arial,sans-serif;
-	font-size:16px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #999999;
-	border-collapse: collapse;
-        text-align:center;
+<div id="[div]">
+
+<style type="text/css">
+#all{
+	width:100%;
+	height:1000px;
+	margin:0px;
+	padding:0px;
+background-image:url(__PUBLIC__/photo/img/1.jpg);
+  
 }
-table.hovertable th {
-	background-color:#c3dde0;
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table.hovertable th {
-	background-color:#c3dde0;
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table.hovertable tr {
-	background-color:#d4e3e5;
-}
-table.hovertable td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table tr:hover
-{
-    background-color:#bbbbdd;
-}
-a.lefta{
-    float: left;
-    text-align: left;
+	
+#head{
+	padding-top:60px;
+	width:100%;
+	height:130px;
+	text-align:center;
+	
+}	
+
+#center{
+	width:100%;
+	height:750px;
+	margin:0px;
+	padding:0px;
+
+}	
+#footer{
+	  width:100%;
+	  height:100px;
+	  clear:both;
+	  padding-top:40px;
+	 
 }
 
-</style>
-<!--a class="lefta" href="/index/user/data">返回</a-->
-<div class="intro"><a href="/">用户中心</a>&gt;&nbsp;<a href="/index/user/data">查看数据</a>&gt;&nbsp;查看MAP数据</div>
-</br><h2>MAP数据</h2></br></br>
-    <table class="hovertable">
-        <tr id="onmouseover">
-            <th style="width:19%">经度</th>
-            <th style="width:19%">纬度</th>
-            <th style="width:29%">信息</th>
-            <th style="width:33%">时间</th>
-        </tr>
-        <?php if(is_array($list) || $list instanceof \think\Collection): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
-        <tr id="lat">
-            <td>
-                <?php echo $v['lng']; ?>
-            </td>
-            <td>
-                <?php echo $v['lat']; ?>
-            </td>
-            <td>
-                <?php echo $v['code']; ?>
-            </td>
-            <td>
-                <?php echo $v['create_time']; ?>
-            </td>
-        </tr>
-        <?php endforeach; endif; else: echo "" ;endif; ?>
-    </table>
-</br></br>
-<style>
-    ul li{
-    float: left; list-style:none;
+.left{
+	width:30%;
+	height:700px;
+	float:left;
+    padding-top:20px;
 }
-</style>
-    <?php echo $list->render(); ?>
+
+.right{
+      width:35%;
+	 height:700px;
+	 float:left;
+	  padding-top:20px;
+}
+
+.middle{
+      width:35%;
+	   height:700px;
+	   float:left;
+	   padding-top:20px;
+	 
+}
+h2{
+   text-align:center;
+	font-size:30px;
+	font-family:kartika;
+	color:#666;	
+
+}
+
+h1{
+font-size:50px;
+font-family:Verdana, Geneva, sans-serif;
+color:#333;
+
+}
+
+.duiqi{
+	font-size:25px;
+	 color:black;
+   font-family:Verdana, Geneva, sans-serif;
+ }
+	
+
+.footer-icp{
+	font-size:9px;
+   font-family:Verdana, Geneva, sans-serif;
+  text-decoration:none;
+	 color:#333;
+}
+
+.botton{
+	 background-color:#FCC;
+   border-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+ 
+  height:25px;
+  border-bottom-width: 10px;
+  width:200px;
+}
+
+.botton1{
+	
+	background-color:#FCF; 
+	width:60px; 
+	height:25px;
+
+}
+.botton2{
+	background-color:#FCF; 
+	width:70px; 
+	height:25px;
+}
+
+span{
+	font-size:25px;
+	font-family:Verdana, Geneva, sans-serif;
+	
+}
+
+
+</style>		
+</head>
+
+<body>
+<div id="all">
+<!--
+头部
+-->	
+	<div id="head">
+	<center>
+	<h1>快递名（logo)</h1>
+	</center>
+	</div>
+	<!--
+中间
+-->	
+<div id="center">
+	<!--
+中间左边
+-->
+
+ <div class="middle">
+ <center>
+
+<form>
+
+<table>	
+ <tr>
+ <td colspan="100">
+ <h2>寄件人</h2>
+ </td>
+ </tr>
+    <tr>
+	<td> <label for="sender-name" class="duiqi">姓名:</label></td>
+	<td><input type="text" name="xingming" id="sender-name"  class="botton" placeholder="我叫小可爱，你呢？" /></td>
+    </tr>
+
+  
+<tr>
+	<td>
+	<label for="sender-mobile" class="duiqi">手机:</label></td>
+	<td><input type="text" name="haoma" id="sender-mobile" class="botton" placeholder="小主给我留个号码吧" /></td>
+</tr>	
+	
+  
+<tr>
+	<td>
+	<label for="validation" class="duiqi">验证码:</label></td>
+	<td><input type="text" name="yanzhengma" id="validation" class="botton" placeholder="验证身份的时候到啦" />
+	<input type="submit"  class="botton1" value="获取"></td>
+</tr>
+
+ <tr>
+	<td>
+  	<label for="sender-address" class="duiqi">上门地址:</label></td>
+ <td>  <input text="text" name="dizhi" id="sender-address"  data-parsley-trigger="change"
+     data-parsley-errors-container=".sender-location" class="botton" placeholder="小可爱踏着七彩祥云来找你啦" /></td>
+ </tr>	
+ 
+	<tr>
+     <td>
+	   <label for="sender-address-detail"  class="duiqi">详细地址:</label></td>
+	  <td> <input text="text" name="adress" id="sender-address-detail" class="botton" placeholder="详细一点，我要快点找到你" /></td>
+ </tr>
+
+<tr>
+<td colspan="100">
+<h2>收件人</h2>
+</td>
+</tr>
+
+    <tr>
+		<td> <label for="receiver-name" class="duiqi">姓名:</label></td>
+	<td>  <input type="text" name="xingming" id="receiver-name" class="botton" placeholder="快递要送给谁呢？" /></td>
+	</tr>
+	
+     <tr>
+		<td>
+	   <label for="receiver-mobile" class="duiqi">手机:</label></td>
+	  <td> <input type="text" name="haoma" id="receiver-mobile" class="botton" placeholder="TA的号码是多少，我帮小主联系啦" /></td>
+</tr>
+	
+
+    <tr>
+		<td>
+  	   <label for="receiver-address" class="duiqi">上门地址:</label></td>
+     <td> <input text="text" name="dizhi" id="receiver-address"   data-parsley-trigger="change"
+       data-parsley-errors-container=".receiver-location" class="botton" placeholder="我去哪里才能见到TA" /></td>
+       </tr>
+	
+	   
+       <tr>
+		<td> <label for="receiver-address-detail" class="duiqi">详细地址:</label></td>
+      <td> <input text="text" name="adress" id="receiver-address-detail" class="botton" placeholder="我这么可爱，小主就写的走心点吧" /></td>
+ </tr>
+
+</table> 
+  
+ </form> 
+ </center>
+
+
+</div>
+   
+   
+      
+<div class="right">
+    <table>
+<center>
+<tr>
+
+<h2>宝贝信息</h2>
+
+</tr>
+<tr>
+<span>类型：</span>
+<input type="radio" name="fs" />服饰  <input type="radio" name="sp" />食品 
+<input type="radio" name="sm" />数码   <br /><br /><input type="radio" name="shyp" />生活用品
+<input type="radio" name="wj" />文件   <input type="radio" name="qt" />其他
+<br /><br />
+ <label for="wight" class="duiqi">重量:</label>
+ 
+  <select  class="botton" id="wight" name="zhongliang">
+  
+ <option value="wight" select="selected">0 ~ 5KG</option>
+ <option value="wight">6 ~ 10KG</option>
+ <option value="wight">11 ~ 20KG</option>
+ <option value="wight">20KG以上</option>
+ </select>
+<br /><br /><br />
+
+<span>备注:</span>
+<textarea rows="3" cols="20" placeholder="快递小哥我有话要说"></textarea>
+</tr>
+
+
+<tr>
+<h2>取件</h2>
+</tr>
+<tr>
+<label for="time" class="duiqi">时间:</label>
+<input type="text" class="botton" name="sj" id="time" /><br /><br  />
+<span>备注：</span>
+<textarea rows="3" cols="20" placeholder="你长得好看说什么都对"></textarea> <br /><br />
+	     
+	 <input type="reset"  class="botton1" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 <input type="submit" class="botton1" value="提交">
+</tr> 
+ </table>    
+</form>          
+	</center>
+	
+</div>
+</div>
+</div>
+
 </div>
 </center>
 <footer class="mini-footer" id="bottom">

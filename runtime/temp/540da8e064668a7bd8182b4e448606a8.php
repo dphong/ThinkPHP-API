@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\map\index.html";i:1489485759;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1490772130;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1488630856;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\map\index.html";i:1495591400;s:60:"D:\web\api\public/../application/api\view\index\header3.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -288,7 +288,9 @@ ul, ol {
     color: #333;
     margin-bottom: 2px;
 }
+
 </style>
+<script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 </head>
 <body>
     
@@ -297,23 +299,9 @@ ul, ol {
         <a href="/" class="logo"><h1 class="logoTxt">IOT</h1></a>
         <ul class="nav">
             <li class="navi"><a href="/" id="service">开发者</a></li>
-            <li class="navi"><a href="sample" id="cases">API</a></li>
-            <li class="navi"><a href="map" id="device">设备</a></li>
+            <li class="navi"><a href="/sample" id="cases">API</a></li>
+            <li class="navi"><a href="/map" id="device">设备</a></li>
         </ul>
-<?php 
-use think\Request;
-use app\index\model\Users;
-$request = Request::instance();
-if($request->cookie('uid')){
-    $list = Users::get(['user_id'=> $request->cookie('uid')]);
-    $validate = createPasswd($list->user_id . $list->username . $list->zcsj);
-    if($request->cookie('validate') == $validate){
-        $validate = createPasswd($list->user_id . $list->username . $list->zcsj);
-        cookie('uid', $list->user_id, 31536000);
-        cookie('validate', $validate, 2592000);
-    }
-}
-?>
             <script type="text/javascript">
             function logout(){
                 window.location.href = "logout";
@@ -330,9 +318,9 @@ if($request->cookie('uid')){
         </script>
         <div class="headr">
             <span class="topTxt">
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"login":"home";?>()" class="username"  title='<?php echo empty($list->username)?"登录":$list->username;?>' ><?php echo empty($list->username)?"登录":$list->username;?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($list->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -379,7 +367,7 @@ if($request->cookie('uid')){
 
     //var map = new BMap.Map("container");
     //map.centerAndZoom("合肥",13);                   // 初始化地图,设置城市和地图级别。
-    map.centerAndZoom(point,17);
+    map.centerAndZoom(point,14);
     ac = new BMap.Autocomplete(    //建立一个自动完成的对象
     {
         "input" : "suggestId"
@@ -474,7 +462,7 @@ if($request->cookie('uid')){
         map.clearOverlays();    //清除地图上所有覆盖物
         function myFun(){
             var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-            map.centerAndZoom(pp, 17);
+            map.centerAndZoom(pp, 14);
          /*   for (i in pp){
                 alert(i);
                 alert(pp[i].toSource());
@@ -482,6 +470,7 @@ if($request->cookie('uid')){
             alert(JSON.stringfy(pp));*/
     //        map.addOverlay(new BMap.Marker(pp));    //添加标注
             setMarker(pp.lng,pp.lat);
+            setEditView(pp.lng,pp.lat);
         }
         var local = new BMap.LocalSearch(map, { //智能搜索
           onSearchComplete: myFun
@@ -493,8 +482,21 @@ if($request->cookie('uid')){
 
 </div>
 </center>
-<div class="copyright">
-    <center>Copyright &copy; <?php echo date("Y");?> 物联网智能管理平台</center>
-</div>
+<footer class="mini-footer" id="bottom">
+    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;<a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight(true) - $('#bottom').offset().top;
+            footerBottom = Math.floor(footerBottom) + 20;
+            $('#bottom').css({'bottom': '-' + footerBottom + 'px', 'position': 'relative'});
+        }
+    };
+    var $ = jQuery;
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
+</footer>
 </body>
 </html>

@@ -1,9 +1,9 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"D:\web\api\public/../application/index\view\user\create.html";i:1493898368;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:58:"D:\web\api\public/../application/index\view\user\data.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>创建用户</title>
+<title>个人中心</title>
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
 <style>
@@ -343,20 +343,37 @@ a.footer-icp:hover {
 <center>
 <div id="centre">
 
+<div class="auto1 pb30 pt20">
+
+        <div class="lbar">
+            
+<ul class="lNav1">
+    <li id="userview_li" class="lNav1li lNav1-liOn"><a href="/" class="lNav1a userview-link">基本资料</a></li>
+    <li id="editpwd_li" class="lNav1li"><a href="/index/user/data" class="lNav1a editpwd-link">查看数据</a></li>
+    <li id="editpwd_li" class="lNav1li"><a class="lNav1a editpwd-link">修改密码</a></li>
+    <li id="gateway_li" class="lNav1li"><a class="lNav1a gateway-link">网关</a></li>
+    <li id="device_li" class="lNav1li"><a class="lNav1a device-link">设备</a></li>
+    <li id="action_li" class="lNav1li"><a class="lNav1a action-link">动作</a></li>
+</ul>
+        </div>
+        <div class="rmain1">
+            <div class="intro"><a href="/">用户中心</a>&gt;&nbsp;查看数据</div>
+            <div id="uiblc">
+                <table class="table1">
+                    <tr><td>
+                    <a href="/api/map/show">查看MAP数据</a>
+                    </td></tr>
+                    <tr><td>
+                    <a href="/api/rfid/show">查看RFID数据</a>
+                    </td></tr>
+                </table>
+                <div style="display: none"><input type="text" id="userType"></input></div>
+            </div>
 
 
-<h2>创建用户</h2>
-<FORM method="post" class="form" action="<?php echo url('index/user/add'); ?>">
-<INPUT type="text" class="text" name="username" placeholder="用户名" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="password" class="text" name="password" placeholder="密码" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="password" class="text" name="repassword" placeholder="确认密码" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="text" class="text" name="email" placeholder="电子邮箱" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="text" class="text" name="nickname" placeholder="昵称" autocomplete="off"> &nbsp;<br/>
-<INPUT type="text" class="text" name="telephone" placeholder="手机号码" autocomplete="off"> &nbsp;<br/>
-<input type="hidden" name="flag" value=1 />
-<br/><INPUT type="submit" class="button button-rounded button-tiny button-primary" value="注册">
-</FORM>
-<br/><p>已有账号？<a href="login">登录</a></p>
+        </div>
+
+    </div>
 
 </div>
 </center>

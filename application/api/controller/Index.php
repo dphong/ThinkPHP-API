@@ -27,6 +27,12 @@ class Index extends Controller{
         $this->view->replace(['__PUBLIC__'    =>  '/static',]);
     }
     
+        //API示例
+    public function index() {
+        return $this->fetch();
+        //return view('map/sample');
+    }
+    
     //API示例
     public function sample() {
         $request = Request::instance();

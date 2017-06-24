@@ -1,19 +1,27 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"D:\web\api\public/../application/index\view\user\create.html";i:1493898368;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:58:"D:\web\api\public/../application/api\view\index\index.html";i:1498292605;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>创建用户</title>
+<title>我要寄件</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
 <style>
+body , html,
+/*#all{width:1001px}   overflow:hidden;*/
+#allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+#container{height:100%;width:1001px}
+#name{height:28px;width:1000px}
+#result{margin:auto 0;height:33px;}
+#bp10{height:5px}
 body{
     color: #333;
     font: 16px Verdana, "Helvetica Neue", helvetica, Arial, 'Microsoft YaHei', sans-serif;
     margin: 0px;
     padding: 0px;
 }
-#centre{height:600px;width:1001px}
+#centre{height:100%;width:1001px}
 a{
     color: #868686;
     cursor: pointer;
@@ -309,25 +317,25 @@ a.footer-icp:hover {
             <li class="navi"><a href="/sample" id="cases">API</a></li>
             <li class="navi"><a href="/map" id="device">设备</a></li>
         </ul>
-        <script type="text/javascript">
+            <script type="text/javascript">
             function logout(){
-                window.location.href = "logout";
+                window.location.href = "/logout";
             }
             function create(){
-                window.location.href = "create";
+                window.location.href = "/create";
             }
             function home(){
                 window.location.href = "/";
             }
             function login(){
-                window.location.href = "login";
+                window.location.href = "/login";
             }
         </script>
         <div class="headr">
             <span class="topTxt">
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"login":"home";?>()" class="username"  title='<?php echo empty($list->username)?"登录":$list->username;?>' ><?php echo empty($list->username)?"登录":$list->username;?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($list->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -341,28 +349,201 @@ a.footer-icp:hover {
     </div-->
 </div>
 <center>
-<div id="centre">
+<div id="[div]">
+
+<style type="text/css">
+#all{
+	width:100%;
+	height:1000px;
+	margin:0px;
+	padding:0px;
+  background:url(img/u=3816335401,4238052269&fm=26&gp=0.jpg);
+
+}
+	
+#head{
+	padding-top:80px;
+	width:100%;
+	height:180px;
+	text-align:center;
+}	
+	
+#center{
+	width:100%;
+	height:700px;
+	margin:0px;
+	padding:0px;
+}	
+#footer{
+	  width:100%;
+	  height:100px;
+	  clear:both;
+	  padding-top:40px;
+	 
+}
+
+.left{
+	width:30%;
+	height:700px;
+	float:left;
+   
+}
+
+.right{
+      width:35%;
+	 height:700px;
+	 float:left;
+}
+
+.middle{
+      width:35%;
+	   height:700px;
+	  float:left;
+}
+
+h2{
+	font-size:30px;
+	font-family:Verdana, Geneva, sans-serif;
+	color:#666666;	
+}
+
+h1{
+font-size:100px;
+font-family:"Lucida Console", Monaco, monospace;
+color:#30C;
+}
+
+.duiqi{
+	font-size:10px;
+	color:#C66;
+   font-family:Verdana, Geneva, sans-serif;
+	}
+	
+
+.footer-icp{
+	font-size:9px;
+   font-family:Verdana, Geneva, sans-serif;
+  text-decoration:none;
+	 color:#333;
+}
+</style>		
+</head>
+
+<body>
+<div id="all">
+<!--
+头部
+-->	
+	<div id="head">
+	<center>
+	<h1>快递名（logo)</h1>
+	</center>
+	</div>
+	<!--
+中间
+-->	
+<div id="center">
+	<!--
+中间左边
+-->	
+	<div class="left">
+     <img src="#" width="" height="">
+     <img src="#"	width="" height=""><br />
+     <input type="submit" value="开始教程"> 
+     </div>		
+	 
+	 
+
+ <div class="middle">
+ 
+<form>
+<center>    
+<table>	
+ <tr><h2>寄件人</h2></tr>
+    <tr>
+	 <label for="sender-name" class="duiqi">姓名:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" name="xingming" id="sender-name" placeholder="" /><br /><br />
+	
+	
+	<label for="sender-mobile" class="duiqi">手机:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+	<input type="text" name="haoma" id="sender-mobile" placeholder="" /><br /><br />
+	
+	
+		
+	<label for="validation" class="duiqi">验证码:</label>&nbsp;&nbsp;&nbsp;
+	<input type="text" name="yanzhengma" id="validation" placeholder="" /><br /><br />
+    	          
+ 
+  	<label for="sender-address" class="duiqi">上门地址</label>
+   <input text="text" name="dizhi" id="sender-address"  data-parsley-trigger="change"
+     data-parsley-errors-container=".sender-location" placeholder="" /><br /><br />
 
 
+	 
+	   <label for="sender-address-detail"  class="duiqi">详细地址</label>
+	   <input text="text" name="adress" id="sender-address-detail" placeholder="" /><br /><br />
+ </tr>
+	 
+<tr><h2>收件人</h2></tr>
+    <tr>
+		 <label for="receiver-name">姓名</label>
+	    <input type="text" name="xingming" id="receiver-name" placeholder="" /><br /><br />
+	
+	
+	   <label for="receiver-mobile" class="required col-xs-2 control-label">手机</label>
+	   <input type="text" name="haoma" id="receiver-mobile" placeholder="" /><br /><br />
 
-<h2>创建用户</h2>
-<FORM method="post" class="form" action="<?php echo url('index/user/add'); ?>">
-<INPUT type="text" class="text" name="username" placeholder="用户名" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="password" class="text" name="password" placeholder="密码" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="password" class="text" name="repassword" placeholder="确认密码" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="text" class="text" name="email" placeholder="电子邮箱" autocomplete="off"><span class="reds">*</span><br/>
-<INPUT type="text" class="text" name="nickname" placeholder="昵称" autocomplete="off"> &nbsp;<br/>
-<INPUT type="text" class="text" name="telephone" placeholder="手机号码" autocomplete="off"> &nbsp;<br/>
-<input type="hidden" name="flag" value=1 />
-<br/><INPUT type="submit" class="button button-rounded button-tiny button-primary" value="注册">
-</FORM>
-<br/><p>已有账号？<a href="login">登录</a></p>
+	
+  	   <label for="receiver-address" class="required col-xs-2 control-label">上门地址</label>
+      <input text="text" name="dizhi" id="receiver-address"   data-parsley-trigger="change"
+       data-parsley-errors-container=".receiver-location" placeholder="" /><br /><br />
+	 
+	    <label for="receiver-address-detail" class="required col-xs-2 control-label">详细地址</label>
+       <input text="text" name="adress" id="receiver-address-detail" placeholder="" /><br /><br />
+ </tr>
+</table> 
+ </center>       
+   </form>    
+ </div>
+ 
+      
+<div class="right">
+<form>
+<center>
+<table>
+<tr><h2>宝贝信息</h2></tr>
+<tr>
+类型：
+<input type="radio" name="fs" />服饰  <input type="radio" name="sp" />食品 
+<input type="radio" name="sm" />数码   <input type="radio" name="shyp" />生活用品
+<input type="radio" name="leixing" />文件   <input type="radio" name="leixing" />其他
+<br /><br />
+重量：<input type="text" name="zhongliang" /><br /><br />
+备注:
+<textarea rows="3" cols="10"></textarea>
+</tr>
+<br /><br /><br /><br /><br />
+<tr><h2 style="color:blue">取件</h2></tr>
+<tr>
+取件时间：<input type="text" name="qujian" /><br /><br />
+备注：
+<textarea rows="3" cols="10"></textarea> <br /><br />
+	     
+	 <input type="reset" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 <input type="submit" value="提交">
+</tr> 
+ </table> 
+   </center>        
+</form>          
+	
+</div>		
+</div>	
+</div>	
 
 </div>
 </center>
 <footer class="mini-footer" id="bottom">
-    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;
-        <a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
+    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;<a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
 <script>
     var adjustFooter = function() {
         if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
