@@ -4,6 +4,7 @@ use think\Controller;
 use think\Db;
 use think\Url;
 use think\Log;
+use think\Request;
 use app\index\model\Users;
 use app\index\model\UserLevel;
 use app\index\model\Test;
@@ -21,251 +22,25 @@ class Index extends Controller
         $this->view->replace(['__PUBLIC__'    =>  '/static',]);
     }
   
-    public function test41(){
-        // 设置
-        // 
-        // 设置Cookie 有效期为 3600秒
-//        Cookie::set('user_name','TPshop 团队',3600);
-//        // 设置cookie 前缀为think_
-//        Cookie::set('user_name','TPshop 老师',['prefix'=>'think_', 'expire'=>3600]);
-//        // 支持数组        
-//        Cookie::set('Teacher',['zhang','wang','chen','peng']);                                        
-//        echo Cookie::get('user_name'); // 也支持使用Cookie类直接读取        
-//        echo "<br/>";
-//        // 获取指定前缀的cookie值
-//        echo Cookie::get('user_name','think_');        
-//        echo "<br/>"; 
-//        // 建议的读取Cookie数据的方法是通过Request请求对象的cookie方法
-//        echo $this->request->cookie('user_name');        
-//        echo "<br/>";                 
-//        
-       // 判断  
-//        echo Cookie::has('user_name');
-//        echo "<br/>";
-        // 判断指定前缀的cookie值是否存在
-//        echo Cookie::has('user_name','think_'); 
-//        echo "<br/>";
-//       
-//       //删除cookie
-         //Cookie::delete('user_name');
-//       // 删除指定前缀的cookie
-         //Cookie::delete('user_name','think_');
-//       
-//       // 清空
-//       // 清空指定前缀的cookie
-         //Cookie::clear('think_');
-//       
-//       // 助手函数
-//        // 初始化
-          //cookie(['prefix' => 'think_', 'expire' => 3600]);
-//        // 设置
-          //cookie('name', 'value123', 3600);
-//        // 判断
-          //echo cookie('?name');
-          //echo "<br/>";
-//        // 获取
-          //echo cookie('name');
-          //echo "<br/>";
-//        // 删除
-          //cookie('name', null);
-//        // 清除
-          //cookie(null, 'think_');
+    public function send()
+    {            
+        return $this->fetch();
     }
     
-    
-    public function test40(){
-        session_start();
-        echo $_SESSION['aa'];
-        exit;
-        $_SESSION['aa'] = 22;
-        setcookie("bb",'55');
-    }
-    
-    // 模板输出
-    public function test39(){
-        
-        Session::set('user_name','Thinkphp 团队');
-        return $this->fetch();
-        //echo $request->session('user_name');
-        // 读取二维数组
-        //echo $request->session('user.name');      
-        
-        //print_r($_SESSION);
-    }
-    
-    // 助手函数
-    public function test38(){
-                
-        // 赋值（当前作用域）
-        //session('name', 'thinkphp');
-        //echo $this->request->session('name');
-        
-        // 赋值think作用域
-        //session('name', 'thinkphp', 'think');
-        // 判断（当前作用域）是否赋值
-        //echo session('?name');
-        // 取值（当前作用域）
-        //echo session('name');
-        // 取值think作用域
-        //echo session('name', '', 'think');
-        // 删除（当前作用域）
-        //session('name', null);
-        // 清除session（当前作用域）
-        //session(null);
-        // 清除think作用域
-        //session(null, 'think');      
-        
-        echo "\n";
-        print_r($_SESSION);
-    }    
-    
-    // SESSION操作
-    public function test37(){         
-        // 赋值（当前作用域）
-        //Session::set('name','thinkphp');
-        // 赋值think作用域
-        //Session::set('name','thinkphp','think2');
-        // 判断（当前作用域）是否赋值
-        //echo Session::has('name');
-        // 判断think作用域下面是否赋值
-        //echo Session::has('name','think');
-        // 取值（当前作用域）
-        //echo Session::get('name');
-        // 取值think作用域
-        //echo Session::get('name','think');
-        // 指定当前作用域
-        //Session::prefix('think2');
-        // 删除（当前作用域）
-        //echo Session::delete('name');
-        //echo Session::get('name','think');
-        // 删除think作用域下面的值
-        //Session::delete('name','think');
-        // 清除session（当前作用域）
-        //Session::clear(); 
-        // 清除think作用域
-        //Session::clear('think2');
-        // 赋值（当前作用域）
-        //Session::set('name.item','thinkphp');
-        // 判断（当前作用域）是否赋值
-        //echo Session::has('name.item');
-        // 取值（当前作用域）
-        //echo Session::get('name.item');
-        // 删除（当前作用域）
-        Session::delete('name.item');     
-        //$_SESSION = [];
-         echo "\n";
-         print_r($_SESSION);
-         exit;
-    }      
-    
-
-    
-    public function test36(){
-        try {
-           // 错误运营代码
-            100 / 0;
-        } catch (\think\Exception $ex) {
-            Log::error('测试错误');     
-        }       
-    }     
-    
-    public function test35(){
-       $myclass = new Myclass();
-       echo $myclass->hello();
-    }        
-    
-    public function test34(){
-        $list       = ['thinkphp', 'thinkphp5', 'TPshop'];
-        $arrayList  = new ArrayList($list);
-        $arrayList->add('kancloud');        
-        dump($arrayList->toArray());
-        echo $arrayList->toJson();
-    }    
-    public function test33(){
-        echo my_fun();
-    }
-    
-    
-    public function test32(){
-        Log::error('错误信息111');
-        Log::info('日志信息222');
-        trace('错误信息3333','error');
-        trace('日志信息4444','info');
-    }        
-
-    public function test31(){
-        trace('测试');
-        trace(['a', 'b', 'c']);
-        trace(Users::get());
-    }    
-       
-    public function test30(){
-        dump('测试');
-        halt(['a', 'b', 'c']);
-        halt('这里的信息是不会输出的'); 
-    }    
-    
-    public function test29(){
-        trace('这是测试调试信息');
-        trace([1,2,3]);       
-    }
-    
-    //温故而知新
-    public function test25(){
-        
-        dump('测试');
-        halt(['a', 'b', 'c']);
-        halt('这里的信息是不会输出的');        
-        return ;
-        $list = Users::where('user_id','>' ,2596)->select();
-        $this->assign('list',$list);
-        $this->assign('count', count($list));
-        return $this->fetch();
-    } 
-    // 分页输出列表
-    public function test26(){
-        
-        dump('测试');
-        dump(['a', 'b', 'c']);
-        dump(Users::get());        
-        return ;
-        $list = Users::paginate(3); //  每页显示3条数据        
-        $this->assign('list2',$list);
-        $this->assign('count', count($list));       
-        return $this->fetch();
-    } 
-    // 公共模板  模板定位
-    public function test27(){
-        
-        return 'hello,'.$_GET['name'];
-        
-        $list = Users::where('user_id','>' ,2596)->select();
-        $this->assign('list',$list);
-        $this->assign('count', count($list));
-        return $this->fetch();
-    }  
-    // 模板布局
-    public function test28(){
-        trace('这是测试调试信息');
-        trace([1,2,3]);        
-        $list = Users::where('user_id','>' ,2596)->select();
-        $this->assign('list',$list);
-        $this->assign('count', count($list));        
-        return $this->fetch();
-    }     
-    
-    public function  test24()
+    public function check()
     {
-        $user = Users::get(1);
-        dump($user->toArray());    // 数组输出    
-        dump($user->hidden(['reg_time','last_login'])->toArray());    // 隐藏属性数组输出
-        dump($user->visible(['user_id','nickname','email'])->toArray());   // 指定属性输出                                        
-        dump($user->append(['user_status'])->toArray());
-        echo $user->toJson();
-        echo Users::get(1);
-        
+        $request = Request::instance();
+        $post_data = input('post.');
+        echo '<center>';
+        echo '</br><h3>POST:</h3></br>';
+        print_r($post_data);
+        $get_data = input('get.');
+        echo '</br></br><h3>GET:</h3></br>';
+        print_r($get_data);
+        echo '</center>';
     }
-    
+
+
     public function  test20()
     {
             // 多对多关联
@@ -327,158 +102,9 @@ class Index extends Controller
 //        ->all();        
 //        print_r($list);
 //    }
-        
-    public function readFun(){
+      
 
-        $user = Users::get(1);
-//        echo $user->nickname . '<br/>';
-//        echo $user->email . '<br/>';    // 自动检测 getEmailAttr
-//        echo $user->reg_time . '<br/>'; // 自动检测 getRegTimeAttr
-//        $user->reg_time = '2017-10-10';
-//        echo $user->reg_time . '<br/>'; // 修改器修改之后
-        
-          //echo $user->birthday. '<br/>'; // 类型转换
-//          $user->birthday = '2017-11-04'; // 类型转换          
-//          $user->save();
-        
-//          $user->sex = 1; // 类型转换          
-//          $user->save();
 
-        //Users::create(['email'=>'1324567@798.com']);  自动完成
-        
-    }
-    
-    public function testModel(){
-        
-        //Test::get(1);
-        //Users::get(1);
-        //UserLevel::get(1);
-        //echo "public function testModel(){";    
-//        插入操作        
-//        $users = new Users;
-//        $users->email = '123456@abc.com';
-//        $users->mobile = '123456';
-//        //$users->aaaa = '123456';
-//        $users->save();
-//      换种方法插入操作        
-//        $userArr['email'] = 'hello@world.com';
-//        $userArr['mobile'] = '123456789';        
-//        if ($result = Users::create($userArr))
-//              echo "用户id:{$result->user_id} 邮件:{$result->email} 手机:{$result->mobile}";
-//      批量新增
-//        $users = new Users;        
-//        $list = [
-//               ['email' => 'zhanghsan@qq.com', 'mobile' => '123456789'],
-//               ['email' => 'lisi@qq.com', 'mobile' => '987654321'],
-//           ];
-//            if ($users->saveAll($list)) {
-//                echo '用户批量新增成功';
-//            } 
-        
-//          查询数据
-//            $user = Users::get(1);
-//            echo $user->mobile;
-//            echo "<br/>";
-//            echo $user->email;
-//          因为实现了 \ArrayAccess 接口,可以将对象像数组一样来访问           
-//            $user = Users::get(2);        
-//            echo $user['mobile'];
-//            echo "<br/>";
-//            echo $user['email'];
-
-//          根据某个条件查询数据 getByXxxx() 方法
-//            $user = Users::getByMobile('123456');
-//            echo $user['mobile'];
-//            echo "<br/>";
-//            echo $user['email'];
-        
-////           如果不是根据主键查询，可以传入数组作为查询条件
-//            $user = Users::get(['mobile'=>'13554784574','email'=>'511482696@qq.com']);
-//            $user = Users::where('mobile','13554784574')->find();
-//            $user = Users::where(['mobile'=>'13554784574','email'=>'511482696@qq.com'])->find();
-//            echo $user['mobile'];
-//            echo "<br/>";
-//            echo $user['email'];      
-//            如果要查询多个数据，可以使用模型的all方法          
-//              $list = UserLevel::all(); 
-//              $list = UserLevel::all(['level_id'=>4]);
-//              $list = UserLevel::where('level_id','<=',3)->select();
-//              foreach($list as $v)
-//              {
-//                  echo ' id:'.$v->level_id;
-//                  echo '== 等级名称:'.$v->level_name;                  
-//                  echo '<br/>';
-//              }
-////              对于数据库查询出来的数据更新数据        
-//                $user           = Users::get(1);
-//                $user->mobile   = '987654321';
-//                $user->email    = 'helloworld2@qwe.com';
-//                //echo $user->user_id;
-//                //$user->user_id = null;
-//                if (false !== $user->save()) // $user->isUpdate(false)->save()
-//                    return '更新用户成功';  
-//                 else 
-//                    return $user->getError();
-                        
-//               自己定义是数据更新操作                   
-//                  $userArr['mobile'] = '123456798';
-//                  $userArr['email']  = '333333@3344444.com';
-//                  Users::update($userArr,['user_id'=>1]);        
-//                删除操作                    
-//                  $user = Users::get(2593);    
-//                  $user->delete();         
-//                  // 或者使用
-//                  Users::destroy(2592);   
-    }    
-    public function index($name = '张三')
-    {               
-        //print_r($_GET);
-        //print_r($_POST);
-        //$data = Db::name('users')->find();
-        //print_r($data);
-	//$this->assign('name', $name);
-        //return $this->fetch();
-        return '<style type="text/css">*{ padding: 0; margin: 0; } .think_default_text{ padding: 4px 48px;} a{color:#2E5CD5;cursor: pointer;text-decoration: none} a:hover{text-decoration:underline; } body{ background: #fff; font-family: "Century Gothic","Microsoft yahei"; color: #333;font-size:18px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.6em; font-size: 42px }</style><div style="padding: 24px 48px;"> <h1>:)</h1><p> ThinkPHP V5<br/><span style="font-size:30px">十年磨一剑 - 为API开发设计的高性能框架</span></p><span style="font-size:22px;">[ V5.0 版本由 <a href="http://www.qiniu.com" target="qiniu">七牛云</a> 独家赞助发布 ]</span></div><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_bd568ce7058a1091"></thinkad>';
-         
-    }
-    
-    public function hello($name = 'world')
-    {
-        echo "hello:".$name;
-        echo "<br/>";
-        print_r($this->request->param());
-    }
-        
-    public function today($year='2017', $month='10')
-    {
-        
-        echo "今天是 $year 年 $month 月";
-        //print_r($this->request->param());
-   //  return 'index2';
-    }
-    
-    public function url()
-    {
-         echo Url::build('url2', 'a=1&b=2');
-         echo "<br/>";
-         echo url('url2', 'a=1&b=2');
-         echo "<br/>";
-         echo url('url2', ['a'=>1,'b'=>'2']);
-         echo "<br/>";
-         echo url('url2', array('a'=>1,'b'=>'2'));
-         echo "<br/>";
-         echo url('admin/index2/url2', 'a=1&b=2');
-         echo "<br/>";
-         echo url('admin/HelloWorld/hello'); // 自动切换 url_convert
-         echo "<br/>";
-         echo url('today/2017/07'); // 路由规则
-         echo "<br/>";         
-    }     
-    public function url2()
-    {
-        print_r($this->request->param());
-    }     
-    
    public function hello5()
     {
         /* 1 配置数据库

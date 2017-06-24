@@ -17,6 +17,8 @@ return [
     'logout' =>  'index/user/logout',
     'create'=>  'index/user/create',
     'map'   =>  'api/map/index',
+    'send' => 'index/index/send',
+    'check' => 'index/index/check',
     '__pattern__' => [
         'name' => '\w+',
     ],
