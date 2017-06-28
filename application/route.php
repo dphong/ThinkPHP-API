@@ -11,14 +11,16 @@
 
 return [
     //'/' => 'index/user/home',
-    '/'     =>  'index/user/home',
-    'sample'=>  'api/index/sample',
-    'login' =>  'index/user/login',
+    '/'      =>  'index/user/home',
+    'sample' =>  'api/index/sample',
+    'login'  =>  'index/user/login',
     'logout' =>  'index/user/logout',
-    'create'=>  'index/user/create',
-    'map'   =>  'api/map/index',
-    'send' => 'index/index/send',
-    'check' => 'index/index/check',
+    'create' =>  'index/user/create',
+    'map'    =>  'api/map/index',
+    'send'   =>  'index/index/send',
+    'check'  =>  'index/index/check',
+    'add'    =>  'index/index/add',
+    'sql'    =>  'index/index/sql',
     '__pattern__' => [
         'name' => '\w+',
     ],

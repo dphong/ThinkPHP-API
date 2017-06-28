@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\index\send.html";i:1498306004;s:59:"D:\web\api\public/../application/api/view/index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api/view/index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\index\send.html";i:1498309103;s:59:"D:\web\api\public/../application/api/view/index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api/view/index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -491,7 +491,7 @@ span{
  <div class="middle">
  <center>
 
-<form>
+<form action="check" method="post">
 
 <table>	
  <tr>
