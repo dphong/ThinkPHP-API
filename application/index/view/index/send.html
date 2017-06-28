@@ -1,12 +1,12 @@
 {include file="api@index/header" title="我要寄件"  keywords="物联网智能管理平台" /}
 
-<style type="text/css">
+<style type="text/css" src="../untitled.png">
 #all{
 	width:100%;
 	height:1000px;
 	margin:0px;
 	padding:0px;
-background-image:url(__PUBLIC__/photo/img/1.jpg);
+background-image:url(__PUBLIC__/photo/img/u=13891043225,973488654&fm=26&gp=0.jpg);
   
 }
 	
@@ -115,18 +115,23 @@ span{
 	
 }
 
-
+.down{
+margin-top:50px;	
+}
+.up{
+	
+padding-top:30px;	
+	
+	}
 </style>		
-</head>
 
-<body>
 <div id="all">
 <!--
 头部
 -->	
 	<div id="head">
 	<center>
-	<h1>快递名（logo)</h1>
+	<h1>我要寄件&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h1>
 	</center>
 	</div>
 	<!--
@@ -135,14 +140,40 @@ span{
 <div id="center">
 	<!--
 中间左边
--->
+-->	
+	<div class="left">
+  <center>
+ 
+         <div  class="up">
+            <marquee behavior="alternate">
+               <!--img src="img/-745f92ad7cde027a.jpg" width="" height=""--> 
+            </marquee>
+        </div>
+    
+       <div class="down">
+       
+            <img src="img/12.png"	width="" height="">
+                      <br />
+          
+             <input type="submit"  class="botton2" value="开始教程">
+       
+       </div>
+     
+  </center> 
+     </div>		
+	 
+	
+     
+     
+     
 
  <div class="middle">
  <center>
 
-<form action="check" method="post">
+<form action="http://iot.wlwshow.cn/check" method="get">
 
 <table>	
+<div name="one">
  <tr>
  <td colspan="100">
  <h2>寄件人</h2>
@@ -150,66 +181,84 @@ span{
  </tr>
     <tr>
 	<td> <label for="sender-name" class="duiqi">姓名:</label></td>
-	<td><input type="text" name="xingming" id="sender-name"  class="botton" placeholder="我叫小可爱，你呢？" /></td>
+	<td><input type="text" name="sender_name"  id="sende-name"  class="botton" placeholder="我叫小可爱，你呢？" required/></td>
     </tr>
 
   
 <tr>
 	<td>
+   
 	<label for="sender-mobile" class="duiqi">手机:</label></td>
-	<td><input type="text" name="haoma" id="sender-mobile" class="botton" placeholder="小主给我留个号码吧" /></td>
+   
+	<td>
+    <input type="text"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required 
+    name="send_phone" id="sender-mobile" class="botton" placeholder="小主给我留个号码吧" /></td>
 </tr>	
 	
   
 <tr>
 	<td>
 	<label for="validation" class="duiqi">验证码:</label></td>
-	<td><input type="text" name="yanzhengma" id="validation" class="botton" placeholder="验证身份的时候到啦" />
+	<td><input type="text" name="yanzhengma" id="validation" class="botton" placeholder="验证身份的时候到啦" required/>
 	<input type="submit"  class="botton1" value="获取"></td>
 </tr>
 
  <tr>
 	<td>
   	<label for="sender-address" class="duiqi">上门地址:</label></td>
- <td>  <input text="text" name="dizhi" id="sender-address"  data-parsley-trigger="change"
-     data-parsley-errors-container=".sender-location" class="botton" placeholder="小可爱踏着七彩祥云来找你啦" /></td>
+ <td> 
+ 
+ 
+ <!--  省市联动插件 -->
+
+
+  <input text="text" name="dizhi" id="sender-address"  data-parsley-trigger="change"
+     data-parsley-errors-container=".sender-location" class="botton" placeholder="小可爱踏着七彩祥云来找你啦" required/>
+
+     
+   
+     
+     </td>
  </tr>	
  
 	<tr>
      <td>
 	   <label for="sender-address-detail"  class="duiqi">详细地址:</label></td>
-	  <td> <input text="text" name="adress" id="sender-address-detail" class="botton" placeholder="详细一点，我要快点找到你" /></td>
+	  <td> <input text="text" name="adress" id="sender-address-detail" class="botton" placeholder="详细一点，我要快点找到你" required /></td>
  </tr>
+</div>  
+
 
 <tr>
 <td colspan="100">
 <h2>收件人</h2>
 </td>
 </tr>
-
-    <tr>
+   <tr>
 		<td> <label for="receiver-name" class="duiqi">姓名:</label></td>
-	<td>  <input type="text" name="xingming" id="receiver-name" class="botton" placeholder="快递要送给谁呢？" /></td>
+	<td>  <input type="text" name="xingming" id="receiver-name" class="botton" placeholder="快递要送给谁呢？" required/></td>
 	</tr>
 	
      <tr>
 		<td>
 	   <label for="receiver-mobile" class="duiqi">手机:</label></td>
-	  <td> <input type="text" name="haoma" id="receiver-mobile" class="botton" placeholder="TA的号码是多少，我帮小主联系啦" /></td>
+	  <td> <input type="text"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required
+       name="haoma" id="receiver-mobile" class="botton" placeholder="TA的号码是多少，我帮小主联系啦" /></td>
 </tr>
 	
 
     <tr>
 		<td>
   	   <label for="receiver-address" class="duiqi">上门地址:</label></td>
-     <td> <input text="text" name="dizhi" id="receiver-address"   data-parsley-trigger="change"
-       data-parsley-errors-container=".receiver-location" class="botton" placeholder="我去哪里才能见到TA" /></td>
+     <td><input text="text" name="dizhi" id="receiver-address"   data-parsley-trigger="change"
+       data-parsley-errors-container=".receiver-location" class="botton" placeholder="我去哪里才能见到TA" 
+       required/></td>
        </tr>
 	
 	   
        <tr>
 		<td> <label for="receiver-address-detail" class="duiqi">详细地址:</label></td>
-      <td> <input text="text" name="adress" id="receiver-address-detail" class="botton" placeholder="我这么可爱，小主就写的走心点吧" /></td>
+      <td> <input text="text" name="adress" id="receiver-address-detail" class="botton" placeholder="我这么可爱，小主就写的走心点吧" required/></td>
  </tr>
 
 </table> 
@@ -223,7 +272,10 @@ span{
    
       
 <div class="right">
-    <table>
+
+<table>
+<form action="http://iot.wlwshow.cn/check" method="post">
+
 <center>
 <tr>
 
@@ -232,9 +284,9 @@ span{
 </tr>
 <tr>
 <span>类型：</span>
-<input type="radio" name="fs" />服饰  <input type="radio" name="sp" />食品 
-<input type="radio" name="sm" />数码   <br /><br /><input type="radio" name="shyp" />生活用品
-<input type="radio" name="wj" />文件   <input type="radio" name="qt" />其他
+<input type="radio" name="splx" />服饰  <input type="radio" name="splx" />食品 
+<input type="radio" name="splx" />数码   <br /><br /><input type="radio" name="splx" />生活用品
+<input type="radio" name="splx" />文件   <input type="radio" name="splx" />其他
 <br /><br />
  <label for="wight" class="duiqi">重量:</label>
  
@@ -257,7 +309,10 @@ span{
 </tr>
 <tr>
 <label for="time" class="duiqi">时间:</label>
-<input type="text" class="botton" name="sj" id="time" /><br /><br  />
+<!--<input type="text" class="botton" name="sj" id="time" />-->
+<input type="datetime-local" class="botton" name="sj" id="time"  value="2017-06-26T13:59:59"/>
+<p>亲，我们的取货时间一般为下午三点到五点</p>
+<br />
 <span>备注：</span>
 <textarea rows="3" cols="20" placeholder="你长得好看说什么都对"></textarea> <br /><br />
 	     
@@ -266,10 +321,11 @@ span{
 </tr> 
  </table>    
 </form>          
-	</center>
+	</center>    
 	
+</div>		
 </div>
-</div>
-</div>
+		
+</div>	
 
 {include file="api@index/footer"}

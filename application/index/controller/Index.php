@@ -33,7 +33,12 @@ class Index extends Controller
         return $this->fetch();
     }
     
-     // 控制器验证
+    //智能物流系统
+    public function iot() {
+        return $this->fetch();
+    }
+
+    // 控制器验证
     public function add()
     {
         $data = input('post.');

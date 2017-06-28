@@ -21,6 +21,7 @@ return [
     'check'  =>  'index/index/check',
     'add'    =>  'index/index/add',
     'sql'    =>  'index/index/sql',
+    'iot'    =>  'index/index/iot',
     '__pattern__' => [
         'name' => '\w+',
     ],
