@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\user\login.html";i:1488630721;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\user\login.html";i:1498800112;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1498621341;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -296,6 +296,18 @@ a.footer-icp {
 a.footer-icp:hover {
     color: #777777;
 }
+.right-top 
+{
+    width: 50%;
+    height:25px;
+    position: static;/*这是必须的*/
+    z-index: 999;
+    left:95%;/*这是必须的*/
+    top: 30px;/*这是必须的*/
+    background: red;
+    float: center;
+    text-align: left;
+}
 </style>
 <script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 </head>
@@ -342,16 +354,51 @@ a.footer-icp:hover {
 </div>
 <center>
 <div id="centre">
+<script src="/static/jquery/jquery-1.10.2.min.js"></script>
+<style>
+.form{
+    padding: 15px;
+    font-size: 16px;
+}
 
+.form .text {
+    padding: 3px;
+    margin: 6px;
+    width: 240px;
+    height: 24px;
+    line-height: 28px;
+    border: 1px solid #D4D4D4;
+}
+h2{
+    color: #4288ce;
+    font-weight: 400;
+    padding: 6px 0;
+    margin: 10px 0 6px;
+    font-size: 28px;
+    border-bottom: 1px solid #eee;
+}
+.info{
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+</style>
 <h2>用户登录</h2>
 <FORM method="post" class="form" action="<?php echo url('index/user/home'); ?>">
-<INPUT type="text" class="text" name="username" placeholder="用户名/邮箱/手机号" autocomplete="off"><br/>
-<INPUT type="password" class="text" name="password" placeholder="密码" autocomplete="off"><br/>
+用户名：<INPUT type="text" class="text" name="username" placeholder="用户名/邮箱/手机号" autocomplete="off"><br/>
+&nbsp;&nbsp;&nbsp;密码：<INPUT type="password" class="text" name="password" placeholder="登录密码" autocomplete="off"><br/>
+验证码：<INPUT type="text" class="text" placeholder="不区分大小写" name="code">
+<div id="captcha_image" style="width:120px"><?php echo captcha_img(); ?></div>
 <input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
 <br/>
-<INPUT type="button" class="button button-rounded button-tiny button-primary" value="注册" onclick="window.location=('create')" /> &nbsp;
-<INPUT type="submit" class="button button-rounded button-tiny button-primary" value="登录">
+<INPUT type="button" class="button button-rounded button-small button-primary" value="注册" onclick="window.location=('create')" /> &nbsp;
+<INPUT type="submit" class="button button-rounded button-small button-primary" value="登录">
 </FORM>
+
+<script>
+    $('#captcha_image').click(function(){
+        $(this).find('img').attr('src','/captcha.html?r='+Math.random());
+    });
+</script>
 </div>
 </center>
 <footer class="mini-footer" id="bottom">

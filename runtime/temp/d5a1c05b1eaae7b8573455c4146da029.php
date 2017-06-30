@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"D:\web\api\public/../application/index\view\user\create.html";i:1495593189;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1495591400;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:60:"D:\web\api\public/../application/index\view\user\create.html";i:1495593189;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1498621341;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -295,6 +295,18 @@ a.footer-icp {
 }
 a.footer-icp:hover {
     color: #777777;
+}
+.right-top 
+{
+    width: 50%;
+    height:25px;
+    position: static;/*这是必须的*/
+    z-index: 999;
+    left:95%;/*这是必须的*/
+    top: 30px;/*这是必须的*/
+    background: red;
+    float: center;
+    text-align: left;
 }
 </style>
 <script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
