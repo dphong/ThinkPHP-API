@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:62:"D:\web\api\public/../application/index\view\captcha\index.html";i:1478505472;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:62:"D:\web\api\public/../application/index\view\captcha\index.html";i:1498798335;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -71,16 +71,11 @@ div{
 <div id="captcha_image"><?php echo captcha_img(); ?></div>
 <INPUT type="submit" class="btn" value=" 提交 ">
 </FORM>
-    <div class="copyright">
-        <a title="官方网站" href="http://www.thinkphp.cn">ThinkPHP</a> 
-        <span>V5</span> 
-        <span>{ 十年磨一剑-为API开发设计的高性能框架 }</span>
-    </div>
+
 </body>
 </html>
 <script>
     $('#captcha_image').click(function(){
         $(this).find('img').attr('src','/captcha.html?r='+Math.random());
     });
-    
 </script>

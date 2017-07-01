@@ -15,9 +15,9 @@ return [
     // 服务器地址
     'hostname'       => '127.0.0.1',
     // 数据库名
-    'database'       => 'demo',
+    'database'       => 'thinkphp',
     // 用户名
-    'username'       => 'root',
+    'username'       => 'thinkphp',
     // 密码
     'password'       => 'fira306',
     // 端口

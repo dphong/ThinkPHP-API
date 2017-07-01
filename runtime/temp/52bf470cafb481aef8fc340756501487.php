@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/api\view\index\sample.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/api\view\index\sample.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1498876576;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -321,8 +321,8 @@ a.footer-icp:hover {
             function logout(){
                 window.location.href = "/logout";
             }
-            function create(){
-                window.location.href = "/create";
+            function reg(){
+                window.location.href = "/reg";
             }
             function home(){
                 window.location.href = "/";
@@ -335,7 +335,7 @@ a.footer-icp:hover {
             <span class="topTxt">
                 <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"reg":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>

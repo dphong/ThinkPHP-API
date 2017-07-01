@@ -103,7 +103,7 @@ class Rfid extends Controller{
         $user = $myclass->isLogin();
         $uid = $request->cookie('uid');
         $rfid = new Rfids();
-        $list = $rfid->where('uid',$uid)->paginate(10);
+        $list = $rfid->where('uid',$uid)->paginate(8);
         $this->assign('list',$list);
         $this->assign('user',$user);
         return $this->fetch();

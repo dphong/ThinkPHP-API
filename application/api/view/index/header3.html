@@ -305,8 +305,8 @@ ul, ol {
             function logout(){
                 window.location.href = "logout";
             }
-            function create(){
-                window.location.href = "create";
+            function reg(){
+                window.location.href = "reg";
             }
             function home(){
                 window.location.href = "/";
@@ -319,7 +319,7 @@ ul, ol {
             <span class="topTxt">
                 <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"reg":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>

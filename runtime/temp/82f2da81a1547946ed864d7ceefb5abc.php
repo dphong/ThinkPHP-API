@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"D:\web\api\public/../application/api\view\map\show.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:55:"D:\web\api\public/../application/api\view\map\show.html";i:1498891255;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1498876576;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -321,8 +321,8 @@ a.footer-icp:hover {
             function logout(){
                 window.location.href = "/logout";
             }
-            function create(){
-                window.location.href = "/create";
+            function reg(){
+                window.location.href = "/reg";
             }
             function home(){
                 window.location.href = "/";
@@ -335,7 +335,7 @@ a.footer-icp:hover {
             <span class="topTxt">
                 <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"reg":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -396,12 +396,12 @@ a.lefta{
 <!--a class="lefta" href="/index/user/data">返回</a-->
 <div class="intro"><a href="/">用户中心</a>&gt;&nbsp;<a href="/index/user/data">查看数据</a>&gt;&nbsp;查看MAP数据</div>
 </br><h2>MAP数据</h2></br></br>
-    <table class="hovertable">
+    <table class="hovertable" style="padding: 0px;" > 
         <tr id="onmouseover">
-            <th style="width:19%">经度</th>
-            <th style="width:19%">纬度</th>
-            <th style="width:29%">信息</th>
-            <th style="width:33%">时间</th>
+            <th style="width:170px">经度</th>
+            <th style="width:170px">纬度</th>
+            <th style="width:270px">信息</th>
+            <th style="width:220px">时间</th>
         </tr>
         <?php if(is_array($list) || $list instanceof \think\Collection): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
         <tr id="lat">

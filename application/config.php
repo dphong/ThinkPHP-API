@@ -284,7 +284,7 @@ return [
 ],
 'captcha'  => [
     // 字体大小
-    'fontSize' => 15,
+    'fontSize' => 25,
     // 验证码长度（位数）
     'length'   => 4,
     // 使用中文验证码

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\user\login.html";i:1498800112;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1498621341;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:59:"D:\web\api\public/../application/index\view\user\login.html";i:1498901057;s:61:"D:\web\api\public/../application/index\view\index\header.html";i:1498876551;s:61:"D:\web\api\public/../application/index\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,310 +6,8 @@
 <title>用户登录</title>
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">
 <link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.css">
-<style>
-body{
-    color: #333;
-    font: 16px Verdana, "Helvetica Neue", helvetica, Arial, 'Microsoft YaHei', sans-serif;
-    margin: 0px;
-    padding: 0px;
-}
-#centre{height:600px;width:1001px}
-a{
-    color: #868686;
-    cursor: pointer;
-}
-a:hover{
-    text-decoration: underline;
-}
-h2{
-    color: #4288ce;
-    font-weight: 400;
-    padding: 6px 0;
-    margin: 6px 0 0;
-    font-size: 28px;
-    border-bottom: 0px solid #eee;
-    margin-bottom: 35px;
-}
-.text{
-    margin-bottom: 10px;
-}
-
-div{
-margin:8px;
-}
-.info{
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.copyright{
-    margin-top: 35px;
-    padding: 12px 0;
- /* border-top: 0px solid #eee;*/
-    clear: both;
-    background: #eee;
- /*   margin-top: 10px; */
-}
-
-body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, form, dl, dt, dd {
-    margin: 0;
-}
-.head {
-    background: #f5f5f5;
-    position: relative;
-    z-index: 1;
-}
-.headin {
-    width: 1000px;
-    margin: 0 auto;
-    position: relative;
-    overflow: hidden;
-    height: 75px;
-}
-.logo {
-    height: 100%;
-    width: 154px;
-    position: absolute;
-    left: 0px;
-    background: url(__PUBLIC__/photo/logo.jpg) no-repeat left center;
-}
-.logoTxt {
-    position: absolute;
-    top: -100px;
-}
-.nav {
-    position: absolute;
-    bottom: 0;
-    left: 380px;
-}
-.nav li {
-    float: left;
-    width: 92px;
-    height: 75px;
-}
-.nav li a {
-    float: left;
-    padding-left: 22px;
-    padding-right: 22px;
-    font-size: 14px;
-    line-height: 75px;
-}
-.headr {
-    float: right;
-    margin-right: 5px;
-}
-.username {
-    display: inline-block;
-    width: 40px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: top;
-}
-.topTxt {
-    font-size: 12px;
-    line-height: 75px;
-}
-.username, .exitLink {
-    color: #666;
-}
-.separ1 {
-    color: #bbb;
-    position: relative;
-    top: -1px;
-    margin-left: 8px;
-    margin-right: 8px;
-}
-.username, .exitLink {
-    color: #666;
-}
-Inherited from body
-body {
-    font-family: 'Microsoft Yahei';
-    font-size: 14px;
-    color: #333;
-    line-height: 1.5;
-}
-.auto1 {
-    margin-left: auto;
-    margin-right: auto;
-    width: 1000px;
-}
-.fix {
-}
-.pb30 {
-    padding-bottom: 30px;
-}
-.pt20 {
-    padding-top: 20px;
-}
-Pseudo ::after element
-.fix:after {
-    display: table;
-    content: '';
-    clear: both;
-}
-.lbar {
-    float: left;
-    width: 180px;
-    padding-bottom: 8px;
-}
-.lNav1 {
-    border-right: 1px solid #ddd;
-    width: 130px;
-}
-.lNav1li {
-    margin-bottom: 10px;
-    position: relative;
-    left: 1px;
-}
-.lNav1-liOn a {
-    color: #dc4a3b;
-    border-right-color: #dc4a3b;
-}
-.lNav1a {
-    display: block;
-    color: #999;
-    cursor: pointer;
-    line-height: 30px;
-    border-right: 1px solid #ddd;
-    font-size: 15px;
-}
-ul, ol {
-    padding-left: 0;
-    list-style-type: none;
-}
-.rmain1 {
-    width: 800px;
-    float: right;
-    min-height: 600px;
-}
-.rmain1 .intro {
-    width: 100%;
-    padding-top: 0;
-    margin-bottom: 20px;
-}
-.intro {
-    color: #aaa;
-    text-align: left;
-    width: 1000px;
-    margin: 0 auto;
-    padding-bottom: 10px;
-    padding-top: 20px;
-    font-size: 13px;
-    border-bottom: 1px dotted #bbb;
-}
-.intro a {
-    color: #aaa;
-    text-decoration: none;
-    width: 100%;
-    text-align: left;
-    margin-right: 2px;
-    margin-left: 2px;
-}
-.table1 {
-    margin-bottom: 50px;
-}
-.table1 th {
-    width: 100px;
-    text-align: right;
-    padding: 0;
-    vertical-align: top;
-    height: 32px;
-    line-height: 32px;
-    padding: 6px 0;
-    font-weight: normal;
-}
-.table1 td {
-    padding: 6px 0 6px 20px;
-    height: 32px;
-    line-height: 32px;
-    vertical-align: top;
-}
-.reds {
-    color: #f00;
-}
-.btn1 {
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    background: #fe9388;
-    color: #fff;
-    font-size: 14px;
-    display: inline-block;
-    padding: 0 20px;
-}
-
-.mt10 {
-    margin-top: 10px;
-}
-.footer {
-    clear: both;
-    background: #eee;
-    margin-top: 10px;
-}
-.fmenu {
-    width: 700px;
-    float: left;
-}
-.footer dl:first-child {
-    margin-left: 0px;
-}
-.footer dl {
-    float: left;
-    margin-left: 100px;
-}
-.footer dt {
-    padding-bottom: 10px;
-    font-size: 16px;
-}
-.footer a {
-    color: #777;
-    font-size: 12px;
-    line-height: 1.8;
-}
-.address {
-    float: right;
-    padding-top: 25px;
-    color: #aaa;
-    font-size: 13px;
-    text-align: right;
-}
-.teltxt {
-    font-size: 26px;
-    color: #333;
-    margin-bottom: 2px;
-}
-.mini-footer {
-    box-sizing: border-box;
-    margin-top: 20px;
-    padding: 10px;
-    height: 40px;
-    background-color: #bbb;
-    align-items: center;
-}
-a.footer-icp {
-    text-transform: none;
-    text-decoration: none;
-    color: #363636;
-}
-a.footer-icp:hover {
-    color: #777777;
-}
-.right-top 
-{
-    width: 50%;
-    height:25px;
-    position: static;/*这是必须的*/
-    z-index: 999;
-    left:95%;/*这是必须的*/
-    top: 30px;/*这是必须的*/
-    background: red;
-    float: center;
-    text-align: left;
-}
-</style>
-<script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/style.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>
 </head>
 <body>
     
@@ -325,8 +23,8 @@ a.footer-icp:hover {
             function logout(){
                 window.location.href = "logout";
             }
-            function create(){
-                window.location.href = "create";
+            function reg(){
+                window.location.href = "reg";
             }
             function home(){
                 window.location.href = "/";
@@ -339,7 +37,7 @@ a.footer-icp:hover {
             <span class="topTxt">
                 <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"login":"home";?>()" class="username"  title='<?php echo empty($list->username)?"登录":$list->username;?>' ><?php echo empty($list->username)?"登录":$list->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($list->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"reg":"logout";?>()" class="exitLink"><?php echo empty($list->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -354,51 +52,135 @@ a.footer-icp:hover {
 </div>
 <center>
 <div id="centre">
-<script src="/static/jquery/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/static/js/Validform_v5.3.2.js"></script>
+<script type="text/javascript" src="/static/js/passwordStrength.js"></script>
 <style>
-.form{
-    padding: 15px;
-    font-size: 16px;
-}
-
-.form .text {
-    padding: 3px;
-    margin: 6px;
-    width: 240px;
-    height: 24px;
-    line-height: 28px;
-    border: 1px solid #D4D4D4;
-}
-h2{
-    color: #4288ce;
-    font-weight: 400;
-    padding: 6px 0;
-    margin: 10px 0 6px;
-    font-size: 28px;
-    border-bottom: 1px solid #eee;
-}
-.info{
-    padding: 12px 0;
-    border-bottom: 1px solid #eee;
-}
+    .login .div {
+        text-align: left;
+    }
 </style>
 <h2>用户登录</h2>
-<FORM method="post" class="form" action="<?php echo url('index/user/home'); ?>">
-用户名：<INPUT type="text" class="text" name="username" placeholder="用户名/邮箱/手机号" autocomplete="off"><br/>
-&nbsp;&nbsp;&nbsp;密码：<INPUT type="password" class="text" name="password" placeholder="登录密码" autocomplete="off"><br/>
-验证码：<INPUT type="text" class="text" placeholder="不区分大小写" name="code">
-<div id="captcha_image" style="width:120px"><?php echo captcha_img(); ?></div>
-<input type="hidden" name="__token__" value="<?php echo \think\Request::instance()->token(); ?>" />
-<br/>
-<INPUT type="button" class="button button-rounded button-small button-primary" value="注册" onclick="window.location=('create')" /> &nbsp;
-<INPUT type="submit" class="button button-rounded button-small button-primary" value="登录">
-</FORM>
+<FORM method="post" class="login" action="<?php echo url('/'); ?>">
+    <table width="100%" style="table-layout:fixed;">
+        <tbody>
+            <tr>
+                <td class="need" style="width:10px;"></td>
+                <td style="width:70px;">用户名：</td>
+                <td style="width:240px;">
+                    <input type="text" class="inputtxt" name="username" datatype="s3-26" sucmsg=" " nullmsg="请输入用户名" errormsg="请输入正确的用户名" />
+                </td>
+                <td>
+                    <div class="Validform_checktip"></div>
+                    <div class="info">用户名/手机号/邮箱
+                        <span class="dec">
+                            <s class="dec1">◆</s>
+                            <s class="dec2">◆</s>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="need" style="width:10px;"></td>
+                <td style="width:70px;">密码：</td>
+                <td style="width:240px;">
+                    <input type="password" class="inputtxt" name="password" plugin="passwordStrength" datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码" />
+                </td>
+                <td>
+                    <div class="Validform_checktip"></div>
+                    <div class="info">请输入密码
+                        <span class="dec">
+                            <s class="dec1">◆</s>
+                            <s class="dec2">◆</s>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="need" style="width:10px;"></td>
+                <td style="width:70px;">验证码：</td>
+                <td style="width:240px;">
+                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误" />
+                </td>
+                <td>
+                    <div class="Validform_checktip"></div>
+                    <div class="info">请输入验证码，不区分大小写
+                        <span class="dec">
+                            <s class="dec1">◆</s>
+                            <s class="dec2">◆</s>
+                        </span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="need" style="width:10px;"></td>
+                <td style="width:70px;"></td>
+                <td style="width:200px;">
+                    <div id="captcha_image" style="width:200px;"><div><img src="<?php echo captcha_src(); ?>" alt="captcha" style="margin-left: 5px;"/></div>
+                </td>
+                <td>
 
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<INPUT type="button" style="position: relative; right: 150px; " class="button button-rounded button-small button-primary" value="注册" onclick="window.location=('reg')" /> &nbsp;
+<INPUT type="submit" style="position: relative; right: 150px; " class="button button-rounded button-small button-primary" value="登录">
+</FORM>
 <script>
     $('#captcha_image').click(function(){
         $(this).find('img').attr('src','/captcha.html?r='+Math.random());
+        $("#inputtxt")[2].validform_valid="false";
     });
 </script>
+<script>
+
+$(function(){
+	var getInfoObj=function(){
+			return 	$(this).parents("td").next().find(".info");
+		}
+	$("[datatype]").focusin(function(){
+		if(this.timeout){clearTimeout(this.timeout);}
+		var infoObj=getInfoObj.call(this);
+		if(infoObj.siblings(".Validform_right").length!=0){
+			return;	
+		}
+		infoObj.show().siblings().hide();
+		
+	}).focusout(function(){
+		var infoObj=getInfoObj.call(this);
+		this.timeout=setTimeout(function(){
+			infoObj.hide().siblings(".Validform_wrong,.Validform_loading,.Validform_right").show();
+		},0);
+		
+	});
+	
+	$(".login").Validform({
+		tiptype:2,
+		usePlugin:{
+			passwordstrength:{
+				minLen:6,
+				maxLen:18,
+				trigger:function(obj,error){
+					if(error){
+						obj.parent().next().find(".passwordStrength").hide().siblings(".info").show();
+					}else{
+						obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();	
+					}
+				}
+			}
+		}
+	});
+})
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','/static/js/analytics.js','ga');
+
+  ga('create', 'UA-81001026-1', 'auto');
+  ga('send', 'pageview');
+ </script>
 </div>
 </center>
 <footer class="mini-footer" id="bottom">

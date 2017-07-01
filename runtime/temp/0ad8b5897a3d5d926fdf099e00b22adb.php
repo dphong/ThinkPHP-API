@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\rfid\show.html";i:1490954284;s:60:"D:\web\api\public/../application/api\view\index\header2.html";i:1490531759;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1488630856;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\rfid\show.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\header.html";i:1498876576;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -11,7 +11,7 @@
 body , html,
 /*#all{width:1001px}   overflow:hidden;*/
 #allmap {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
-#container{height:540px;width:1001px}
+#container{height:100%;width:1001px}
 #name{height:28px;width:1000px}
 #result{margin:auto 0;height:33px;}
 #bp10{height:5px}
@@ -21,7 +21,7 @@ body{
     margin: 0px;
     padding: 0px;
 }
-#centre{height:600px;width:1001px}
+#centre{height:100%;width:1001px}
 a{
     color: #868686;
     cursor: pointer;
@@ -288,7 +288,24 @@ ul, ol {
     color: #333;
     margin-bottom: 2px;
 }
+.mini-footer {
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 10px;
+    height: 40px;
+    background-color: #bbb;
+    align-items: center;
+}
+a.footer-icp {
+    text-transform: none;
+    text-decoration: none;
+    color: #363636;
+}
+a.footer-icp:hover {
+    color: #777777;
+}
 </style>
+<script type="text/javascript" src="__PUBLIC__/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
 </head>
 <body>
     
@@ -304,8 +321,8 @@ ul, ol {
             function logout(){
                 window.location.href = "/logout";
             }
-            function create(){
-                window.location.href = "/create";
+            function reg(){
+                window.location.href = "/reg";
             }
             function home(){
                 window.location.href = "/";
@@ -316,9 +333,9 @@ ul, ol {
         </script>
         <div class="headr">
             <span class="topTxt">
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"login":"home";?>()" class="username"  title='<?php echo empty($list->username)?"登录":$list->username;?>' ><?php echo empty($list->username)?"登录":$list->username;?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($list->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($list->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"reg":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -333,54 +350,107 @@ ul, ol {
 </div>
 <center>
 <div id="centre">
-    <table class="table1" border="1">
+<style>
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:12px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+        text-align: center;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table tr:hover
+{
+    background-color:#bbbbdd;
+}
+</style>
+<div class="intro"><a href="/">用户中心</a>&gt;&nbsp;<a href="/index/user/data">查看数据</a>&gt;&nbsp;查看RFID数据</div>
+</br><h2>RFID数据</h2></br></br>
+<table class="hovertable">
         <tr id="lng">
             <th style="width:5%">ID</th>
             <th style="width:11%">RFID卡用户区</th>
             <th style="width:11%">EPC号</th>
-            <th style="width:11%">EPC长度</th>
+            <th style="width:8%">EPC长度</th>
             <th style="width:11%">RFID卡保留区</th>
             <th style="width:11%">RFID卡EPC区</th>
             <th style="width:10%">RFID卡TID区</th>
-            <th style="width:20%">创建时间</th>
-            <th style="width:10%">IP</th>
+            <th style="width:33%">创建时间</th>
+            <!--th style="width:10%">IP</th-->
         </tr>
-        <?php foreach($list as $data => $v): ?>
+        <?php if(is_array($list) || $list instanceof \think\Collection): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?>
         <tr id="lat">
             <td>
-                <?php echo $v->rfid_id; ?>
+                <?php echo $v['rfid_id']; ?>
             </td>
             <td>
-                <?php echo $v->c_user; ?>
+                <?php echo $v['c_user']; ?>
             </td>
             <td>
-                <?php echo $v->epc_id; ?>
+                <?php echo $v['epc_id']; ?>
             </td>
             <td>
-                <?php echo $v->id_length; ?>
+                <?php echo $v['id_length']; ?>
             </td>
             <td>
-                <?php echo $v->c_reserve; ?>
+                <?php echo $v['c_reserve']; ?>
             </td>
             <td>
-                <?php echo $v->c_epc; ?>
+                <?php echo $v['c_epc']; ?>
             </td>
             <td>
-                <?php echo $v->c_tid; ?>
+                <?php echo $v['c_tid']; ?>
             </td>
             <td>
-                <?php echo $v->create_time; ?>
+                <?php echo $v['create_time']; ?>
             </td>
-            <td>
-                <?php echo $v->ip; ?>
-            </td>
+            <!--td>
+                {/$v.ip/}
+            </td-->
         </tr>
-        <?php endforeach; ?>
+        <?php endforeach; endif; else: echo "" ;endif; ?>
     </table>
+</br></br>
+<style>
+    ul li{
+    float: left; list-style:none;
+}
+</style>
+    <?php echo $list->render(); ?>
 </div>
 </center>
-<div class="copyright">
-    <center>Copyright &copy; <?php echo date("Y");?> 物联网智能管理平台</center>
-</div>
+<footer class="mini-footer" id="bottom">
+    <center>Copyright &copy; <?php echo date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;<a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a></center>
+<script>
+    var adjustFooter = function() {
+        if( ($('#bottom').offset().top + $('#bottom').outerHeight(true) )<$(window).height() ) {
+            var footerBottom = $(window).height() - $('#bottom').outerHeight(true) - $('#bottom').offset().top;
+            footerBottom = Math.floor(footerBottom) + 20;
+            $('#bottom').css({'bottom': '-' + footerBottom + 'px', 'position': 'relative'});
+        }
+    };
+    var $ = jQuery;
+    $(document).ready(function() {
+        adjustFooter();
+    });
+</script>
+</footer>
 </body>
 </html>

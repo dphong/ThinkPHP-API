@@ -15,7 +15,7 @@ return [
     'sample' =>  'api/index/sample',
     'login'  =>  'index/user/login',
     'logout' =>  'index/user/logout',
-    'create' =>  'index/user/create',
+    'reg' =>  'index/user/reg',
     'map'    =>  'api/map/index',
     'send'   =>  'index/index/send',
     'check'  =>  'index/index/check',

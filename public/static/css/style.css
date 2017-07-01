@@ -1,0 +1,505 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2017-6-30, 14:36:25
+    Author     : HDP
+*/
+form, ul, ol, dl, dd, p{
+    margin: 0px;
+    padding: 0px;
+}
+body, div, h1, h2, h3, h4, h5, h6, p, ul, ol, form, dl, dt, dd {
+    margin: 0;
+}
+body{
+    color: #333;
+    font: 16px Verdana, "Helvetica Neue", helvetica, Arial, 'Microsoft YaHei', sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+#centre{height:600px;width:1001px}
+a{
+    color: #868686;
+    cursor: pointer;
+}
+a:hover{
+    text-decoration: underline;
+}
+h2{
+    color: #4288ce;
+    font-weight: 400;
+    padding: 6px 0;
+    margin: 10px 0 6px;
+    font-size: 28px;
+    border-bottom: 1px solid #eee;
+    text-align: center;
+}
+.text{
+    margin-bottom: 10px;
+}
+.info{
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.copyright{
+    margin-top: 35px;
+    padding: 12px 0;
+ /* border-top: 0px solid #eee;*/
+    clear: both;
+    background: #eee;
+ /*   margin-top: 10px; */
+}
+
+.head {
+    background: #f5f5f5;
+    position: relative;
+    z-index: 1;
+}
+.headin {
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    height: 75px;
+}
+.logo {
+    height: 100%;
+    width: 154px;
+    position: absolute;
+    left: 0px;
+    background: url(../photo/logo.jpg) no-repeat left center;
+}
+.logoTxt {
+    position: absolute;
+    top: -100px;
+}
+.nav {
+    position: absolute;
+    bottom: 0;
+    left: 380px;
+    right: 344px;
+    top: 0px;
+    height: 75px;
+    margin: 0 0 0;
+    padding: 0px 0 0;
+}
+.nav li {
+    float: left;
+    width: 92px;
+    height: 75px;
+}
+.nav li a {
+    float: left;
+    padding-left: 22px;
+    padding-right: 22px;
+    font-size: 14px;
+    line-height: 75px;
+}
+.headr {
+    float: right;
+    margin-right: 5px;
+}
+.username {
+    display: inline-block;
+    width: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+.topTxt {
+    font-size: 12px;
+    line-height: 75px;
+}
+.username, .exitLink {
+    color: #666;
+}
+.separ1 {
+    color: #bbb;
+    position: relative;
+    top: -1px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.username, .exitLink {
+    color: #666;
+}
+body {
+    font-family: 'Microsoft Yahei';
+    font-size: 14px;
+    color: #333;
+    line-height: 1.5;
+}
+.auto1 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1000px;
+}
+.fix {
+}
+.pb30 {
+    padding-bottom: 30px;
+}
+.pt20 {
+    padding-top: 20px;
+}
+.fix:after {
+    display: table;
+    content: '';
+    clear: both;
+}
+.lbar {
+    float: left;
+    width: 180px;
+    padding-bottom: 8px;
+}
+.lNav1 {
+    border-right: 1px solid #ddd;
+    width: 130px;
+}
+.lNav1li {
+    margin-bottom: 10px;
+    position: relative;
+    left: 1px;
+}
+.lNav1-liOn a {
+    color: #dc4a3b;
+    border-right-color: #dc4a3b;
+}
+.lNav1a {
+    display: block;
+    color: #999;
+    cursor: pointer;
+    line-height: 30px;
+    border-right: 1px solid #ddd;
+    font-size: 15px;
+}
+ul, ol {
+    padding-left: 0;
+    list-style-type: none;
+}
+.rmain1 {
+    width: 800px;
+    float: right;
+    min-height: 600px;
+}
+.rmain1 .intro {
+    width: 100%;
+    padding-top: 0;
+    margin-bottom: 20px;
+}
+.intro {
+    color: #aaa;
+    text-align: left;
+    width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    font-size: 13px;
+    border-bottom: 1px dotted #bbb;
+}
+.intro a {
+    color: #aaa;
+    text-decoration: none;
+    width: 100%;
+    text-align: left;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+.table1 {
+    margin-bottom: 50px;
+}
+.table1 th {
+    width: 100px;
+    text-align: right;
+    padding: 0;
+    vertical-align: top;
+    height: 32px;
+    line-height: 32px;
+    padding: 6px 0;
+    font-weight: normal;
+}
+.table1 td {
+    padding: 6px 0 6px 20px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: top;
+}
+.reds {
+    color: #f00;
+}
+.btn1 {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: #fe9388;
+    color: #fff;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0 20px;
+}
+b {
+    font-weight: normal;
+    display: inline-block;
+    margin: 0 8px;
+    color: #f27f02;
+}
+/*--------   用户登录  ----------*/
+.login .need {
+    width: 10px;
+    color: #b20202;
+}
+
+.login .inputxt, .login textarea {
+    border: 1px solid #a5aeb6;
+    width: 196px;
+    padding: 4px 2px;
+}
+.Validform_error {
+    background-color: #ffe7e7;
+}
+input {
+    padding: 8px 20px;
+    vertical-align: middle;
+}
+button, input, select, textarea {
+    font-size: 1em;
+    margin: 0;
+    font-family: tahoma, arial, simsun, sans-serif;
+    color: #484848;
+}
+.Validform_checktip {
+    margin-left: 10px;
+}
+.Validform_checktip {
+    margin-left: 8px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    color: #999;
+    font-size: 12px;
+}
+/* -----------------------  */
+label {
+    cursor: default;
+}
+.mt10 {
+    margin-top: 10px;
+}
+
+.footer {
+    clear: both;
+    background: #eee;
+    margin-top: 10px;
+}
+.fmenu {
+    width: 700px;
+    float: left;
+}
+.footer dl:first-child {
+    margin-left: 0px;
+}
+.footer dl {
+    float: left;
+    margin-left: 100px;
+}
+.footer dt {
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+.footer a {
+    color: #777;
+    font-size: 12px;
+    line-height: 1.8;
+}
+.address {
+    float: right;
+    padding-top: 25px;
+    color: #aaa;
+    font-size: 13px;
+    text-align: right;
+}
+.teltxt {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 2px;
+}
+.mini-footer {
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 10px;
+    height: 40px;
+    background-color: #bbb;
+    align-items: center;
+}
+a.footer-icp {
+    text-transform: none;
+    text-decoration: none;
+    color: #363636;
+}
+a.footer-icp:hover {
+    color: #777777;
+}
+.right-top {
+    width: 50%;
+    height:25px;
+    position: static;/*这是必须的*/
+    z-index: 999;
+    left:95%;/*这是必须的*/
+    top: 30px;/*这是必须的*/
+    background: red;
+    float: center;
+    text-align: left;
+}
+.Validform_checktip{
+	margin-left:8px;
+	line-height:20px;
+        padding: 8px 20px 8px;
+	height:20px;
+	overflow:hidden;
+	color:#999;
+	font-size:12px;
+}
+.Validform_right{
+	color:#71b83d;
+	padding-left:20px;
+	background:url(../images/right.png) no-repeat left center;
+}
+.Validform_wrong{
+	color:red;
+	padding-left:20px;
+	white-space:nowrap;
+	background:url(../images/error.png) no-repeat left center;
+}
+.Validform_loading{
+	padding-left:20px;
+	background:url(../images/onLoad.gif) no-repeat left center;
+}
+.Validform_error{
+	background-color:#ffe7e7;
+}
+#Validform_msg{color:#7d8289; font: 12px/1.5 tahoma, arial, \5b8b\4f53, sans-serif; width:280px; -webkit-box-shadow:2px 2px 3px #aaa; -moz-box-shadow:2px 2px 3px #aaa; background:#fff; position:absolute; top:0px; right:50px; z-index:99999; display:none;filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#999999');}
+#Validform_msg .iframe{position:absolute; left:0px; top:-1px; z-index:-1;}
+#Validform_msg .Validform_title{line-height:25px; height:25px; text-align:left; font-weight:bold; padding:0 8px; color:#fff; position:relative; background-color:#000;}
+#Validform_msg a.Validform_close:link,#Validform_msg a.Validform_close:visited{line-height:22px; position:absolute; right:8px; top:0px; color:#fff; text-decoration:none;}
+#Validform_msg a.Validform_close:hover{color:#cc0;}
+#Validform_msg .Validform_info{padding:8px;border:1px solid #000; border-top:none; text-align:left;}
+
+.form{
+    padding: 15px;
+    font-size: 16px;
+}
+.form .text {
+    padding: 3px;
+    margin: 6px;
+    width: 240px;
+    height: 24px;
+    line-height: 28px;
+    border: 1px solid #D4D4D4;
+}
+
+/* ------    login     ------ */
+.login{
+    padding: 25px 320px 20px;
+    padding-right: 1px;
+}
+.login .table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.login .need {
+    width: 10px;
+    color: #b20202;
+}
+.login td {
+    font-size: 16px;
+    padding: 5px 0;
+    vertical-align: top;
+    text-align: left;
+}
+td {
+    line-height: 38px;
+}
+.login .inputxt, .login textarea {
+    padding: 10px;
+    width: 245px;
+}
+.login .inputxt, .login textarea {
+    border: 1px solid #a5aeb6;
+    width: 196px;
+    padding: 4px 2px;
+}
+input {
+    padding: 8px 20px;
+    vertical-align: middle;
+}
+.info {
+    margin-left: 8px;
+    border: 1px solid #ccc;
+    padding: 8px 20px 8px 10px;
+    color: #666;
+    float: left;
+    position: relative;
+    display: none;
+    line-height: 20px;
+}
+.dec {
+    top: 9px;
+    display: block;
+    height: 17px;
+    overflow: hidden;
+    position: absolute;
+    left: -8px;
+    width: 8px;
+}
+.dec .dec1 {
+    color: #ccc;
+}
+.dec .dec2 {
+    color: #fff;
+    left: 1px;
+}
+.dec s {
+    font-family: simsun;
+    font-size: 16px;
+    height: 19px;
+    left: 0;
+    line-height: 21px;
+    position: absolute;
+    text-decoration: none;
+    top: 0;
+    width: 17px;
+}
+
+/*-----   passwordStrength   -----*/
+.passwordStrength{
+
+}
+.passwordStrength b{
+	font-weight:normal;
+        margin-left: 0px;
+}
+.passwordStrength b,.passwordStrength span{
+	display:inline-block; 
+	vertical-align:middle;
+	line-height:16px;
+	line-height:18px\9;
+	height:16px;
+}
+.passwordStrength span{
+	width:45px; 
+	text-align:center; 
+	background-color:#d0d0d0; 
+	border-right:1px solid #fff;
+}
+.passwordStrength .last{
+	border-right:none;
+}
+.passwordStrength .bgStrength{
+	color:#fff;
+	background-color:#71b83d;
+}

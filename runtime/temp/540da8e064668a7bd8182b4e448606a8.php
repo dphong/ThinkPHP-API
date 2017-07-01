@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\map\index.html";i:1495591400;s:60:"D:\web\api\public/../application/api\view\index\header3.html";i:1495591400;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:56:"D:\web\api\public/../application/api\view\map\index.html";i:1498876682;s:60:"D:\web\api\public/../application/api\view\index\header3.html";i:1498876601;s:59:"D:\web\api\public/../application/api\view\index\footer.html";i:1495591400;}*/ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -306,8 +306,8 @@ ul, ol {
             function logout(){
                 window.location.href = "logout";
             }
-            function create(){
-                window.location.href = "create";
+            function reg(){
+                window.location.href = "reg";
             }
             function home(){
                 window.location.href = "/";
@@ -320,7 +320,7 @@ ul, ol {
             <span class="topTxt">
                 <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"login":"home";?>()" class="username"  title='<?php echo empty($user->username)?"登录":$user->username;?>' ><?php echo empty($user->username)?"登录":$user->username;?></a>
                 <span class="separ1">|</span>
-                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"create":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
+                <a href="javascript:void(0)" onclick="<?php echo empty($user->username)?"reg":"logout";?>()" class="exitLink"><?php echo empty($user->username)?"注册":"退出";?></a>
             </span>
         </div>
     </div>
@@ -346,16 +346,16 @@ ul, ol {
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wCedEoVpANRk7a9xi0o3oXd77RGyMLtg" ></script>
 <script type="text/javascript">
             function logout(){
-                window.location.href = "/index/user/logout";
+                window.location.href = "/logout";
             }
-            function create(){
-                window.location.href = "/index/user/create";
+            function reg(){
+                window.location.href = "/reg";
             }
             function home(){
-                window.location.href = "/index/user/home";
+                window.location.href = "/";
             }
             function login(){
-                window.location.href = "/index/user/login";
+                window.location.href = "/login";
             }
         </script>
 <script type="text/javascript">

@@ -18,10 +18,55 @@ class User extends Controller
     }
 
    // 创建用户数据页面
-    public function create()
+    public function reg()
     {
         return view();
-//        return view("user/create");
+//        return view("user/reg");
+    }
+    
+    //用户名验证
+    public function valid() {
+        $request = Request::instance();
+        if($request->post('name') == 'username') {
+            $username = $request->post ('param');
+            $user = Users::get(['username'=>$username]);
+            if(!$user) {
+                return json(array(
+                    'status' => 'y',
+                    'info' => ' '
+                ));
+            } else {
+                return json(array(
+                    'status' => 'n',
+                    'info' => '该用户名已被注册'
+                ));
+            }
+        } else {
+            return json(array(
+                'status' => 'n',
+                'info' => '参数配置错误'
+            ));
+        }
+    }
+    
+        //验证码验证
+    public function code() {
+        $request = Request::instance();
+        if($request->post('name') == 'code') {
+            $code = $request->post ('param');
+            $captcha = new \think\captcha\Captcha();
+            if ($captcha->check($code)) {
+                return json(array(
+                    'status' => 'y',
+                    'info' => ' '
+                ));
+            } else {
+                return json(array(
+                    'status' => 'n',
+                    'info' => '验证码错误'
+                ));
+            }
+        }
     }
     
      // 控制器验证
@@ -33,7 +78,7 @@ class User extends Controller
         {
             if (true !== $result) {
                 echo "<script language=javascript>alert ('" . $result  ."');</script>";
-                echo '<script language=javascript>window.location.href="/create"</script>';
+                echo '<script language=javascript>window.location.href="/reg"</script>';
                 return;
             }
         } else if(input('post.flag')==2)
@@ -44,12 +89,12 @@ class User extends Controller
                     'message'    => $result,
                 ));
                 //echo "<script language=javascript>alert ('" . $result  ."');</script>";
-                //echo '<script language=javascript>window.location.href="/create"</script>';
+                //echo '<script language=javascript>window.location.href="/reg"</script>';
                 return;
             }
         } else {
                 echo "<script language=javascript>alert ('错误的提交');</script>";
-                echo '<script language=javascript>window.location.href="/create"</script>';
+                echo '<script language=javascript>window.location.href="/reg"</script>';
                 return;
         }
         $users = new Users;
@@ -95,12 +140,7 @@ class User extends Controller
     
     //个人中心
     public function home($code='') {
-        $captcha = new \think\captcha\Captcha();
-        if (!$captcha->check($code)) {
-            $this->error('验证码错误');
-        } else {
-            $this->success('验证码正确');
-        }
+        
         $request = Request::instance();
         if($request->post())
         {
