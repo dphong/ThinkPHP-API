@@ -47,7 +47,7 @@ class Index extends Controller
         {
             if (true !== $result) {
                 echo "<script language=javascript>alert ('" . $result  ."');</script>";
-                echo '<script language=javascript>window.location.href="/create"</script>';
+                echo '<script language=javascript>window.location.href="/reg"</script>';
                 return;
             }
         } else if(input('post.flag')==2)
@@ -58,7 +58,7 @@ class Index extends Controller
                     'message'    => $result,
                 ));
                 //echo "<script language=javascript>alert ('" . $result  ."');</script>";
-                //echo '<script language=javascript>window.location.href="/create"</script>';
+                //echo '<script language=javascript>window.location.href="/reg"</script>';
                 return;
             }
         } else {
