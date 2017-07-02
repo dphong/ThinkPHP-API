@@ -178,7 +178,7 @@ class User extends Controller
                 echo '<script language=javascript>window.location.href="/login"</script>';
             }
         } else {
-            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
+            //echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
             echo '<script language=javascript>window.location.href="/login"</script>';
         }
         $validate = createPasswd($user->user_id . $user->username . $user->zcsj);

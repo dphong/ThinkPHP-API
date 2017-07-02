@@ -124,7 +124,7 @@ class Upload extends \think\Controller
                     $image->water(ROOT_PATH .'logo.png', Image::WATER_NORTHWEST, 50);
                     break;
                 case 7: // 文字水印 text(水印文字,字体文件路径,文字大小,文字颜色,文字写入位置,偏移量,文字倾斜角度)
-                    $image->text('TPshop', VENDOR_PATH . 'topthink/think-captcha/assets/ttfs/1.ttf', 20, '#ffffff');
+                    $image->text('TPshop', VENDOR_PATH . 'topthink/think-captcha/assets/ttfs/1.ttf', 40, '#ffffff');
                     break;
             }
             // 保存图片（以当前时间戳）
