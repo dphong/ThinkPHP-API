@@ -19,7 +19,7 @@ class Index extends Controller
     function __construct() 
     {
         parent::__construct();
-        $this->view->replace(['__PUBLIC__'    =>  '/static',]);
+        $this->view->replace(['__PUBLIC__'    =>  'http://ongjgltez.bkt.clouddn.com',]);
     }
   
     //我要寄件

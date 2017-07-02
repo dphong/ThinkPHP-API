@@ -1,3 +1,6 @@
 .idea
 composer.lock
 *.log
+composer.json
+Composer-Setup.exe
+!.gitignore

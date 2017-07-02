@@ -71,7 +71,7 @@ h2{
     width: 154px;
     position: absolute;
     left: 0px;
-    background: url(../photo/logo.jpg) no-repeat left center;
+    background: url(http://ongjgltez.bkt.clouddn.com/photo/logo.jpg) no-repeat left center;
 }
 .logoTxt {
     position: absolute;
@@ -367,17 +367,17 @@ a.footer-icp:hover {
 .Validform_right{
 	color:#71b83d;
 	padding-left:20px;
-	background:url(../images/right.png) no-repeat left center;
+	background:url(http://ongjgltez.bkt.clouddn.com/images/right.png) no-repeat left center;
 }
 .Validform_wrong{
 	color:red;
 	padding-left:20px;
 	white-space:nowrap;
-	background:url(../images/error.png) no-repeat left center;
+	background:url(http://ongjgltez.bkt.clouddn.com/images/error.png) no-repeat left center;
 }
 .Validform_loading{
 	padding-left:20px;
-	background:url(../images/onLoad.gif) no-repeat left center;
+	background:url(http://ongjgltez.bkt.clouddn.com/images/onLoad.gif) no-repeat left center;
 }
 .Validform_error{
 	background-color:#ffe7e7;
