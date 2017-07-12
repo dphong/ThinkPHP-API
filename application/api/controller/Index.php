@@ -30,7 +30,6 @@ class Index extends Controller{
         } else {
             $this->view->replace(['__PUBLIC__'    =>  'http://ongjgltez.bkt.clouddn.com',]);
         }
-        $this->view->replace(['__HTTPPUBLIC__'    =>  'http://ongjgltez.bkt.clouddn.com',]);
     }
     
         //API示例
