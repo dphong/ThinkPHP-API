@@ -1,4 +1,4 @@
-智能物流API管理平台 (Intelligent logistics API Management System)
+物联网API管理平台 (IOT API Management System)
 ===============
 
 > V1.1.3 因启用HTTPS，外链为HTTP协议时，不能正常使用，故为静态文件搭建一个静态文件服务器,同时为了兼容HTTP协议，使用时增加了是否为HTTPS的判断。
