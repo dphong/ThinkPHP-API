@@ -1,4 +1,4 @@
-智能物流管理平台
+智能物流API管理平台 (Intelligent logistics API Management System)
 ===============
 
 > V1.1.3 因启用HTTPS，外链为HTTP协议时，不能正常使用，故为静态文件搭建一个静态文件服务器,同时为了兼容HTTP协议，使用时增加了是否为HTTPS的判断。
@@ -82,13 +82,7 @@ www  WEB部署目录（或者子目录）
 ## 参与开发
 注册并登录 Github 帐号， fork 本项目并进行改动。
 
-## 如何联系我
-
-邮箱：whark@wlwshow.cn
-
-博客：https://wlwshow.cn
-
-## Contact information
+## 如何联系我(Contact information)
 
 email: whark@wlwshow.cn
 
