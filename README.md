@@ -1,13 +1,13 @@
 智能物流管理平台
 ===============
 
-> V1.1.3 因启用HTTPS，外链为HTTP协议时，不能正常使用，故为静态文件搭建一个静态文件服务器
+> V1.1.3 因启用HTTPS，外链为HTTP协议时，不能正常使用，故为静态文件搭建一个静态文件服务器,同时为了兼容HTTP协议，使用时增加了是否为HTTPS的判断。
 
-> V1.1.2 用户登录和注册界面，增加Ajax验证和验证码
+> V1.1.2 用户登录和注册界面，增加Ajax验证和验证码。
 
-> V1.1.1 将CSS、JS、IMAGE等静态文件修改为外链，提高访问速度
+> V1.1.1 将CSS、JS、IMAGE等静态文件修改为外链，提高访问速度。
 
-> V1.1.0 修复静态文件BUG
+> V1.1.0 修复静态文件BUG。
 
 详细开发文档参考 [ThinkPHP5完全开发手册](http://www.kancloud.cn/manual/thinkphp5)
 
@@ -81,6 +81,18 @@ www  WEB部署目录（或者子目录）
 
 ## 参与开发
 注册并登录 Github 帐号， fork 本项目并进行改动。
+
+## 如何联系我
+
+邮箱：whark@wlwshow.cn
+
+博客：https://wlwshow.cn
+
+## Contact information
+
+email: whark@wlwshow.cn
+
+Blog：https://wlwshow.cn
 
 ## 版权信息
 
