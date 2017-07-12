@@ -24,7 +24,8 @@ class Rfid extends Controller{
     function __construct()
     {
         parent::__construct();
-        $this->view->replace(['__PUBLIC__'    =>  'http://ongjgltez.bkt.clouddn.com',]);
+        $this->view->replace(['__PUBLIC1__'    =>  'http://ongjgltez.bkt.clouddn.com',]);
+        $this->view->replace(['__PUBLIC__'    =>  'https://static.wlwshow.cn',]);
     }
     
     //index
