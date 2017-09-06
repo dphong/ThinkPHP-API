@@ -84,7 +84,7 @@ www  WEB部署目录（或者子目录）
 
 ## 如何联系我(Contact information)
 
-email: whark@whark.cn
+email: me@whark.cn
 
 Blog：https://whark.cn
 
