@@ -10,6 +10,7 @@
             <file>file:/C:/www/ThinkPHP-API/application/index/controller/Captcha.php</file>
             <file>file:/C:/www/ThinkPHP-API/thinkphp/library/think/paginator/driver/Bootstrap3.php</file>
             <file>file:/C:/www/ThinkPHP-API/public/static/.gitignore</file>
+            <file>file:/C:/www/ThinkPHP-API/public/static/photo/logo.jpg</file>
             <file>file:/C:/www/ThinkPHP-API/application/admin/controller/Index.php</file>
             <file>file:/C:/www/ThinkPHP-API/thinkphp/library/think/db/Query.php</file>
             <file>file:/C:/www/ThinkPHP-API/application/api/view/map/query.html</file>
@@ -18,7 +19,6 @@
             <file>file:/C:/www/ThinkPHP-API/application/api/view/index/sample.html</file>
             <file>file:/C:/www/ThinkPHP-API/application/database.php</file>
             <file>file:/C:/www/ThinkPHP-API/application/common/util/Myclass.php</file>
-            <file>file:/C:/www/ThinkPHP-API/public/static/css/style.min.css</file>
             <file>file:/C:/www/ThinkPHP-API/thinkphp/library/think/Controller.php</file>
             <file>file:/C:/www/ThinkPHP-API/application/index/view/index/footer.html</file>
             <file>file:/C:/www/ThinkPHP-API/thinkphp/library/think/paginator/driver/Bootstrap5.php</file>
@@ -30,6 +30,7 @@
             <file>file:/C:/www/ThinkPHP-API/application/route.php</file>
             <file>file:/C:/www/ThinkPHP-API/application/api/validate/Rfids.php</file>
             <file>file:/C:/www/ThinkPHP-API/application/api/model/Maps.php</file>
+            <file>file:/C:/www/ThinkPHP-API/application/api/controller/Logistics.php</file>
             <file>file:/C:/www/ThinkPHP-API/application/api/view/rfid/show.html</file>
             <file>file:/C:/www/ThinkPHP-API/thinkphp/library/think/paginator/driver/Bootstrap.php</file>
             <file>file:/C:/www/ThinkPHP-API/thinkphp/library/think/paginator/driver/Bootstrap4.php</file>
