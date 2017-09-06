@@ -11,7 +11,7 @@ use think\Db;
 use think\Url;
 use app\api\model\Users;
 use think\Validate;
-use app\api\model\Rfids;
+use app\api\model\LogisticsTable;
 use think\Request;
 use app\common\util\Myclass;
 /**
@@ -46,11 +46,11 @@ class Logistics extends Controller{
         } else {
             return json(array(
                 'status' => -1,
-                'message'    => 205,
+                'message'    => '必须包含apikey',
             ));
         }
         // 数据验证
-        $result = $this->validate($data,'Rfids');
+        $result = $this->validate($data,'Logistics');
         if (true !== $result) {
             return json(array(
                 'status' => -1,
@@ -61,15 +61,25 @@ class Logistics extends Controller{
             $user = Users::get(['apikey'=> $request->param('apikey')]);
             if($user)
             {
-                $rfid = new Rfids();
-                $rfid->epc_id = Request::instance()->isGet() ? input('get.epc_id') : input('post.epc_id');
-                $rfid->c_user = Request::instance()->isGet() ? input('get.c_user') : input('post.c_user');
-                $rfid->id_length = Request::instance()->isGet() ? input('get.id_length') : input('post.id_length');
-                $rfid->c_reserve = Request::instance()->isGet() ? input('get.c_reserve') : input('post.c_reserve');
-                $rfid->c_epc = Request::instance()->isGet() ? input('get.c_epc') : input('post.c_epc');
-                $rfid->c_tid = Request::instance()->isGet() ? input('get.c_tid') : input('post.c_tid');
-                $rfid->uid = $user->user_id;
-                $rfid->allowField(true)->save($rfid);
+                $logistics = new LogisticsTable();
+                $logistics->send_name = Request::instance()->isGet() ? input('get.send_name') : input('post.send_name');
+                $logistics->send_phone = Request::instance()->isGet() ? input('get.send_phone') : input('post.send_phone');
+                $logistics->send_province = Request::instance()->isGet() ? input('get.send_province') : input('post.send_province');
+                $logistics->send_address = Request::instance()->isGet() ? input('get.send_address') : input('post.send_address');
+                $logistics->receive_name = Request::instance()->isGet() ? input('get.receive_name') : input('post.receive_name');
+                $logistics->receive_phone = Request::instance()->isGet() ? input('get.receive_phone') : input('post.receive_phone');
+                $logistics->receive_province = Request::instance()->isGet() ? input('get.receive_province') : input('post.receive_province');
+                $logistics->receive_address = Request::instance()->isGet() ? input('get.receive_address') : input('post.receive_address');
+                $logistics->object_type = Request::instance()->isGet() ? input('get.object_type') : input('post.object_type');
+                $logistics->object_weight = Request::instance()->isGet() ? input('get.object_weight') : input('post.object_weight');
+                
+                $logistics->object_remark = $request->param('object_remark');
+                $logistics->pickup_time = $request->param('pickup_time');
+                $logistics->pickup_remark = $request->param('pickup_remark');
+                $logistics->order_price = $request->param('order_price');
+                
+                $logistics->uid = $user->user_id;
+                $logistics->allowField(true)->save($logistics);
             } else {
                 return json(array(
                     'status' => -1,
@@ -78,7 +88,7 @@ class Logistics extends Controller{
             }
             return json(array(
                 'status' => 1,
-                'message' => $rfid->rfid_id,
+                'message' => $logistics->id,
             ));
         }
     }
@@ -89,11 +99,11 @@ class Logistics extends Controller{
 //        if($request->cookie('uid'))
 //        {
 //            $uid = $request->cookie('uid');
-//            //$list = Db::name('rfids')->where('uid',$uid)->paginate(10);
-//            $rfid = new Rfids();
-//            $list = $rfid->where('uid',$uid)->paginate(10);
+//            //$list = Db::name('logisticss')->where('uid',$uid)->paginate(10);
+//            $logistics = new Logistics();
+//            $list = $logistics->where('uid',$uid)->paginate(10);
 //            $this->assign('list',$list);
-////            $list2 = Rfids::all(['uid'=>$uid]);
+////            $list2 = Logistics::all(['uid'=>$uid]);
 ////            $this->assign('list',$list2);
 //            return $this->fetch();
 //        } else {
@@ -107,8 +117,8 @@ class Logistics extends Controller{
         $myclass = new Myclass();
         $user = $myclass->isLogin();
         $uid = $request->cookie('uid');
-        $rfid = new Rfids();
-        $list = $rfid->where('uid',$uid)->paginate(8);
+        $logistics = new Logistics();
+        $list = $logistics->where('uid',$uid)->paginate(8);
         $this->assign('list',$list);
         $this->assign('user',$user);
         return $this->fetch();
@@ -119,14 +129,14 @@ class Logistics extends Controller{
         $request = Request::instance();
         if ($request->has('apikey','post')) {
             $user = Users::get(['apikey'=> input('post.apikey')])->value('user_id');
-            //$rfid = new Rfid;
-            $rfid = Rfids::where('uid',$user)->order('rfid_id','desc')->select();
-            //dump($rfid);
+            //$logistics = new Rfid;
+            $logistics = LogisticsTable::where('uid',$user)->order('id','desc')->select();
+            //dump($logistics);
         } else if($request->has('apikey','get'))
         {
             $user = Users::get(['apikey'=> $request->get('apikey')])->value('user_id');
-            //$rfid = new Rfid;
-            $rfid = Rfids::where('uid',$user)->order('rfid_id','desc')->select();
+            //$logistics = new Rfid;
+            $logistics = LogisticsTable::where('uid',$user)->order('id','desc')->select();
         } else {
             return json(array(
                 'status' => -1,
@@ -134,11 +144,11 @@ class Logistics extends Controller{
                 'data'   => '',
             ));
         }
-        if ($rfid) {
+        if ($logistics) {
             return json(array(
                 'status' => 1,
                 'message'  => 200,
-                'data'   => $rfid,
+                'data'   => $logistics,
             ));
         } else {
             return json(array(
@@ -174,5 +184,6 @@ class Logistics extends Controller{
         //echo '';
         $_SESSION['idErr']=$_SESSION['c_userErr']="";
         return $this->fetch();
+        
     }
 }
