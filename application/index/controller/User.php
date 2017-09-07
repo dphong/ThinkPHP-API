@@ -17,7 +17,7 @@ class User extends Controller
         parent::__construct();
         $myclass = new Myclass();
         if($myclass->is_https()) {
-            $this->view->replace(['__PUBLIC__'    =>  'https://static.wlwshow.cn',]);
+            $this->view->replace(['__PUBLIC__'    =>  'https://static.whark.cn',]);
         } else {
             $this->view->replace(['__PUBLIC__'    =>  'http://ongjgltez.bkt.clouddn.com',]);
         }
