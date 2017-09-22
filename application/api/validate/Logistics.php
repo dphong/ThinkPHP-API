@@ -14,7 +14,7 @@ class Logistics extends Validate {
         ['c_epc','max:72|min:8','c_epc最长72位|c_epc最短8位'],
         ['id_length','number','必须为数字'],
          */
-        ['apikey','require|length:32|alphaDash','apikey必须|apikey长度32位|apikey字符非法'],
+        /*['apikey','require|length:32|alphaDash','apikey必须|apikey长度32位|apikey字符非法'],
         ['send_name','require','send_name必须'],
         ['send_phone','require','send_phone必须'],
         ['send_province','require','send_province必须'],
@@ -24,7 +24,7 @@ class Logistics extends Validate {
         ['receive_province','require','receive_province必须'],
         ['receive_address','require','receive_address必须'],
         ['object_type','require','object_type必须'],
-        ['object_weight','require','object_weight必须']
+        ['object_weight','require','object_weight必须']*/
     ];
 }
 /*
