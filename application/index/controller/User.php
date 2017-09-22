@@ -36,6 +36,13 @@ class User extends Controller
         if($request->post('name') == 'username') {
             $username = $request->post ('param');
             $user = Users::get(['username'=>$username]);
+            /*$user = S('username');
+            if(emptyempty($user)) {
+                $user = Users::get(['username'=>$username]);
+                S('username', $user);
+                dump("fdsa");
+            }
+            dump($user);*/
             if(!$user) {
                 return json(array(
                     'status' => 'y',
@@ -158,7 +165,7 @@ class User extends Controller
             $result   = $validate->check($request->post());
             if($result){
                 $username = $request->post('username');
-                $password = createPasswd($request->post('password'));
+                $password = createPasswd($request->post('password'));           
                 $user = Users::get(['username'=> $username , 'password' => $password]);
                 if(!$user){
                     $user = Users::get(['email'=> $username , 'password' => $password]);

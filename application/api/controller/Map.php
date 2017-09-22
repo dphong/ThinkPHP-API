@@ -9,11 +9,12 @@ namespace app\api\controller;
 use think\Controller;
 use think\Db;
 use think\Url;
+use think\Cache;
+use think\Request;
 use app\api\model\Users;
 use think\Validate;
 use app\api\model\Maps;
 use app\api\model\Car;
-use think\Request;
 use app\common\util\Myclass;
 /**
  * Description of map
@@ -136,15 +137,26 @@ class Map extends Controller{
             ));
         } else {
             //查询apikey
-            $user = Users::get(['apikey'=> $request->param('apikey')]);
-            if($user)
+            //$user = Users::get(['apikey'=> $request->param('apikey')]);
+            
+            $apikey = $request->param('apikey');
+            
+            //使用缓存存储ApiKey和用户ID
+            $userid_cache = Cache::get($apikey);
+            if(empty($userid_cache)) {
+                $user = Users::get(['apikey'=> $apikey]);
+                $userid_cache = $user->user_id;
+                Cache::set($apikey, $userid_cache);
+            }
+            //if($user)
+            if($userid_cache)
             {
                 $map = new Maps();
                 $map->lng = Request::instance()->isGet() ? input('get.lng') : input('post.lng');
                 $map->lat = Request::instance()->isGet() ? input('get.lat') : input('post.lat');
                 $map->code = Request::instance()->isGet() ? input('get.code') : input('post.code');
                 //echo $user->user_id;
-                $map->uid = $user->user_id;
+                $map->uid = $userid_cache;
                 //$map->add_time = time();
                 //echo $map->add_time;
                 $map->allowField(true)->save($map);
@@ -218,6 +230,8 @@ class Map extends Controller{
     //数据获取
     public function get() {
         $request = Request::instance();
+        
+        /*
         if ($request->has('apikey','post')) {
             $user = Users::get(['apikey'=> input('post.apikey')])->value('user_id');
             //$map = new Maps;
@@ -228,6 +242,24 @@ class Map extends Controller{
             $user = Users::get(['apikey'=> $request->get('apikey')])->value('user_id');
             //$map = new Maps;
             $map = Maps::where('uid',$user)->order('map_id','desc')->select();
+        
+         */
+        
+        if( $request->param('apikey')){
+            
+            $apikey = $request->param('apikey');
+            
+            //使用缓存存储ApiKey和用户ID
+            $userid_cache = Cache::get($apikey);
+            if(empty($userid_cache)) {
+                $user = Users::get(['apikey'=> $apikey]);
+                $userid_cache = $user->user_id;
+                Cache::set($apikey, $userid_cache);
+                echo "not use cache";
+            }
+            echo "test data";
+            $map = Maps::where('uid',$userid_cache)->order('map_id','desc')->select();
+            
         } else {
             return json(array(
                 'status' => -1,
