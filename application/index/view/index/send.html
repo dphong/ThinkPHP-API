@@ -6,15 +6,15 @@
 	height:1000px;
 	margin:0px;
 	padding:0px;
-background-image:url(__PUBLIC__/photo/img/u=13891043225,973488654&fm=26&gp=0.jpg);
+background-image:url(__PUBLIC__/photo/img/f5d95abad821a5159f1e48fd96212878.gif);	
   
 }
 	
 #head{
-	padding-top:60px;
+	padding-top:50px;
 	width:100%;
 	height:130px;
-	text-align:center;
+	padding-left:80px;
 	
 }	
 
@@ -33,33 +33,29 @@ background-image:url(__PUBLIC__/photo/img/u=13891043225,973488654&fm=26&gp=0.jpg
 	 
 }
 
-.left{
-	width:30%;
-	height:700px;
-	float:left;
-    padding-top:20px;
-}
 
 .right{
-      width:35%;
+      width:40%;
 	 height:700px;
 	 float:left;
 	  padding-top:20px;
+	 
 }
 
 .middle{
-      width:35%;
+      width:60%;
 	   height:700px;
 	   float:left;
 	   padding-top:20px;
 	 
 }
 h2{
-   text-align:center;
+  
 	font-size:30px;
 	font-family:kartika;
 	color:#666;	
-
+    padding-left:40px;
+	
 }
 
 h1{
@@ -70,8 +66,8 @@ color:#333;
 }
 
 .duiqi{
-	font-size:25px;
-	 color:black;
+	font-size:20px;
+	color:black;
    font-family:Verdana, Geneva, sans-serif;
  }
 	
@@ -84,16 +80,16 @@ color:#333;
 }
 
 .botton{
-	 background-color:#FCC;
-   border-radius: 4px;
+    background-image:url(__PUBLIC__/photo/img/f5d95abad821a5159f1e48fd96212878.gif)); 
+    border-radius: 4px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
- 
-  height:25px;
-  border-bottom-width: 10px;
-  width:200px;
+    border-bottom:5px;
+    margin-bottom:15px;
+	margin-left:auto;
+    height:25px;
+    border-bottom-width:10px;
+    width:200px;
 }
 
 .botton1{
@@ -110,7 +106,7 @@ color:#333;
 }
 
 span{
-	font-size:25px;
+	font-size:20px;
 	font-family:Verdana, Geneva, sans-serif;
 	
 }
@@ -123,55 +119,49 @@ margin-top:50px;
 padding-top:30px;	
 	
 	}
+	
+.pc{
+    width:200px;
+	height:30px;
+	float:right;
+	line-height:40px;
+	text-align:center;
+	margin:0 20px 0;
+	background:url(__PUBLIC__/photo/img/u=2005388468,2666472705&fm=26&gp=0.jpg);
+	color:#666;
+	font-weight:bold;
+	border-radius:8px;
+	display:none;
+}
+
+	
+	
+	
+	
+	
 </style>		
 
+</head>
+
+<body>
 <div id="all">
 <!--
 头部
 -->	
 	<div id="head">
-	<center>
-	<h1>我要寄件&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</h1>
-	</center>
+    <img src="__PUBLIC__/photo/img/biaoti.png"/>
+	
 	</div>
 	<!--
 中间
 -->	
-<div id="center">
-	<!--
-中间左边
--->	
-	<div class="left">
-  <center>
- 
-         <div  class="up">
-            <marquee behavior="alternate">
-               <!--img src="img/-745f92ad7cde027a.jpg" width="" height=""--> 
-            </marquee>
-        </div>
-    
-       <div class="down">
-       
-            <img src="img/12.png"	width="" height="">
-                      <br />
-          
-             <input type="submit"  class="botton2" value="开始教程">
-       
-       </div>
-     
-  </center> 
-     </div>		
-	 
-	
-     
-     
-     
+<div id="center">    
+        
 
  <div class="middle">
- <center>
 
-<form action="http://iot.wlwshow.cn/check" method="get">
-
+<form action="https://iot.whark.cn/check" method="post">
+ <center> 
 <table>	
 <div name="one">
  <tr>
@@ -179,10 +169,15 @@ padding-top:30px;
  <h2>寄件人</h2>
  </td>
  </tr>
+ 
     <tr>
 	<td> <label for="sender-name" class="duiqi">姓名:</label></td>
-	<td><input type="text" name="sender_name"  id="sende-name"  class="botton" placeholder="我叫小可爱，你呢？" required/></td>
+	<td><input type="text" name="send_name"  id="sende-name"  class="botton" placeholder="我叫小可爱，你呢？" autofocus required/>
+    <p class="pc"> </p>
+    </td>
+   
     </tr>
+
 
   
 <tr>
@@ -191,17 +186,11 @@ padding-top:30px;
 	<label for="sender-mobile" class="duiqi">手机:</label></td>
    
 	<td>
-    <input type="text"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required 
-    name="send_phone" id="sender-mobile" class="botton" placeholder="小主给我留个号码吧" /></td>
-</tr>	
-	
-  
-<tr>
-	<td>
-	<label for="validation" class="duiqi">验证码:</label></td>
-	<td><input type="text" name="yanzhengma" id="validation" class="botton" placeholder="验证身份的时候到啦" required/>
-	<input type="submit"  class="botton1" value="获取"></td>
+    <input type="tel"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required 
+    name="send_phone" id="sender-mobile" class="botton" placeholder="小主给我留个号码吧" /><p class="pc"> </p>
+    </td>
 </tr>
+
 
  <tr>
 	<td>
@@ -212,20 +201,25 @@ padding-top:30px;
  <!--  省市联动插件 -->
 
 
-  <input text="text" name="dizhi" id="sender-address"  data-parsley-trigger="change"
-     data-parsley-errors-container=".sender-location" class="botton" placeholder="小可爱踏着七彩祥云来找你啦" required/>
-
-     
+  <input text="text" name="send_province" id="sender-address" 
+         data-parsley-trigger="change"
+     data-parsley-errors-container=".sender-location" class="botton" placeholder="小可爱踏着七彩祥云来找你啦"  required/>
+    <p class="pc"> </p>
    
      
      </td>
  </tr>	
- 
+
+
 	<tr>
      <td>
 	   <label for="sender-address-detail"  class="duiqi">详细地址:</label></td>
-	  <td> <input text="text" name="adress" id="sender-address-detail" class="botton" placeholder="详细一点，我要快点找到你" required /></td>
+	  <td> <input text="text" name="send_address " id="sender-address-detail" class="botton" placeholder="详细一点，我要快点找到你" required />
+      <p class="pc"> </p>
+      </td>
  </tr>
+ 
+
 </div>  
 
 
@@ -236,47 +230,50 @@ padding-top:30px;
 </tr>
    <tr>
 		<td> <label for="receiver-name" class="duiqi">姓名:</label></td>
-	<td>  <input type="text" name="xingming" id="receiver-name" class="botton" placeholder="快递要送给谁呢？" required/></td>
+	<td>  <input type="text" name="receive_name" id="receiver-name" class="botton" placeholder="快递要送给谁呢？" required/>
+    <p class="pc"> </p>
+    </td>
 	</tr>
 	
      <tr>
 		<td>
 	   <label for="receiver-mobile" class="duiqi">手机:</label></td>
-	  <td> <input type="text"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required
-       name="haoma" id="receiver-mobile" class="botton" placeholder="TA的号码是多少，我帮小主联系啦" /></td>
+	  <td> <input type="tel"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required
+       name="receive_phone" id="receiver-mobile" class="botton" placeholder="TA的号码是多少，我帮小主联系啦" />
+       <p class="pc"> </p>
+       </td>
 </tr>
 	
 
     <tr>
 		<td>
   	   <label for="receiver-address" class="duiqi">上门地址:</label></td>
-     <td><input text="text" name="dizhi" id="receiver-address"   data-parsley-trigger="change"
+     <td><input text="text" name="receive_province" id="receiver-address"   data-parsley-trigger="change"
        data-parsley-errors-container=".receiver-location" class="botton" placeholder="我去哪里才能见到TA" 
-       required/></td>
+       required/>
+       <p class="pc"> </p>
+       </td>
        </tr>
 	
 	   
        <tr>
 		<td> <label for="receiver-address-detail" class="duiqi">详细地址:</label></td>
-      <td> <input text="text" name="adress" id="receiver-address-detail" class="botton" placeholder="我这么可爱，小主就写的走心点吧" required/></td>
+      <td> <input text="text" name="receive_address" id="receiver-address-detail" class="botton" placeholder="我这么可爱，小主就写的走心点吧" required/>
+      <p class="pc"> </p>
+      </td>
  </tr>
 
 </table> 
-  
- </form> 
- </center>
-
-
+  </center>
 </div>
-   
-   
+
       
 <div class="right">
 
-<table>
-<form action="http://iot.wlwshow.cn/check" method="post">
 
-<center>
+
+<table>
+
 <tr>
 
 <h2>宝贝信息</h2>
@@ -284,13 +281,16 @@ padding-top:30px;
 </tr>
 <tr>
 <span>类型：</span>
-<input type="radio" name="splx" />服饰  <input type="radio" name="splx" />食品 
-<input type="radio" name="splx" />数码   <br /><br /><input type="radio" name="splx" />生活用品
-<input type="radio" name="splx" />文件   <input type="radio" name="splx" />其他
-<br /><br />
- <label for="wight" class="duiqi">重量:</label>
- 
-  <select  class="botton" id="wight" name="zhongliang">
+<input type="radio" name="object_type " />服饰 
+<input type="radio" name="object_type " />食品 
+<input type="radio" name="object_type " />数码
+ <br /><br />
+<input type="radio" name="object_type " />生活用品
+<input type="radio" name="object_type " />文件 
+<input type="radio" name="object_type " />其他
+ <br /><br />
+<label for="wight" class="duiqi">重量:</label>
+<select  class="botton" id="wight" name="object_weight ">
   
  <option value="wight" select="selected">0 ~ 5KG</option>
  <option value="wight">6 ~ 10KG</option>
@@ -300,7 +300,7 @@ padding-top:30px;
 <br /><br /><br />
 
 <span>备注:</span>
-<textarea rows="3" cols="20" placeholder="快递小哥我有话要说"></textarea>
+<textarea rows="3" cols="20" name="object_remark " placeholder="快递小哥我有话要说"></textarea>
 </tr>
 
 
@@ -308,24 +308,196 @@ padding-top:30px;
 <h2>取件</h2>
 </tr>
 <tr>
-<label for="time" class="duiqi">时间:</label>
+<label for="time" class="duiqi">开始时间:</label>
 <!--<input type="text" class="botton" name="sj" id="time" />-->
-<input type="datetime-local" class="botton" name="sj" id="time"  value="2017-06-26T13:59:59"/>
+<input type="datetime-local" class="botton" name="pickup_time " id="time"  value="2017-06-26T13:59:59"/><br />
+<label for="time" class="duiqi">结束时间:</label>
+<input type="datetime-local" class="botton" name="pickup_time " id="time"  value="2017-06-26T13:59:59"/>
 <p>亲，我们的取货时间一般为下午三点到五点</p>
 <br />
 <span>备注：</span>
-<textarea rows="3" cols="20" placeholder="你长得好看说什么都对"></textarea> <br /><br />
-	     
-	 <input type="reset"  class="botton1" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	 <input type="submit" class="botton1" value="提交">
-</tr> 
- </table>    
-</form>          
-	</center>    
+<textarea rows="3" cols="20" name="pickup_remark" placeholder="你长得好看说什么都对"></textarea> <br /><br />
+	<input type="reset"  class="botton1" value="重置">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	 <input type="submit" class="botton1" value="提交">         
+	 
+</tr>
+</table>   
+ 
+</form>  
+
+    
+	 
 	
 </div>		
-</div>
+</div> 
 		
 </div>	
+
+<script>
+        var uname=document.getElementById('sende-name');
+        uname.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入姓名';
+        }
+        uname.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+            }
+            else if(this.validity.valueMissing) {
+                this.nextElementSibling.className = 'pc show_warn';
+                this.nextElementSibling.innerHTML = '亲，姓名不能为空';
+            }else if(this.validity.patternMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，姓户名格式非法';
+            }
+        }
+      
+   
+     
+        var uphone=document.getElementById('sender-mobile');
+        uphone.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入联系电话';
+        }
+        uphone.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+           }else if(this.validity.valueMissing){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，号码不能为空';
+            }else if(this.validity.typeMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，号码格式非法';
+            }
+        }
+		
+		 var uname=document.getElementById('sender-address');
+        uname.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入所在省市';
+        }
+        uname.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+            }
+            else if(this.validity.valueMissing) {
+                this.nextElementSibling.className = 'pc show_warn';
+                this.nextElementSibling.innerHTML = '亲，地址不能为空';
+            }else if(this.validity.patternMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，地址格式非法';
+            }
+        }
+		
+		
+		 var uname=document.getElementById('sender-address-detail');
+        uname.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入所在街道门牌号';
+        }
+        uname.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+            }
+            else if(this.validity.valueMissing) {
+                this.nextElementSibling.className = 'pc show_warn';
+                this.nextElementSibling.innerHTML = '亲，地址不能为空';
+            }else if(this.validity.patternMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，地址格式非法';
+            }
+        }
+		
+		
+		 var uname=document.getElementById('receiver-name');
+        uname.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入对方姓名';
+        }
+        uname.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+            }
+            else if(this.validity.valueMissing) {
+                this.nextElementSibling.className = 'pc show_warn';
+                this.nextElementSibling.innerHTML = '亲，姓名不能为空';
+            }else if(this.validity.patternMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，姓名格式非法';
+            }
+        }
+		
+		
+		
+		 var uphone=document.getElementById('receiver-mobile');
+        uphone.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入联系电话';
+        }
+        uphone.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='电话号码格式正确';
+           }else if(this.validity.valueMissing){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='电话号码不能外空';
+            }else if(this.validity.typeMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='电话号码格式非法';
+            }
+        }
+		
+		
+		 var uname=document.getElementById('receiver-address');
+        uname.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入对方所在省市';
+        }
+        uname.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+            }
+            else if(this.validity.valueMissing) {
+                this.nextElementSibling.className = 'pc show_warn';
+                this.nextElementSibling.innerHTML = '亲，地址不能为空';
+            }else if(this.validity.patternMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，地址格式非法';
+            }
+        }
+		
+		 var uname=document.getElementById('receiver-address-detail');
+        uname.onfocus=function(){
+            this.nextElementSibling.style.display='block';
+            this.nextElementSibling.innerHTML='请输入所在街道门牌号';
+        }
+        uname.onblur=function(){
+            if(this.validity.valid){
+                this.nextElementSibling.className='pc show_pass';
+                this.nextElementSibling.innerHTML='格式正确！';
+            }
+            else if(this.validity.valueMissing) {
+                this.nextElementSibling.className = 'pc show_warn';
+                this.nextElementSibling.innerHTML = '亲，地址不能为空';
+            }else if(this.validity.patternMismatch){
+                this.nextElementSibling.className='pc show_warn';
+                this.nextElementSibling.innerHTML='亲，地址格式非法';
+            }
+        }
+		
+       
+    </script>
+
+
+
+</body>
+</html>
+
 
 {include file="api@index/footer"}
