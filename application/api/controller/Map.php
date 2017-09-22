@@ -255,9 +255,7 @@ class Map extends Controller{
                 $user = Users::get(['apikey'=> $apikey]);
                 $userid_cache = $user->user_id;
                 Cache::set($apikey, $userid_cache);
-                echo "not use cache";
             }
-            echo "test data";
             $map = Maps::where('uid',$userid_cache)->order('map_id','desc')->select();
             
         } else {
