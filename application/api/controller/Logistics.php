@@ -86,10 +86,18 @@ class Logistics extends Controller{
                     'message' => 204,
                 ));
             }
-            return json(array(
-                'status' => 1,
-                'message' => $logistics->id,
+            
+            if(isset($_GET['data_type']))
+            {
+                $this->assign('id',$logistics->id);
+                return $this->fetch();
+            } else {
+                //数据API使用时，返回JSON数据
+                return json(array(
+                    'status' => 1,
+                    'message' => $logistics->id,
             ));
+            }
         }
     }
            

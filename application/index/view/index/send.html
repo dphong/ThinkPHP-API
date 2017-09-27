@@ -160,7 +160,7 @@ padding-top:30px;
 
  <div class="middle">
 
-<form action="https://iot.whark.cn/api/logistics/add" method="get">
+<form action="/api/logistics/add" method="get">
  <center> 
 <table>	
 <div name="one">
@@ -185,8 +185,8 @@ padding-top:30px;
    
 	<label for="sender-mobile" class="duiqi">手机:</label></td>
    
-   <input type="hidden" pattern="1[0-9]{10}" required 
-    name="apikey" value="235DDB6B1E163CC5F7EE5E87E33E76B0" />
+   <input type="hidden" name="apikey" value="235DDB6B1E163CC5F7EE5E87E33E76B0" />
+   <input type="hidden" name="data_type" value="html" />
 	<td>
     <input type="tel"  title="请输入11位有效的手机号" pattern="1[0-9]{10}" required 
     name="send_phone" id="sender-mobile" class="botton" placeholder="小主给我留个号码吧" /><p class="pc"> </p>
