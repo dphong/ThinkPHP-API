@@ -13,13 +13,13 @@ return [
     // 数据库类型
     'type'           => 'mysql',
     // 服务器地址
-    'hostname'       => 'server.whark.cn',
+    'hostname'       => 'xxxx',
     // 数据库名
-    'database'       => 'thinkphp',
+    'database'       => 'xxxx',
     // 用户名
-    'username'       => 'thinkphp',
+    'username'       => 'xxxx',
     // 密码
-    'password'       => 'fira306',
+    'password'       => 'xxxx',
     // 端口
     'hostport'       => '3306',
     // 连接dsn
