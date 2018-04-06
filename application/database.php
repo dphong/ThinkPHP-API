@@ -13,7 +13,7 @@ return [
     // 数据库类型
     'type'           => 'mysql',
     // 服务器地址
-    'hostname'       => 'server.whark.cn',
+    'hostname'       => 'whark.cn',
     // 数据库名
     'database'       => 'thinkphp',
     // 用户名

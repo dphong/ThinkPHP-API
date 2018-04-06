@@ -27,6 +27,21 @@ class Myclass
         }
         return $user;
     }
+
+    function getUser() {
+        $request = Request::instance();
+        if($request->cookie('uid')){
+            $user = Users::get(['user_id'=> $request->cookie('uid')]);
+            $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
+            if($request->cookie('validate') !== $validate)
+            {
+                return false;
+            }
+        } else {
+            return false;
+        }
+        return $user;
+    }
     
     function is_https()
     {

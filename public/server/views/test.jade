@@ -1,0 +1,25 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+	body
+		form#uploadForm(action='/upload', method='post', enctype='multipart/form-data')
+			label(for='file') 文件名:
+			input#file(type='file', name='file')
+			input(type='button', name='submit', value='提交', onclick='submitData()')
+		#myDiv
+	script.
+		function submitData() {
+		xmlhttp = new XMLHttpRequest();
+		//var formData = new FormData($( "#uploadForm" )[0]);
+		var oData = new FormData(document.forms.namedItem("uploadForm" ));
+		xmlhttp.onreadystatechange=function()
+		{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+		}
+		}
+		xmlhttp.open("POST", "/upload", true);
+		xmlhttp.send( oData );
+		}

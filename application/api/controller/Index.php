@@ -42,8 +42,11 @@ class Index extends Controller{
     public function sample() {
         $request = Request::instance();
         $myclass = new Myclass();
-        $user = $myclass->isLogin();
-        $this->assign('user',$user);
+        $user = $myclass->getUser();
+        if ($user) {
+            $this->assign('user',$user);
+        }
+
         return $this->fetch();
         //return view('map/sample');
     }

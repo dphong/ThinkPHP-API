@@ -77,6 +77,7 @@ class Logistics extends Controller{
                 $logistics->pickup_time = $request->param('pickup_time');
                 $logistics->pickup_remark = $request->param('pickup_remark');
                 $logistics->order_price = $request->param('order_price');
+                $logistics->postal_code = $request->param('postal_code');
                 
                 $logistics->uid = $user->user_id;
                 $logistics->allowField(true)->save($logistics);
@@ -148,7 +149,7 @@ class Logistics extends Controller{
         } else {
             return json(array(
                 'status' => -1,
-                'message' => 201,
+                'message' => 'APIKey error',
                 'data'   => '',
             ));
         }

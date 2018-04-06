@@ -105,9 +105,11 @@ class Map extends Controller{
         }
         $this->assign('point', $point);
         $myclass = new Myclass();
-        $user = $myclass->isLogin();
+        $user = $myclass->getUser();
         $uid = $request->cookie('uid');
-        $this->assign('user',$user);
+        if ($user) {
+            $this->assign('user',$user);
+        }
         return $this->fetch();
     }
     
@@ -193,12 +195,14 @@ class Map extends Controller{
          */
         $request = Request::instance();
         $myclass = new Myclass();
-        $user = $myclass->isLogin();
+        $user = $myclass->getUser();
         $uid = $request->cookie('uid');
         $maps = new Maps();
         $list = $maps->where('uid',$uid)->paginate(10);
         $this->assign('list',$list);
-        $this->assign('user',$user);
+        if ($user) {
+            $this->assign('user',$user);
+        }
         return $this->fetch();
         
         //$list = Db::table('tp_maps')->where('uid',$uid)->select();
