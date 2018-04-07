@@ -1,19 +1,13 @@
 {include file="index/header" title="用户登录"  keywords="物联网智能管理平台" /}
-<script type="text/javascript" src="__PUBLIC__/js/Validform_v5.3.2.js"></script>
-<style>
-    .login .div {
-        text-align: left;
-    }
-</style>
 <h2>用户登录</h2>
-<FORM method="post" class="login" action="{:url('/')}">
+<FORM method="post" class="login center" id="login" action="{:url('/')}" >
     <table width="100%" style="table-layout:fixed;">
         <tbody>
             <tr>
                 <td class="need" style="width:10px;"></td>
                 <td style="width:70px;">用户名：</td>
                 <td style="width:240px;">
-                    <input type="text" class="inputtxt" name="username" datatype="s3-26" sucmsg=" " nullmsg="请输入用户名" errormsg="请输入正确的用户名" />
+                    <input type="text" class="inputtxt" id="username" name="username" datatype="s3-26|e" sucmsg=" " nullmsg="请输入用户名" errormsg="请输入正确的用户名" />
                 </td>
                 <td>
                     <div class="Validform_checktip"></div>
@@ -29,7 +23,7 @@
                 <td class="need" style="width:10px;"></td>
                 <td style="width:70px;">密码：</td>
                 <td style="width:240px;">
-                    <input type="password" class="inputtxt" name="password" plugin="passwordStrength" datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码" />
+                    <input type="password" class="inputtxt" id="password" name="password" plugin="passwordStrength" datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码" />
                 </td>
                 <td>
                     <div class="Validform_checktip"></div>
@@ -45,7 +39,7 @@
                 <td class="need" style="width:10px;"></td>
                 <td style="width:70px;">验证码：</td>
                 <td style="width:240px;">
-                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误" />
+                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" id="code" name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误" />
                 </td>
                 <td>
                     <div class="Validform_checktip"></div>
@@ -61,7 +55,7 @@
                 <td class="need" style="width:10px;"></td>
                 <td style="width:70px;"></td>
                 <td style="width:200px;">
-                    <div id="captcha_image" style="width:200px;"><div><img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/></div>
+                    <div id="captcha_image" style="width:200px;"><img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/></div>
                 </td>
                 <td>
 
@@ -69,8 +63,8 @@
             </tr>
         </tbody>
     </table>
-<INPUT type="button" style="position: relative; right: 150px; " class="button button-rounded button-small button-primary" value="注册" onclick="window.location=('reg')" /> &nbsp;
-<INPUT type="submit" style="position: relative; right: 150px; " class="button button-rounded button-small button-primary" value="登录">
+<input type="button" style="margin-left: 100px;" class="button button-rounded button-small button-primary" value="注册" onclick="window.location=('reg')" /> &nbsp;
+<input type="submit" id="submit" class="button button-rounded button-small button-primary" value="登录">
 </FORM>
 <script>
     $('#captcha_image').click(function(){
@@ -88,18 +82,18 @@ $(function(){
 		if(this.timeout){clearTimeout(this.timeout);}
 		var infoObj=getInfoObj.call(this);
 		if(infoObj.siblings(".Validform_right").length!=0){
-			return;	
+			return;
 		}
 		infoObj.show().siblings().hide();
-		
+
 	}).focusout(function(){
 		var infoObj=getInfoObj.call(this);
 		this.timeout=setTimeout(function(){
 			infoObj.hide().siblings(".Validform_wrong,.Validform_loading,.Validform_right").show();
 		},0);
-		
+
 	});
-	
+
 	$(".login").Validform({
 		tiptype:2,
 		usePlugin:{
@@ -110,7 +104,7 @@ $(function(){
 					if(error){
 						obj.parent().next().find(".passwordStrength").hide().siblings(".info").show();
 					}else{
-						obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();	
+						obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();
 					}
 				}
 			}
@@ -118,4 +112,26 @@ $(function(){
 	});
 })
 </script>
+
+<script>
+    function keyEnter(){
+        if (event.keyCode == 13) {
+//            var loginForm = document.getElementById('login');
+//            var username = document.getElementById('username').value;
+//            var password = document.getElementById('password').value;
+//            var code = document.getElementById('code').value;
+//            var submit = document.getElementById('submit');
+//            console.log(username);
+//            if (username != '' && password != '' && code != '') {
+//                loginForm.submit();
+//            } else {
+//                submit.click()
+//            }
+            submit.click()
+        }
+    }
+    document.onkeydown =keyEnter;
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/js/Validform_v5.3.2.js"></script>
 {include file="index/footer" /}

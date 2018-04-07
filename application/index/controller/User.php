@@ -143,7 +143,14 @@ class User extends Controller
     
     //用户登录
     public function login() {
-        return view();
+        return $this->fetch('login');
+    }
+
+    /**
+     *
+     */
+    public function resetPassword() {
+        return $this->fetch('resetPassword');
     }
     
     //个人中心

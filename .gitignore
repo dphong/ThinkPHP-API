@@ -4,3 +4,4 @@ composer.lock
 composer.json
 Composer-Setup.exe
 !.gitignore
+public/admin/

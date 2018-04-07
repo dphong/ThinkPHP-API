@@ -225,6 +225,10 @@ class Map extends Controller{
         $this->assign('list',$user->maps);
         return $this->fetch();
     }
+
+    public function admin() {
+        return $this->fetch();
+    }
   
     //数据获取
     public function get() {
