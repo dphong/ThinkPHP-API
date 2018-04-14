@@ -25,6 +25,7 @@ return [
     '__pattern__' => [
         'name' => '\w+',
     ],
+    '/users/[:id]' => ['index/user/edit',['id' => '\d+']],
     '[home]'     => [
       //  ':id'   => ['index/hello', ['method' => 'get'], ['id' => '\d+']],
       //  ':name' => ['index/hello', ['method' => 'post']],

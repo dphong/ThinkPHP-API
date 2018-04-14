@@ -6,6 +6,8 @@
  */
 
 namespace app\api\controller;
+
+use function preg_match;
 use think\Controller;
 use think\Db;
 use think\Url;
@@ -16,39 +18,43 @@ use think\Validate;
 use app\api\model\Maps;
 use app\api\model\Car;
 use app\common\util\Myclass;
+
 /**
  * Description of map
  *
  * @author HDP
  */
-class Map extends Controller{
+class Map extends Controller
+{
     //模板位置申明
     function __construct()
     {
         parent::__construct();
-        $this->view->replace(['__PUBLIC__'    =>  'https://whark.oss-cn-hangzhou.aliyuncs.com/thinkphp-api']);
+        $this->view->replace(['__PUBLIC__' => 'https://whark.oss-cn-hangzhou.aliyuncs.com/thinkphp-api']);
     }
-    
+
     //index
     public function index()
     {
-        function test_input($data) {
+        function test_input($data)
+        {
             $data = trim($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
             return $data;
         }
+
         $request = Request::instance();
-        if( $request->param('lng') && $request->param('lat')){
+        if ($request->param('lng') && $request->param('lat')) {
             $data = $request->param();
-            $lng = input('?get.lng')?input('get.lng'):input('post.lng');
-            $lat = input('?get.lat')?input('get.lat'):input('post.lat');
-                // 数据验证
-            $result = $this->validate($data,'Position');
+            $lng = input('?get.lng') ? input('get.lng') : input('post.lng');
+            $lat = input('?get.lat') ? input('get.lat') : input('post.lat');
+            // 数据验证
+            $result = $this->validate($data, 'Position');
             if (true !== $result) {
                 return json(array(
                     'status' => -1,
-                    'message'    => $result,
+                    'message' => $result,
                 ));
             }
         }
@@ -61,7 +67,7 @@ class Map extends Controller{
 //                'message'    => "缺少数据",
 //            ));
 //        }
-        
+
 //        if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //            if( empty($_POST["lng"])){
 //                $lngErr = "  经度是必填的";
@@ -89,65 +95,62 @@ class Map extends Controller{
 //            
 //        }
         //echo '<script language=javascript>map.centerAndZoom(point,17);</script>';
-        if (!empty($lng))
-        {
+        if (!empty($lng)) {
             $point = "point = new BMap.Point($lng,$lat);";
-            $this->assign('setMarker',"setMarker($lng,$lat);");
-        }
-        else{
-            $point =  'point = new BMap.Point(117.234877,31.756886);';
-            $this->assign('setMarker',"setMarker(117.234877,31.756886);");
+            $this->assign('setMarker', "setMarker($lng,$lat);");
+        } else {
+            $point = 'point = new BMap.Point(117.234877,31.756886);';
+            $this->assign('setMarker', "setMarker(117.234877,31.756886);");
         }
         $this->assign('point', $point);
         $myclass = new Myclass();
         $user = $myclass->getUser();
         $uid = $request->cookie('uid');
         if ($user) {
-            $this->assign('user',$user);
+            $this->assign('user', $user);
         }
         return $this->fetch();
     }
-    
+
     //数据插入
     public function add()
     {
-         $request = Request::instance();
+        $request = Request::instance();
 //        if ($request->has('apikey','post')) {
 //            $data = $request->post();
 //        } else if($request->has('apikey','get'))
 //        {
 //            $data = $request->get();
-        if( $request->param('apikey')){
+        if ($request->param('apikey')) {
             $data = $request->param();
         } else {
             return json(array(
                 'status' => -1,
-                'message'    => 205,
+                'message' => 205,
             ));
         }
         // 数据验证
-        $result = $this->validate($data,'Maps');
+        $result = $this->validate($data, 'Maps');
         if (true !== $result) {
             return json(array(
                 'status' => -1,
-                'message'    => $result,
+                'message' => $result,
             ));
         } else {
             //查询apikey
             //$user = Users::get(['apikey'=> $request->param('apikey')]);
-            
+
             $apikey = $request->param('apikey');
-            
+
             //使用缓存存储ApiKey和用户ID
             $userid_cache = Cache::get($apikey);
-            if(empty($userid_cache)) {
-                $user = Users::get(['apikey'=> $apikey]);
+            if (empty($userid_cache)) {
+                $user = Users::get(['apikey' => $apikey]);
                 $userid_cache = $user->user_id;
                 Cache::set($apikey, $userid_cache);
             }
             //if($user)
-            if($userid_cache)
-            {
+            if ($userid_cache) {
                 $map = new Maps();
                 $map->lng = Request::instance()->isGet() ? input('get.lng') : input('post.lng');
                 $map->lat = Request::instance()->isGet() ? input('get.lat') : input('post.lat');
@@ -161,7 +164,7 @@ class Map extends Controller{
                 return json(array(
                     'status' => -1,
                     'message' => 204,
-            ));
+                ));
             }
             return json(array(
                 'status' => 1,
@@ -169,9 +172,10 @@ class Map extends Controller{
             ));
         }
     }
-           
+
     //只查maps表
-    public function show() {
+    public function show()
+    {
 //        $request = Request::instance();
 //        if($request->cookie('uid'))
 //        {
@@ -190,24 +194,24 @@ class Map extends Controller{
          */
         $request = Request::instance();
         $myclass = new Myclass();
-        $user = $myclass->getUser();
         $uid = $request->cookie('uid');
         $maps = new Maps();
-        $list = $maps->where('uid',$uid)->paginate(10);
-        $this->assign('list',$list);
-        if ($user) {
-            $this->assign('user',$user);
+        $list = $maps->where('uid', $uid)->paginate(10);
+        $this->assign('list', $list);
+        $data = $myclass->getUser();
+        if ($data) {
+            $this->assign('user', $data);
         }
         return $this->fetch();
-        
+
         //$list = Db::table('tp_maps')->where('uid',$uid)->select();
 //        foreach($list as $key=>$user){
 //            echo $user->lng;
 //        }
         //dump($list2);
 //        if($list){
-        
-        
+
+
 //        } else {
 //            return json(array(
 //                'status' => -1,
@@ -215,25 +219,28 @@ class Map extends Controller{
 //            ));
 //        }
 //        dump($list);
-        
+
     }
-    
+
     //users表和maps表的关联查询
-    public function show2() {
+    public function show2()
+    {
         $user = Users::get(1);
 //        dump($user);
-        $this->assign('list',$user->maps);
+        $this->assign('list', $user->maps);
         return $this->fetch();
     }
 
-    public function admin() {
+    public function admin()
+    {
         return $this->fetch();
     }
-  
+
     //数据获取
-    public function get() {
+    public function get()
+    {
         $request = Request::instance();
-        
+
         /*
         if ($request->has('apikey','post')) {
             $user = Users::get(['apikey'=> input('post.apikey')])->value('user_id');
@@ -247,94 +254,96 @@ class Map extends Controller{
             $map = Maps::where('uid',$user)->order('map_id','desc')->select();
         
          */
-        
-        if( $request->param('apikey')){
-            
+
+        if ($request->param('apikey')) {
+
             $apikey = $request->param('apikey');
-            
+
             //使用缓存存储ApiKey和用户ID
             $userid_cache = Cache::get($apikey);
-            if(empty($userid_cache)) {
-                $user = Users::get(['apikey'=> $apikey]);
+            if (empty($userid_cache)) {
+                $user = Users::get(['apikey' => $apikey]);
                 $userid_cache = $user->user_id;
                 Cache::set($apikey, $userid_cache);
             }
-            $map = Maps::where('uid',$userid_cache)->order('map_id','desc')->select();
-            
+            $map = Maps::where('uid', $userid_cache)->order('map_id', 'desc')->select();
+
         } else {
             return json(array(
                 'status' => -1,
                 'message' => 201,
-                'data'   => '',
+                'data' => '',
             ));
         }
         if ($map) {
             return json(array(
                 'status' => 1,
-                'message'  => 200,
-                'data'   => $map,
+                'message' => 200,
+                'data' => $map,
             ));
         } else {
             return json(array(
                 'status' => 1,
                 'message' => 202,
-                'data'   => '',
+                'data' => '',
             ));
         }
         return json(array(
-                'status' => -1,
-                'message' => 203,
-                'data'   => '',
+            'status' => -1,
+            'message' => 203,
+            'data' => '',
         ));
     }
-    
-     /**
+
+    /**
      * 随机字符
-     * @param number $length 长度
+     * @param int|number $length 长度
      * @param string $type 类型
-     * @param number $convert 转换大小写
+     * @param int|number $convert 转换大小写
      * @return string
      */
-    function random($length=6, $type='string', $convert=0){
+    function random($length = 6, $type = 'string', $convert = 0)
+    {
         $config = array(
-            'number'=>'1234567890',
-            'letter'=>'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-            'string'=>'abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',
-            'all'=>'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+            'number' => '1234567890',
+            'letter' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            'string' => 'abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789',
+            'all' => 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
         );
-        if(!isset($config[$type])) $type = 'string';
+        if (!isset($config[$type])) $type = 'string';
         $string = $config[$type];
 
         $code = '';
-        $strlen = strlen($string) -1;
-        for($i = 0; $i < $length; $i++){
+        $strlen = strlen($string) - 1;
+        for ($i = 0; $i < $length; $i++) {
             $code .= $string{mt_rand(0, $strlen)};
         }
-        if(!empty($convert)){
-            $code = ($convert > 0)? strtoupper($code) : strtolower($code);
+        if (!empty($convert)) {
+            $code = ($convert > 0) ? strtoupper($code) : strtolower($code);
         }
+        preg_match('\d+', '12345');
         return $code;
     }
-    
+
     //示例POST上传
-    public function position() {
+    // po
+    public function position()
+    {
         session_start();
         //echo $_SESSION['lngErr'];
-        if(!empty($_SESSION['lngErr']) || !empty($_SESSION['latErr']))
-        {
-            $this->assign('lngErr',$_SESSION['lngErr']);
-            $this->assign('latErr',$_SESSION['latErr']);
+        if (!empty($_SESSION['lngErr']) || !empty($_SESSION['latErr'])) {
+            $this->assign('lngErr', $_SESSION['lngErr']);
+            $this->assign('latErr', $_SESSION['latErr']);
             $this->assign('lng', $_SESSION['lng']);
-            $this->assign('lat',$_SESSION['lat']);
-        } else
-        {
-            $this->assign('lngErr',"");
-            $this->assign('latErr',"");
+            $this->assign('lat', $_SESSION['lat']);
+        } else {
+            $this->assign('lngErr', "");
+            $this->assign('latErr', "");
             $this->assign('lng', "");
-            $this->assign('lat',"");
+            $this->assign('lat', "");
         }
         //echo '';
-        $_SESSION['lngErr']=$_SESSION['latErr']="";
+        $_SESSION['lngErr'] = $_SESSION['latErr'] = "";
         return $this->fetch();
     }
 }

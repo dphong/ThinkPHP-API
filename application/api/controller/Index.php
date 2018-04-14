@@ -33,7 +33,7 @@ class Index extends Controller{
         //return view('map/sample');
     }
     
-    //API示例
+    // sa
     public function sample() {
         $request = Request::instance();
         $myclass = new Myclass();
