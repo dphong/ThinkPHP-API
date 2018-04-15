@@ -3,17 +3,24 @@
 namespace app\index\controller;
 
 use app\index\model\Users;
-use think\Controller;
 use think\Request;
 use think\response\Json;
 use think\Validate;
+use app\index\controller\BaseController;
 
-class User extends Controller
+class User extends BaseController
 {
+
     function __construct()
     {
+        $this->while_rule = [
+            '/login',
+            '/reg',
+            '/index/user/valid',
+            '/index/user/code',
+            '/index/user/add'
+        ];
         parent::__construct();
-        $this->view->replace(['__PUBLIC__' => 'https://whark.oss-cn-hangzhou.aliyuncs.com/thinkphp-api']);
     }
 
     // 创建用户数据页面
@@ -56,6 +63,7 @@ class User extends Controller
         }
     }
 
+    // TODO:基于用户的验证码
     //验证码验证
     public function code()
     {
@@ -123,7 +131,39 @@ class User extends Controller
     //用户登录
     public function login()
     {
-        return $this->fetch('login');
+        $request = Request::instance();
+
+        if ('GET' === $request->method()) {
+            return $this->fetch('login');
+        } else {
+            $rule = [
+                'username' => ['regex' => '^[_a-zA-Z0-9-]{1,20}$|^[\w!#$%&\'*+\/=?^_`{|}~-]+(?:\.[\w!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$'],
+                'password' => 'require|min:6|max:20',
+            ];
+            $validate = new Validate($rule);
+            $result = $validate->check($request->post());
+            if ($result) {
+                $username = $request->post('username');
+                $password = createPasswd($request->post('password'));
+                $user = Users::get(['username' => $username, 'password' => $password]);
+                if (!$user) {
+                    $user = Users::get(['email' => $username, 'password' => $password]);
+                    if (!$user) {
+                        $user = Users::get(['telephone' => $username, 'password' => $password]);
+                        if (!$user) {
+                            self::jumpToUrl('/login', '用户名或密码错误');
+                        }
+                    }
+                }
+
+                $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
+                cookie('uid', $user->user_id, 31536000);
+                cookie('validate', $validate, 2592000);
+                $this->assign('user', $user);
+                return $this->fetch('home');
+            }
+            self::jumpToUrl('login', '用户名或密码错误');
+        }
     }
 
     /**
@@ -131,15 +171,36 @@ class User extends Controller
      */
     public function resetPassword()
     {
-        return $this->fetch('resetPassword');
+        $request = Request::instance();
+        if ('GET' === $request->method()) {
+            return $this->fetch('resetPassword');
+        } else {
+            $old_password = $request->post('old_password');
+            $new_password = $request->post('new_password');
+
+            $user = $this->userInfo;
+            if (createPasswd($old_password) === $user->password) {
+                if (!empty($new_password)) {
+                    $user->password = createPasswd($new_password);
+                    $user->allowField(true)->save($user);  // 数据保存
+                    return new Json(['status' => 200, 'msg' => '修改成功', 'data' => []]);
+                } else {
+                    $msg = '新密码不能为空';
+                }
+            } else {
+                $msg = '原密码错误';
+            }
+            return new Json(['status' => -1, 'msg' => $msg, 'data' => []]);
+        }
+
     }
 
-    public function edit($id)
+    public function edit()
     {
         $request = Request::instance();
         if ($request->put()) {
             $data = $request->put();
-            $user = Users::get(['user_id' => $id]);
+            $user = $this->userInfo;
             if ($user) {
                 foreach ($data as $key => $value) {
                     if ('username' == $key && Users::get(['username' => $value])) {
@@ -158,49 +219,7 @@ class User extends Controller
     //个人中心
     public function home($code = '')
     {
-
-        $request = Request::instance();
-        if ($request->post()) {
-            $rule = [
-                'username' => ['regex' => '^[_a-zA-Z0-9-]{1,20}$|^[\w!#$%&\'*+\/=?^_`{|}~-]+(?:\.[\w!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?$'],
-                'password' => 'require|min:6|max:20',
-            ];
-            $validate = new Validate($rule);
-            $result = $validate->check($request->post());
-            if ($result) {
-                $username = $request->post('username');
-                $password = createPasswd($request->post('password'));
-                $user = Users::get(['username' => $username, 'password' => $password]);
-                if (!$user) {
-                    $user = Users::get(['email' => $username, 'password' => $password]);
-                    if (!$user) {
-                        $user = Users::get(['telephone' => $username, 'password' => $password]);
-                        if (!$user) {
-                            echo "<script language=javascript>alert ('" . "用户名或密码错误" . "');</script>";
-                            echo '<script language=javascript>window.location.href="/login"</script>';
-                        }
-                    }
-                }
-                //防止sql注入
-            } else {
-                echo "<script language=javascript>alert ('" . "用户名或密码错误" . "');</script>";
-                echo '<script language=javascript>window.location.href="/login"</script>';
-            }
-        } else if ($request->cookie('uid')) {
-            $user = Users::get(['user_id' => $request->cookie('uid')]);
-            $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
-            if ($request->cookie('validate') !== $validate) {
-                echo "<script language=javascript>alert ('" . "登录信息已过期，请重新登录" . "');</script>";
-                echo '<script language=javascript>window.location.href="/login"</script>';
-            }
-        } else {
-            //echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
-            echo '<script language=javascript>window.location.href="/login"</script>';
-        }
-        $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
-        cookie('uid', $user->user_id, 31536000);
-        cookie('validate', $validate, 2592000);
-        $this->assign('list', $user);
+        $this->assign('user', $this->userInfo);
         return $this->fetch();
     }
 

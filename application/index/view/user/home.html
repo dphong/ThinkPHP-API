@@ -5,34 +5,32 @@
     <div class="col-lg-10 col-md-10 main-content">
         {include file="user/breadcrumb" /}
 
-        <div class="">
-            <table class="table table-striped table-bordered table-hover">
+        <div>
+            <table class="table table-striped table-bordered table-hover table-padding-12">
                 <tbody class="text-center">
                 <tr id="username">
                     <th class="text-center">用户名</th>
-                    <td class="user-info">{$list->username}</td>
+                    <td class="user-info">{$user->username}</td>
                 </tr>
                 <tr id="apikey">
                     <th class="text-center">APIKey</th>
-                    <td class="input">{$list->apikey}</td>
+                    <td class="input">{$user->apikey}</td>
                 </tr>
                 <tr id="nickname">
                     <th class="text-center">昵称</th>
-                    <td class="user-info">{$list->nickname}</td>
+                    <td class="user-info">{$user->nickname}</td>
                 </tr>
                 <tr id="telephone">
                     <th class="text-center">手机号</th>
-                    <td class="user-info">{$list->telephone}</td>
+                    <td class="user-info">{$user->telephone}</td>
                 </tr>
                 <tr id="email">
                     <th class="text-center">邮箱</th>
-                    <td>{$list->email}</td>
-                    <!--<td class="user-info"><input class="text-center" style="width: 21em;" value="{$list->email}"/></td>-->
+                    <td class="user-info">{$user->email}</td>
                 </tr>
                 <tr hidden>
                     <th class="text-center">用户ID</th>
-                    <td id="user-id">{$list->user_id}</td>
-                    <!--<td class="user-info"><input class="text-center" style="width: 21em;" value="{$list->email}"/></td>-->
+                    <td class="user-info" id="user-id">{$user->user_id}</td>
                 </tr>
                 </tbody>
 
@@ -51,14 +49,12 @@
         $('table td').click(function(){
             if(!$(this).is('.input')){
                 var old_value = $(this).text();
-                console.log($(this).text());
                 $(this).addClass('input').html('<input class="text-center" style="width: 21em;" value="'+ $(this).text() +'" />').find('input').focus().blur(function(){
 //                            var thisid = $(this).parent().siblings("th:eq(0)").text();
                     var thisid = $(this).parent().parent().attr("id");
                     var thisvalue = $(this).val();
                     var userId = document.getElementById("user-id").innerHTML;
 
-                    console.log(thisid + "=" + thisvalue);
                     if (thisvalue !== old_value) {
                         $.ajax({
                             type: 'PUT',

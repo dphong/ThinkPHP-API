@@ -1,25 +1,30 @@
 {include file="index/header" title="个人中心"  keywords="物联网智能管理平台" /}
 
-<div class="auto1 pb30 pt20">
-
+<div>
     {include file="user/sidebar" /}
-        <div class="rmain1">
+    <div class="col-lg-10 col-md-10 main-content">
+
+        <div>
             {include file="user/breadcrumb" /}
-            <div id="uiblc">
-                <table class="table1">
-                    <tr><td>
-                    <a href="/api/map/show">查看MAP数据</a>
-                    </td></tr>
-                    <tr><td>
-                    <a href="/api/rfid/show">查看RFID数据</a>
-                    </td></tr>
+            <div class="col-lg-6 col-lg-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
+                <table class="table table-striped table-bordered table-hover table-padding-12 text-center">
+                    <tr>
+                        <td>
+                            <a href="/api/map/show">查看MAP数据</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/api/rfid/show">查看RFID数据</a>
+                        </td>
+                    </tr>
                 </table>
-                <div style="display: none"><input type="text" id="userType"></input></div>
             </div>
 
 
         </div>
 
     </div>
+</div>
 
 {include file="index/footer" /}

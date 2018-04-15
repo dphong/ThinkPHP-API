@@ -77,6 +77,24 @@
         @media screen and (max-width:767px){
             .msg_box {left: 20%}
         }
+
+        .footer {
+            display: block;
+            padding: 12px;
+            background: rgb(236, 236, 236);
+        }
+
+        .table-padding-12 {
+            margin-top: 26px;
+        }
+
+        .table-padding-12 th,td {
+            padding: 12px !important;
+        }
+
+        .margin-top-12 {
+            margin-top: 12px !important;
+        }
     </style>
 </head>
 <body>
@@ -126,17 +144,23 @@
                     <!--<button type="submit" class="btn btn-default">Submit</button>-->
                 <!--</form>-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">通知</a></li>
+                    <li><a href="/message">通知</a></li>
+
+                    {eq name="$user.username|default=''" value=""}
+                    <li><a href="/login">登录</a></li>
+                    {else/}
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Whark<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{$user.username}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">我的信息</a></li>
-                            <li><a href="#">查看数据</a></li>
-                            <li><a href="#">修改密码</a></li>
+                            <li><a href="/">我的信息</a></li>
+                            <li><a href="/index/user/data">查看数据</a></li>
+                            <li><a href="/index/user/resetPassword">修改密码</a></li>
+                            <li><a href="/logout">退出</a></li>
                             <!--<li role="separator" class="divider"></li>-->
                             <!--<li><a href="#">Separated link</a></li>-->
                         </ul>
                     </li>
+                    {/eq}
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
