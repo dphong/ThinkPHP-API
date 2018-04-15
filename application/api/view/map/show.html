@@ -1,51 +1,71 @@
-{include file="index/header" title="数据查询"  keywords="物联网智能管理平台" div="centre" /}
-<style>
-table.hovertable {
-	font-family: verdana,arial,sans-serif;
-	font-size:16px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #999999;
-	border-collapse: collapse;
-        text-align:center;
-}
-table.hovertable th {
-	background-color:#c3dde0;
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table.hovertable th {
-	background-color:#c3dde0;
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table.hovertable tr {
-	background-color:#d4e3e5;
-}
-table.hovertable td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table tr:hover
-{
-    background-color:#bbbbdd;
-}
-a.lefta{
-    float: left;
-    text-align: left;
-}
+{extend name="index@base" /}
 
+{block name="title"}<title>MAP数据</title>{/block}
+
+{block name="page-css"}
+<style>
+    table.hovertable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 16px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table.hovertable tr {
+        background-color: #d4e3e5;
+    }
+
+    table.hovertable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table tr:hover {
+        background-color: #bbbbdd;
+    }
+
+    a.lefta {
+        float: left;
+        text-align: left;
+    }
+
+    ul li {
+        float: left;
+        list-style: none;
+    }
 </style>
-<!--a class="lefta" href="/index/user/data">返回</a-->
-<div class="intro"><a href="/">用户中心</a>&gt;&nbsp;<a href="/index/user/data">查看数据</a>&gt;&nbsp;查看MAP数据</div>
-</br><h2>MAP数据</h2></br></br>
-    <table class="hovertable" style="padding: 0px;" > 
+
+{/block}
+
+{block name="main"}
+
+{include file="index@user/sidebar" /}
+<div class="col-lg-10 col-md-10 main-content">
+    {include file="index@user/breadcrumb-three" model="查看数据" active="MAP数据" url="/index/user/data"/}
+
+    <h2>MAP数据</h2>
+    <table class="table">
         <tr id="onmouseover">
             <th style="width:170px">经度</th>
             <th style="width:170px">纬度</th>
@@ -69,11 +89,7 @@ a.lefta{
         </tr>
         {/volist}
     </table>
-</br></br>
-<style>
-    ul li{
-    float: left; list-style:none;
-}
-</style>
-    {$list->render()}
-{include file="index/footer" /}
+
+</div>
+
+{/block}

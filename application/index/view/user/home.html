@@ -1,9 +1,13 @@
-{include file="index/header" title="个人中心"  keywords="物联网智能管理平台" /}
+{extend name="base" /}
+
+{block name="title"}<title>用户中心</title>{/block}
+
+{block name="main"}
 
 <div>
     {include file="user/sidebar" /}
     <div class="col-lg-10 col-md-10 main-content">
-        {include file="user/breadcrumb" /}
+        {include file="user/breadcrumb" active="基本资料"/}
 
         <div>
             <table class="table table-striped table-bordered table-hover table-padding-12">
@@ -42,6 +46,9 @@
 
 </div>
 
+{/block}
+
+{block name="page-footer-js"}
 <script>
     var $ = jQuery;
     $(function(){
@@ -94,4 +101,4 @@
     }
 </script>
 
-{include file="index/footer" /}
+{/block}
