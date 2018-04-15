@@ -1,15 +1,29 @@
-{include file="index/header" title="用户登录"  keywords="物联网智能管理平台" /}
+{extend name="base" /}
+
+{block name="title"}<title>用户登录</title>{/block}
+
+{block name="page-js"}
+
+<script type="text/javascript" src="__PUBLIC__/js/Validform_v5.3.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/passwordStrength.js"></script>
+
+{/block}
+
+{block name="main"}
+
 <h2>用户登录</h2>
-<FORM method="post" class="login center" id="login" action="/login" >
-    <table width="100%" style="table-layout:fixed;">
-        <tbody>
+<div class="text-center col-lg-7 col-lg-offset-4 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-top: 20px;">
+
+    <FORM method="post" class="login center" id="login" action="/login">
+        <table style="width: 100%;">
+            <tbody>
             <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:70px;">用户名：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" id="username" name="username" datatype="s3-26|e" sucmsg=" " nullmsg="请输入用户名" errormsg="请输入正确的用户名" />
+                <td class="col-lg-2">用户名：</td>
+                <td class="col-lg-5">
+                    <input type="text" class="inputtxt" id="username" name="username" datatype="s3-26|e" sucmsg=" "
+                           nullmsg="请输入用户名" errormsg="请输入正确的用户名"/>
                 </td>
-                <td>
+                <td class="col-lg-5">
                     <div class="Validform_checktip"></div>
                     <div class="info">用户名/手机号/邮箱
                         <span class="dec">
@@ -20,10 +34,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:70px;">密码：</td>
-                <td style="width:240px;">
-                    <input type="password" class="inputtxt" id="password" name="password" plugin="passwordStrength" datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码" />
+                <td>密码：</td>
+                <td>
+                    <input type="password" class="inputtxt" id="password" name="password" plugin="passwordStrength"
+                           datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码"/>
                 </td>
                 <td>
                     <div class="Validform_checktip"></div>
@@ -36,10 +50,10 @@
                 </td>
             </tr>
             <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:70px;">验证码：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" id="code" name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误" />
+                <td>验证码：</td>
+                <td>
+                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" id="code"
+                           name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误"/>
                 </td>
                 <td>
                     <div class="Validform_checktip"></div>
@@ -52,69 +66,98 @@
                 </td>
             </tr>
             <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:70px;"></td>
-                <td style="width:200px;">
-                    <div id="captcha_image" style="width:200px;"><img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/></div>
+                <td></td>
+                <td>
+                    <div id="captcha_image" class="text-center">
+                        <div>
+                            <img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/>
+                        </div>
+                    </div>
                 </td>
                 <td>
 
                 </td>
             </tr>
-        </tbody>
-    </table>
-<input type="button" style="margin-left: 100px;" class="button button-rounded button-small button-primary" value="注册" onclick="window.location=('reg')" /> &nbsp;
-<input type="submit" id="submit" class="button button-rounded button-small button-primary" value="登录">
-</FORM>
+
+
+            <tr>
+                <td></td>
+                <td>
+                    <div class="text-center">
+
+                        <input type="button" style="width: 8em;" class="btn btn-success"
+                               value="注册" onclick="window.location=('reg')"/> &nbsp;
+                        <input type="submit" id="submit" style="width: 8em;" class="btn btn-success" value="登录">
+                    </div>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </FORM>
+
+</div>
+
+{/block}
+
+
+{block name="page-footer-js"}
+
 <script>
-    $('#captcha_image').click(function(){
-        $(this).find('img').attr('src','/captcha.html?r='+Math.random());
-        $("#inputtxt")[2].validform_valid="false";
+    $('#captcha_image').click(function () {
+        $(this).find('img').attr('src', '/captcha.html?r=' + Math.random());
+        $("#inputtxt")[2].validform_valid = "false";
     });
 </script>
 <script>
 
-$(function(){
-	var getInfoObj=function(){
-			return 	$(this).parents("td").next().find(".info");
-		}
-	$("[datatype]").focusin(function(){
-		if(this.timeout){clearTimeout(this.timeout);}
-		var infoObj=getInfoObj.call(this);
-		if(infoObj.siblings(".Validform_right").length!=0){
-			return;
-		}
-		infoObj.show().siblings().hide();
+    $(function () {
+        var getInfoObj = function () {
+            return $(this).parents("td").next().find(".info");
+        }
+        $("[datatype]").focusin(function () {
+            if (this.timeout) {
+                clearTimeout(this.timeout);
+            }
+            var infoObj = getInfoObj.call(this);
+            if (infoObj.siblings(".Validform_right").length != 0) {
+                return;
+            }
+            infoObj.show().siblings().hide();
 
-	}).focusout(function(){
-		var infoObj=getInfoObj.call(this);
-		this.timeout=setTimeout(function(){
-			infoObj.hide().siblings(".Validform_wrong,.Validform_loading,.Validform_right").show();
-		},0);
+        }).focusout(function () {
+            var infoObj = getInfoObj.call(this);
+            this.timeout = setTimeout(function () {
+                infoObj.hide().siblings(".Validform_wrong,.Validform_loading,.Validform_right").show();
+            }, 0);
 
-	});
+        });
 
-	$(".login").Validform({
-		tiptype:2,
-		usePlugin:{
-			passwordstrength:{
-				minLen:6,
-				maxLen:18,
-				trigger:function(obj,error){
-					if(error){
-						obj.parent().next().find(".passwordStrength").hide().siblings(".info").show();
-					}else{
-						obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();
-					}
-				}
-			}
-		}
-	});
-})
+        $(".login").Validform({
+            tiptype: 2,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18,
+                    trigger: function (obj, error) {
+                        if (error) {
+                            obj.parent().next().find(".passwordStrength").hide().siblings(".info").show();
+                        } else {
+                            obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();
+                        }
+                    }
+                }
+            }
+        });
+    })
 </script>
 
 <script>
-    function keyEnter(){
+    function keyEnter() {
         if (event.keyCode == 13) {
 //            var loginForm = document.getElementById('login');
 //            var username = document.getElementById('username').value;
@@ -130,8 +173,10 @@ $(function(){
             submit.click()
         }
     }
-    document.onkeydown =keyEnter;
+
+    document.onkeydown = keyEnter;
 </script>
 
 <script type="text/javascript" src="__PUBLIC__/js/Validform_v5.3.2.js"></script>
-{include file="index/footer" /}
+
+{/block}
