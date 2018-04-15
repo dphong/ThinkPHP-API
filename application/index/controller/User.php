@@ -13,7 +13,7 @@ class User extends BaseController
 
     function __construct()
     {
-        $this->while_rule = [
+        $this->rule = [
             '/login',
             '/reg',
             '/index/user/valid',
@@ -167,7 +167,7 @@ class User extends BaseController
     }
 
     /**
-     *
+     * 修改密码
      */
     public function resetPassword()
     {
@@ -183,18 +183,22 @@ class User extends BaseController
                 if (!empty($new_password)) {
                     $user->password = createPasswd($new_password);
                     $user->allowField(true)->save($user);  // 数据保存
-                    return new Json(['status' => 200, 'msg' => '修改成功', 'data' => []]);
+                    return $this->json(200, '修改成功');
                 } else {
                     $msg = '新密码不能为空';
                 }
             } else {
                 $msg = '原密码错误';
             }
-            return new Json(['status' => -1, 'msg' => $msg, 'data' => []]);
+            return $this->json(-1,  $msg);
         }
 
     }
 
+    /**
+     * 编辑信息
+     * @return Json
+     */
     public function edit()
     {
         $request = Request::instance();
@@ -204,41 +208,27 @@ class User extends BaseController
             if ($user) {
                 foreach ($data as $key => $value) {
                     if ('username' == $key && Users::get(['username' => $value])) {
-                        return new Json(['status' => -1, 'msg' => '用户名已存在', 'data' => []]);
+                        return $this->json(-1, '用户名已存在');
                     }
                     $user->$key = $value;
                 }
                 $user->allowField(true)->save($user);  // 数据保存
-                return new Json(['status' => 200, 'msg' => '更新成功', 'data' => []]);
+                return $this->json(200, '更新成功');
             }
 
         }
-        return new Json(['status' => -1, 'msg' => '修改失败', 'data' => []]);
+        return $this->json(-1, '修改失败');
     }
 
     //个人中心
     public function home($code = '')
     {
-        $this->assign('user', $this->userInfo);
         return $this->fetch();
     }
 
     //查看数据
     public function data()
     {
-        $request = Request::instance();
-        if ($request->cookie('uid')) {
-            $user = Users::get(['user_id' => $request->cookie('uid')]);
-            $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
-            if ($request->cookie('validate') !== $validate) {
-                echo "<script language=javascript>alert ('" . "登录信息已过期，请重新登录" . "');</script>";
-                echo '<script language=javascript>window.location.href="/login"</script>';
-            }
-        } else {
-            echo "<script language=javascript>alert ('" . "请登录" . "');</script>";
-            echo '<script language=javascript>window.location.href="/login"</script>';
-        }
-        $this->assign('list', $user);
         return $this->fetch();
     }
 
@@ -247,7 +237,7 @@ class User extends BaseController
     {
         cookie('uid', null);
         cookie('validate', null);
-        echo '<script language=javascript>window.location.href="/login"</script>';
+        self::jumpToUrl('/login');
     }
 
 }

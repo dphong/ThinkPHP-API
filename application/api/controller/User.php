@@ -1,12 +1,18 @@
 <?php
 namespace app\api\controller;
+use app\index\controller\BaseController;
 use think\Controller;
 use think\Db;
 use think\Url;
 use app\index\model\Users;
 use think\Validate;
-class User extends Controller
+class User extends BaseController
 {
+    function __construct()
+    {
+        $this->while_rule = false;
+        parent::__construct();
+    }
     
     public function test40() {
         session_start();

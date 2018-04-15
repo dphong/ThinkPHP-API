@@ -7,7 +7,7 @@
 
 namespace app\api\controller;
 
-use function preg_match;
+use app\index\controller\BaseController;
 use think\Controller;
 use think\Db;
 use think\Url;
@@ -24,13 +24,13 @@ use app\common\util\Myclass;
  *
  * @author HDP
  */
-class Map extends Controller
+class Map extends BaseController
 {
     //模板位置申明
     function __construct()
     {
+        $this->while_rule = false;
         parent::__construct();
-        $this->view->replace(['__PUBLIC__' => 'https://whark.oss-cn-hangzhou.aliyuncs.com/thinkphp-api']);
     }
 
     //index
