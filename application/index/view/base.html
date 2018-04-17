@@ -14,7 +14,7 @@
     <!--<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>-->
 
 
-    <link charset="utf-8" rel="stylesheet" href="/static/common.css">
+    <!--<link charset="utf-8" rel="stylesheet" href="/static/common.css">-->
     <!--<link charset="utf-8" rel="stylesheet" href="/static/buttons.min.css">-->
     <link charset="utf-8" rel="stylesheet" href="/static/style.min.css">
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
@@ -23,65 +23,7 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <style>
-        @media (max-width: 992px) {
-            .main-content {
-                padding: 0px 7px !important;
-            }
-        }
 
-        .button-center {
-            display: table;
-            width: auto;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 6px 30px;
-        }
-
-        .msg {
-            height: 20px;
-            color: white;
-            font-size: 14px;
-            margin-top: 12%
-        }
-
-        .msg_box {
-            text-align: center;
-            position: absolute;
-            width: 150px;
-            height: 60px;
-            z-index: 1;
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 0.3em;
-            margin-left: 100px;
-            margin-top: 60px;
-            left: 47%;
-            top: 31%;
-            display: none;
-        }
-
-        @media screen and (max-width: 767px) {
-            .msg_box {
-                left: 20%
-            }
-        }
-
-        .footer {
-            display: block;
-            padding: 12px;
-            background: rgb(236, 236, 236);
-        }
-
-        .table-padding-12 {
-            margin-top: 26px;
-        }
-
-        .table-padding-12 th, td {
-            padding: 12px !important;
-        }
-
-        .margin-top-12 {
-            margin-top: 12px !important;
-        }
     </style>
 
     {block name="page-css"}{/block}
@@ -114,7 +56,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">开发者中心 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="/home">开发者中心 <span class="sr-only">(current)</span></a></li>
                     <li><a href="/sample">API文档</a></li>
                     <li><a href="/map">设备</a></li>
                 </ul>
@@ -128,7 +70,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">{$user.username}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/">我的信息</a></li>
+                            <li><a href="/home">我的信息</a></li>
                             <li><a href="/index/user/data">查看数据</a></li>
                             <li><a href="/index/user/resetPassword">修改密码</a></li>
                             <li><a href="/logout">退出</a></li>

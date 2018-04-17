@@ -11,96 +11,100 @@
 
 {block name="main"}
 
-<h2>用户登录</h2>
-<div class="text-center col-lg-7 col-lg-offset-4 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-top: 20px;">
 
-    <FORM method="post" class="login center" id="login" action="/login">
-        <table style="width: 100%;">
-            <tbody>
-            <tr>
-                <td class="col-lg-2">用户名：</td>
-                <td class="col-lg-5">
-                    <input type="text" class="inputtxt" id="username" name="username" datatype="s3-26|e" sucmsg=" "
-                           nullmsg="请输入用户名" errormsg="请输入正确的用户名"/>
-                </td>
-                <td class="col-lg-5">
-                    <div class="Validform_checktip"></div>
-                    <div class="info">用户名/手机号/邮箱
-                        <span class="dec">
+<div class="div-center-380">
+    <h2 class="col-lg-offset-1">用户登录</h2>
+    <div class="text-center col-lg-7 col-lg-offset-4 col-sm-8 col-sm-offset-2 col-xs-12" style="margin-top: 20px;">
+
+        <FORM method="post" class="login center" id="login" action="/login">
+            <table style="width: 100%;">
+                <tbody>
+                <tr>
+                    <td class="col-lg-2 vertical-inherit">用户名：</td>
+                    <td class="col-lg-5">
+                        <input type="text" class="inputtxt" id="username" name="username" datatype="s3-26|e" sucmsg=" "
+                               nullmsg="请输入用户名" errormsg="请输入正确的用户名"/>
+                    </td>
+                    <td class="col-lg-5">
+                        <div class="Validform_checktip"></div>
+                        <div class="info">用户名/手机号/邮箱
+                            <span class="dec">
                             <s class="dec1">◆</s>
                             <s class="dec2">◆</s>
                         </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>密码：</td>
-                <td>
-                    <input type="password" class="inputtxt" id="password" name="password" plugin="passwordStrength"
-                           datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码"/>
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">请输入密码
-                        <span class="dec">
-                            <s class="dec1">◆</s>
-                            <s class="dec2">◆</s>
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>验证码：</td>
-                <td>
-                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" id="code"
-                           name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误"/>
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">请输入验证码，不区分大小写
-                        <span class="dec">
-                            <s class="dec1">◆</s>
-                            <s class="dec2">◆</s>
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <div id="captcha_image" class="text-center">
-                        <div>
-                            <img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/>
                         </div>
-                    </div>
-                </td>
-                <td>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vertical-inherit">密码：</td>
+                    <td>
+                        <input type="password" class="inputtxt" id="password" name="password" plugin="passwordStrength"
+                               datatype="*6-18" sucmsg=" " nullmsg="请输入密码" errormsg="请输入正确的密码"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">请输入密码
+                            <span class="dec">
+                            <s class="dec1">◆</s>
+                            <s class="dec2">◆</s>
+                        </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="vertical-inherit">验证码：</td>
+                    <td>
+                        <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" id="code"
+                               name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">请输入验证码，不区分大小写
+                            <span class="dec">
+                            <s class="dec1">◆</s>
+                            <s class="dec2">◆</s>
+                        </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <div id="captcha_image" class="text-center">
+                            <div>
+                                <img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            <tr>
-                <td></td>
-                <td>
-                    <div class="text-center">
+                <tr>
+                    <td></td>
+                    <td>
+                        <div class="text-center">
 
-                        <input type="button" style="width: 8em;" class="btn btn-success"
-                               value="注册" onclick="window.location=('reg')"/> &nbsp;
-                        <input type="submit" id="submit" style="width: 8em;" class="btn btn-success" value="登录">
-                    </div>
-                </td>
-                <td>
+                            <input type="button" style="width: 8em;" class="btn btn-success"
+                                   value="注册" onclick="window.location=('reg')"/> &nbsp;
+                            <input type="submit" id="submit" style="width: 8em;" class="btn btn-success" value="登录">
+                        </div>
+                    </td>
+                    <td>
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
 
 
-            </tbody>
-        </table>
-    </FORM>
+                </tbody>
+            </table>
+        </FORM>
 
+    </div>
 </div>
+
 
 {/block}
 

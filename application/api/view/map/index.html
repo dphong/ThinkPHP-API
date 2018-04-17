@@ -1,27 +1,53 @@
-{include file="index@index/header" title="坐标选取系统"  keywords="物联网智能管理平台" div="centre" }
-<div id="bp10"></div>
-<div id="name">请输入查找的位置:<input type="text" id="suggestId" size="30" style="width:300px;" placeholder="示例输入：合肥市蜀山区合肥师范学院锦绣校区" /></div>
-<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
-<div id="container"></div>
-<div id="bp10"></div>
-<div id="result">
-    经度：<input type="text" id="lng" style="width:100px;" /> 纬度：<input type="text" id="lat" style="width:100px;" />
-</div>
+{extend name="index@base" /}
+
+{block name="title"}<title>坐标选取系统</title>{/block}
+
+{block name="page-js"}
 <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=wCedEoVpANRk7a9xi0o3oXd77RGyMLtg" ></script>
 <script type="text/javascript">
-            function logout(){
-                window.location.href = "/logout";
-            }
-            function reg(){
-                window.location.href = "/reg";
-            }
-            function home(){
-                window.location.href = "/";
-            }
-            function login(){
-                window.location.href = "/login";
-            }
-        </script>
+    function logout(){
+        window.location.href = "/logout";
+    }
+    function reg(){
+        window.location.href = "/reg";
+    }
+    function home(){
+        window.location.href = "/";
+    }
+    function login(){
+        window.location.href = "/login";
+    }
+</script>
+
+{/block}
+
+
+{block name="main"}
+<center class="div-center-380" style="height: 650px">
+
+<div id="bp10">
+
+    </div>
+    <div id="name">
+        请输入查找的位置:<input type="text" id="suggestId" size="30" style="width:300px;" placeholder="示例输入：合肥市蜀山区合肥师范学院锦绣校区" />
+    </div>
+    <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;">
+
+    </div>
+    <div id="container" style="height: 540px;width: 1001px;">
+
+    </div>
+    <div id="bp10">
+
+    </div>
+    <div id="result">
+        经度：<input type="text" id="lng" style="width:100px;" /> 纬度：<input type="text" id="lat" style="width:100px;" />
+    </div>
+</center>
+{/block}
+
+{block name="page-footer-js"}
+
 <script type="text/javascript">
     map = new BMap.Map("container");
     {$point}
@@ -33,10 +59,10 @@
     //map.centerAndZoom("合肥",13);                   // 初始化地图,设置城市和地图级别。
     map.centerAndZoom(point,14);
     ac = new BMap.Autocomplete(    //建立一个自动完成的对象
-    {
-        "input" : "suggestId"
-        ,"location" : map
-    });
+        {
+            "input" : "suggestId"
+            ,"location" : map
+        });
 
     {$setMarker}
     setEditView(point.lng,point.lat);
@@ -46,32 +72,32 @@
         var value = "";
         if (e.fromitem.index > -1) {
             value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-        }    
+        }
         str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
 
         value = "";
         if (e.toitem.index > -1) {
             _value = e.toitem.value;
             value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
-        }    
+        }
         str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
         G("searchResultPanel").innerHTML = str;
     });
 
     var myValue;
     ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
-    var _value = e.item.value;
+        var _value = e.item.value;
         myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
         G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
 
         setPlace();
-    //		map.removeOverlay(marker);    
-    //		alert("fda");
-    //		marker.dispose();
+        //		map.removeOverlay(marker);
+        //		alert("fda");
+        //		marker.dispose();
     });
 
     map.enableScrollWheelZoom();
-    //marker.enableDragging();    
+    //marker.enableDragging();
     map.addControl(new BMap.NavigationControl());
     map.addControl(new BMap.ScaleControl());
 
@@ -83,16 +109,16 @@
         point = new BMap.Point(e.point.lng,e.point.lat);
         marker = new BMap.Marker(point);  // 创建标注
         map.addOverlay(marker);              // 将标注添加到地图中
-    //	alert(e.point.lng + "," + e.point.lat);
+        //	alert(e.point.lng + "," + e.point.lat);
     });
-    //	marker.addEventListener("click", function(){    
+    //	marker.addEventListener("click", function(){
     // 		map.removeOverlay(marker);
     //		marker.dispose();
     //		alert("fdas");
     //		maker = new BMap.Point(e.point.lng,e.point.lat);
     //		map.addOverlay(marker);
     //	});
-    marker.addEventListener("dragend", function(e){    
+    marker.addEventListener("dragend", function(e){
         setEditView(e.point.lng,e.point.lat);
     });
 
@@ -100,11 +126,11 @@
         var value1 = document.getElementById("lng");
         var value2 = document.getElementById("lat");
         value1.value = x;
-        value2.value = y;	
+        value2.value = y;
     }
     function setMarker(){
-    //    alert(arguments[0]);
-    //    alert(arguments[1]);
+        //    alert(arguments[0]);
+        //    alert(arguments[1]);
         if(arguments[0]===null)
         {
             var x=117.234877;
@@ -127,21 +153,21 @@
         function myFun(){
             var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
             map.centerAndZoom(pp, 14);
-         /*   for (i in pp){
-                alert(i);
-                alert(pp[i].toSource());
-            }
-            alert(JSON.stringfy(pp));*/
-    //        map.addOverlay(new BMap.Marker(pp));    //添加标注
+            /*   for (i in pp){
+                   alert(i);
+                   alert(pp[i].toSource());
+               }
+               alert(JSON.stringfy(pp));*/
+            //        map.addOverlay(new BMap.Marker(pp));    //添加标注
             setMarker(pp.lng,pp.lat);
             setEditView(pp.lng,pp.lat);
         }
         var local = new BMap.LocalSearch(map, { //智能搜索
-          onSearchComplete: myFun
+            onSearchComplete: myFun
         });
         local.search(myValue);
     }
 
 </script>
 
-{include file="index@index/footer"}
+{/block}

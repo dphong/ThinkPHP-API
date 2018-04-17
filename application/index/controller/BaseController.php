@@ -15,15 +15,23 @@ use think\response\Json;
 
 class BaseController extends Controller
 {
+    // 用户ID
     protected $userId;
 
+    // 用户信息
     protected $userInfo;
 
+    // 是白名单还是黑名单模式
     protected $while_rule = true;
 
+    // url规则
     protected $rule = [];
 
+    // 当前url是否在规则当中
     protected $in_array;
+
+    // 是否登录过期
+    protected $expired = false;
 
     public function __construct()
     {
@@ -32,21 +40,29 @@ class BaseController extends Controller
 
         $this->in_array = in_array($_SERVER['REQUEST_URI'], $this->rule);
 
+        $request = Request::instance();
+        if ($request->cookie('uid')) {
+            $user = Users::get(['user_id' => $request->cookie('uid')]);
+            $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
+            if ($request->cookie('validate') === $validate) {
+                $this->userId = $request->cookie('uid');
+                $this->userInfo = $user;
+                $this->assign('user', $user);
+            } else {
+                $this->expired = true;
+            }
+        }
+
+
         if ($this->while_rule && !$this->in_array  // 是白名单，且不在名单中，验证用户
             || !$this->while_rule && $this->in_array) { // 是黑名单，且在名单中，验证用户
-            $request = Request::instance();
-            if ($request->cookie('uid')) {
-                $user = Users::get(['user_id' => $request->cookie('uid')]);
-                $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
-                if ($request->cookie('validate') !== $validate) {
-                    $this::jumpToUrl('/login', '登录信息已过期，请重新登录');
-                } else {
-                    $this->userId = $request->cookie('uid');
-                    $this->userInfo = $user;
-                    $this->assign('user', $user);
-                }
-            } else {
-                $this::jumpToUrl('/login', '您尚未登录，请登录');
+
+            if ($this->expired) {
+                self::jumpToUrl('/login', '登录信息已过期，请重新登录');
+            }
+
+            if (!$this->userInfo) {
+                self::jumpToUrl('/login', '您尚未登录，请登录');
             }
         }
     }

@@ -17,12 +17,17 @@ use app\common\util\Myclass;
 use think\Session;
 use think\Cookie;
 
-class Index extends Controller
+class Index extends BaseController
 {
     function __construct()
     {
+        $this->while_rule = false;
         parent::__construct();
-        $this->view->replace(['__PUBLIC__' => 'https://whark.oss-cn-hangzhou.aliyuncs.com/thinkphp-api']);
+    }
+
+    public function index()
+    {
+        return $this->fetch();
     }
 
     //我要寄件
