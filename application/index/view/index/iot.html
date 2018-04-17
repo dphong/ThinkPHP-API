@@ -1,13 +1,21 @@
-{include file="index@index/header" title="智能物流系统"  keywords="物联网智能管理平台" /}
+{extend name="index@base" /}
 
+{block name="title"}相关开发文档{/block}
+
+{block name="page-css"}
+<style>
+    p {
+        line-height: 50px;
+    }
+</style>
+{/block}
+
+{block name="main"}
 <div class="text-center">
     <h2 style="margin-top: 40px">智能物流系统持续开发中...</h2></br>
 
-    数据库表，插入数据按照这上面的变量名统一命名， <a href="/sql">http://iot.wlwshow.cn/sql</a></br></br>
-    Web端我要寄件示例表， <a href="/send">http://iot.wlwshow.cn/send</a></br></br>
-    POST和GET数据检测示例网页  <a href="/check">http://iot.wlwshow.cn/check</a></br></br>
+    <p>数据库表，插入数据按照这上面的变量名统一命名， <a href="/sql">http://iot.wlwshow.cn/sql</a></p>
+    <p>Web端我要寄件示例表， <a href="/send">http://iot.wlwshow.cn/send</a></p>
+    <p>POST和GET数据检测示例网页 <a href="/check">http://iot.wlwshow.cn/check</a></p>
 </div>
-
-
-
-{include file="index@index/footer"}
+{/block}

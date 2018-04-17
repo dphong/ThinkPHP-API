@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {block name="title"}<title>智能物流系统</title>{/block}
+    <title>{block name="title"}智能物流系统{/block}</title>
 
     {block name="keywords"}<meta name="keywords" content="智能物流系统 API">{/block}
 
@@ -56,24 +56,24 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a href="/home">开发者中心 <span class="sr-only">(current)</span></a></li>
-                    <li><a href="/sample">API文档</a></li>
-                    <li><a href="/map">设备</a></li>
+                    <li><a href="{:url('index/User/home')}">开发者中心<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{:url('api/Index/sample')}">API接口示例</a></li>
+                    <li><a href="{:url('index/Index/iot')}">相关开发文档</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/message">通知</a></li>
+                    <li><a href="{:url('index/Message/index')}">通知</a></li>
 
                     {eq name="$user.username|default=''" value=""}
-                    <li><a href="/login">登录</a></li>
+                    <li><a href="{:url('index/User/login')}">登录</a></li>
                     {else/}
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">{$user.username}<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/home">我的信息</a></li>
-                            <li><a href="/index/user/data">查看数据</a></li>
-                            <li><a href="/index/user/resetPassword">修改密码</a></li>
-                            <li><a href="/logout">退出</a></li>
+                            <li><a href="{:url('index/User/home')}">我的信息</a></li>
+                            <li><a href="{:url('index/User/data')}">查看数据</a></li>
+                            <li><a href="{:url('index/User/resetPassword')}">修改密码</a></li>
+                            <li><a href="{:url('index/User/logout')}">退出</a></li>
                             <!--<li role="separator" class="divider"></li>-->
                             <!--<li><a href="#">Separated link</a></li>-->
                         </ul>

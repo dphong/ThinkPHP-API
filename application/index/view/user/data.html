@@ -1,4 +1,8 @@
-{include file="index/header" title="查看数据"  keywords="物联网智能管理平台" /}
+{extend name="base" /}
+
+{block name="title"}查看数据{/block}
+
+{block name="main"}
 
 <div>
     {include file="user/sidebar" /}
@@ -10,12 +14,12 @@
                 <table class="table table-striped table-bordered table-hover table-padding-12 text-center">
                     <tr>
                         <td>
-                            <a href="/api/map/show">查看MAP数据</a>
+                            <a href="{:url('api/Map/show')}">查看MAP数据</a>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <a href="/api/rfid/show">查看RFID数据</a>
+                            <a href="{:url('api/Rfid/show')}">查看RFID数据</a>
                         </td>
                     </tr>
                 </table>
@@ -27,4 +31,4 @@
     </div>
 </div>
 
-{include file="index/footer" /}
+{/block}

@@ -1,71 +1,64 @@
 {extend name="index@base" /}
 
-{block name="title"}<title>MAP数据</title>{/block}
+{block name="title"}数据查询{/block}
 
 {block name="page-css"}
 <style>
-    table.hovertable {
-        font-family: verdana, arial, sans-serif;
-        font-size: 16px;
-        color: #333333;
-        border-width: 1px;
-        border-color: #999999;
-        border-collapse: collapse;
-        text-align: center;
-    }
-
-    table.hovertable th {
-        background-color: #c3dde0;
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #a9c6c9;
-    }
-
-    table.hovertable th {
-        background-color: #c3dde0;
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #a9c6c9;
-    }
-
-    table.hovertable tr {
-        background-color: #d4e3e5;
-    }
-
-    table.hovertable td {
-        border-width: 1px;
-        padding: 8px;
-        border-style: solid;
-        border-color: #a9c6c9;
-    }
-
-    table tr:hover {
-        background-color: #bbbbdd;
-    }
-
-    a.lefta {
-        float: left;
-        text-align: left;
-    }
-
-    ul li {
-        float: left;
-        list-style: none;
-    }
+table.hovertable {
+	font-family: verdana,arial,sans-serif;
+	font-size:16px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+        text-align:center;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable th {
+	background-color:#c3dde0;
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table.hovertable tr {
+	background-color:#d4e3e5;
+}
+table.hovertable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #a9c6c9;
+}
+table tr:hover
+{
+    background-color:#bbbbdd;
+}
+a.lefta{
+    float: left;
+    text-align: left;
+}
+ul li{
+    float: left; list-style:none;
+}
 </style>
-
 {/block}
 
 {block name="main"}
 
+<!--a class="lefta" href="/index/user/data">返回</a-->
 {include file="index@user/sidebar" /}
 <div class="col-lg-10 col-md-10 main-content">
     {include file="index@user/breadcrumb-three" model="查看数据" active="MAP数据" url="/index/user/data"/}
 
-    <h2>MAP数据</h2>
-    <table class="table">
+<h2>MAP数据</h2>
+    <table class="table" >
         <tr id="onmouseover">
             <th style="width:170px">经度</th>
             <th style="width:170px">纬度</th>
@@ -89,7 +82,6 @@
         </tr>
         {/volist}
     </table>
-
 </div>
 
 {/block}
