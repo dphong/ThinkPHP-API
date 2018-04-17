@@ -1,0 +1,373 @@
+{extend name="index@base" /}
+
+{block name="title"}数据表字段{/block}
+
+
+{block name="page-css"}
+<style>
+    table.hovertable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 16px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table.hovertable tr {
+        background-color: #d4e3e5;
+    }
+
+    table.hovertable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table tr:hover {
+        background-color: #bbbbdd;
+    }
+
+    a.lefta {
+        float: left;
+        text-align: left;
+    }
+
+    .right-top {
+        width: 50%;
+        height: 25px;
+        position: static; /*这是必须的*/
+        z-index: 999;
+        left: 95%; /*这是必须的*/
+        top: 30px; /*这是必须的*/
+        background: white;
+        float: center;
+        text-align: left;
+    }
+</style>
+{/block}
+
+{block name="main"}
+<div class="col-lg-10 col-lg-offset-1 col-md-12 main-content">
+    <div style="margin: 0px 0 20px">
+        <a class="back" href="{:url('index/Index/iot')}">返回</a>
+        <h2>数据库字典</h2>
+    </div>
+    <h1 class="text-center">tp_logistics</h1></br>
+
+    <!-- TABLE INFORMATIONS -->
+    <table class="hovertable" style="width: 100%;">
+        <thead>
+        <tr>
+            <th>字段</th>
+            <th>类型</th>
+            <!--<th>属性</th>-->
+            <th>空</th>
+            <th>默认</th>
+            <!--<th>额外</th>-->
+            <th>链接到</th>
+            <th>注释</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr>
+            <td>
+                id
+            </td>
+            <td>int(11)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>auto_increment&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>自增ID&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                send_name
+            </td>
+            <td>varchar(30)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>寄件人姓名&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                send_phone
+            </td>
+            <td>char(11)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>寄件人手机号&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                send_province
+            </td>
+            <td>char(30)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>寄件省市&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                send_address
+            </td>
+            <td>varchar(100)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>寄件地址&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                receive_name
+            </td>
+            <td>varchar(30)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>收件人姓名&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                receive_phone
+            </td>
+            <td>char(11)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>收件人手机号&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                receive_province
+            </td>
+            <td>char(30)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>收件人省市&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                receive_address
+            </td>
+            <td>varchar(100)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>收件地址&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                object_type
+            </td>
+            <td>varchar(20)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>物品类型&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                object_weight
+            </td>
+            <td>float<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>物品重量&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                object_remark
+            </td>
+            <td>varchar(200)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>是&nbsp;</td>
+            <td><i>NULL</i>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>物品备注&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                pickup_time
+            </td>
+            <td>date<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>是&nbsp;</td>
+            <td><i>NULL</i>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>上门取件时间&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                pickup_remark
+            </td>
+            <td>varchar(200)<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>是&nbsp;</td>
+            <td><i>NULL</i>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>上门取件备注&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                order_price
+            </td>
+            <td>float<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>是&nbsp;</td>
+            <td><i>NULL</i>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>订单价格&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                order_time
+            </td>
+            <td>date<bdo dir="ltr"></bdo></td>
+            <!--<td>&nbsp;</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>&nbsp;</td>
+            <td>下单时间&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                uid
+            </td>
+            <td>int(8) <bdo dir="ltr"></bdo></td>
+            <!--<td>UNSIGNED</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>tp_users -&gt; user_id&nbsp;</td>
+            <td>用户ID&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+                ip
+            </td>
+            <td>varchar(16) <bdo dir="ltr"></bdo></td>
+            <!--<td>UNSIGNED</td>-->
+            <td>否&nbsp;</td>
+            <td>&nbsp;</td>
+            <!--<td>&nbsp;</td>-->
+            <td>tp_users -&gt; user_id&nbsp;</td>
+            <td>用户IP&nbsp;</td>
+        </tr>
+
+        </tbody>
+    </table>
+    <h2>索引: <a
+            href="./url.php?url=http%3A%2F%2Fdev.mysql.com%2Fdoc%2Frefman%2F5.5%2Fen%2Foptimizing-database-structure.html&amp;token=7717fe9dd75b8826fa3d1ebb028ae8bf"
+            target="mysql_doc"><img class="icon" src="./themes/pmahomme/img/b_help.png" width="11" height="11" alt="文档"
+                                    title="文档"></a></h2>
+    <table>
+        <thead>
+        <tr>
+            <th>键名</th>
+            <th>类型</th>
+            <th>唯一</th>
+            <th>紧凑</th>
+            <th>字段</th>
+            <th>基数</th>
+            <th>整理</th>
+            <th>空</th>
+            <th>注释</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="odd">
+            <th rowspan="1" class="">PRIMARY</th>
+            <td rowspan="1" class="">BTREE</td>
+            <td rowspan="1" class="">是</td>
+            <td rowspan="1" class="">否</td>
+            <td class="">id</td>
+            <td class="">0</td>
+            <td class="">A</td>
+            <td class=""></td>
+            <td rowspan="1" class=""></td>
+        </tr>
+        <tr class="even">
+            <th rowspan="1" class="">uid</th>
+            <td rowspan="1" class="">BTREE</td>
+            <td rowspan="1" class="">否</td>
+            <td rowspan="1" class="">否</td>
+            <td class="">uid</td>
+            <td class="">0</td>
+            <td class="">A</td>
+            <td class=""></td>
+            <td rowspan="1" class=""></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+{/block}

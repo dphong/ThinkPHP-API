@@ -42,6 +42,12 @@ class Index extends BaseController
         return $this->fetch();
     }
 
+    //数据库字典
+    public function datadict()
+    {
+        return $this->fetch();
+    }
+
     //智能物流系统
     public function iot()
     {
