@@ -1,298 +1,214 @@
-{include file="api@index/header" title="数据表字段"  keywords="物联网智能管理平台" /}
+{extend name="index@base" /}
 
+{block name="title"}数据库字典{/block}
 
+{block name="page-css"}
 <style>
-table.hovertable {
-	font-family: verdana,arial,sans-serif;
-	font-size:16px;
-	color:#333333;
-	border-width: 1px;
-	border-color: #999999;
-	border-collapse: collapse;
-        text-align:center;
-}
-table.hovertable th {
-	background-color:#c3dde0;
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table.hovertable th {
-	background-color:#c3dde0;
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table.hovertable tr {
-	background-color:#d4e3e5;
-}
-table.hovertable td {
-	border-width: 1px;
-	padding: 8px;
-	border-style: solid;
-	border-color: #a9c6c9;
-}
-table tr:hover
-{
-    background-color:#bbbbdd;
-}
-a.lefta{
-    float: left;
-    text-align: left;
-}
-.right-top 
-{
-    width: 50%;
-    height:25px;
-    position: static;/*这是必须的*/
-    z-index: 999;
-    left:95%;/*这是必须的*/
-    top: 30px;/*这是必须的*/
-    background: white;
-    float: center;
-    text-align: left;
-}
+    table.hovertable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 16px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+        text-align: center;
+    }
+
+    table.hovertable tr {
+        background-color: #d4e3e5;
+    }
+
+    table.hovertable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table tr:hover {
+        background-color: #bbbbdd;
+    }
+
+    .my-table {
+
+    }
+
+    .my-table .title {
+        padding: 15px 0 0;
+    }
+
+    .my-table .title h4{
+        margin: 0 0 5px;
+        color: #4288ce;
+    }
+
+    .my-table .body {
+        margin-top: 12px;
+    }
+
 </style>
-<div>
-    <div class='right-top'><a href="/iot">返回</a></div>
-    <h1>tp_logistics</h1></br>
+{/block}
 
-<!-- TABLE INFORMATIONS -->
-<table class="hovertable" style="width: 50%;">
-<thead>
-<tr>
-    <th>字段</th>
-    <th>类型</th>
-    <!--<th>属性</th>-->
-    <th>空</th>
-    <th>默认</th>
-    <!--<th>额外</th>-->
-    <th>链接到</th>
-    <th>注释</th>
-</tr>
-</thead>
-<tbody>
-    
-<tr><td>
-        id
-    </td>
-    <td>int(11)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>auto_increment&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>自增ID&nbsp;</td>
-</tr>
-        
-<tr><td>
-        send_name
-    </td>
-    <td>varchar(30)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>寄件人姓名&nbsp;</td>
-</tr>
-        
-<tr><td>
-        send_phone
-    </td>
-    <td>char(11)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>寄件人手机号&nbsp;</td>
-</tr>
-        
-<tr><td>
-        send_province
-    </td>
-    <td>char(30)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>寄件省市&nbsp;</td>
-</tr>
-        
-<tr><td>
-        send_address
-    </td>
-    <td>varchar(100)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>寄件地址&nbsp;</td>
-</tr>
-        
-<tr><td>
-        receive_name
-    </td>
-    <td>varchar(30)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>收件人姓名&nbsp;</td>
-</tr>
-        
-<tr><td>
-        receive_phone
-    </td>
-    <td>char(11)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>收件人手机号&nbsp;</td>
-</tr>
-        
-<tr><td>
-        receive_province
-    </td>
-    <td>char(30)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>收件人省市&nbsp;</td>
-</tr>
-        
-<tr><td>
-        receive_address
-    </td>
-    <td>varchar(100)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>收件地址&nbsp;</td>
-</tr>
-        
-<tr><td>
-        object_type
-    </td>
-    <td>varchar(20)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>物品类型&nbsp;</td>
-</tr>
-        
-<tr><td>
-        object_weight
-    </td>
-    <td>float<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>物品重量&nbsp;</td>
-</tr>
-        
-<tr><td>
-        object_remark
-    </td>
-    <td>varchar(200)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>是&nbsp;</td>
-    <td><i>NULL</i>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>物品备注&nbsp;</td>
-</tr>
-        
-<tr><td>
-        pickup_time
-    </td>
-    <td>date<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>是&nbsp;</td>
-    <td><i>NULL</i>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>上门取件时间&nbsp;</td>
-</tr>
-        
-<tr><td>
-        pickup_remark
-    </td>
-    <td>varchar(200)<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>是&nbsp;</td>
-    <td><i>NULL</i>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>上门取件备注&nbsp;</td>
-</tr>
-        
-<tr><td>
-        order_price
-    </td>
-    <td>float<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>是&nbsp;</td>
-    <td><i>NULL</i>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>订单价格&nbsp;</td>
-</tr>
-        
-<tr><td>
-        order_time
-    </td>
-    <td>date<bdo dir="ltr"></bdo></td>
-    <!--<td>&nbsp;</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>&nbsp;</td>
-    <td>下单时间&nbsp;</td>
-</tr>
-        
-<tr><td>
-        uid
-    </td>
-    <td>int(8) <bdo dir="ltr"></bdo></td>
-    <!--<td>UNSIGNED</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>tp_users -&gt; user_id&nbsp;</td>
-    <td>用户ID&nbsp;</td>
-</tr>
+{block name="main"}
 
-<tr><td>
-        ip
-    </td>
-    <td>varchar(16) <bdo dir="ltr"></bdo></td>
-    <!--<td>UNSIGNED</td>-->
-    <td>否&nbsp;</td>
-    <td>&nbsp;</td>
-    <!--<td>&nbsp;</td>-->
-        <td>tp_users -&gt; user_id&nbsp;</td>
-    <td>用户IP&nbsp;</td>
-</tr> 	 
+<div class="col-lg-10 col-lg-offset-1 col-md-12 main-content">
 
-        </tbody>
-</table>
-    <h2>索引: <a href="./url.php?url=http%3A%2F%2Fdev.mysql.com%2Fdoc%2Frefman%2F5.5%2Fen%2Foptimizing-database-structure.html&amp;token=7717fe9dd75b8826fa3d1ebb028ae8bf" target="mysql_doc"><img class="icon" src="./themes/pmahomme/img/b_help.png" width="11" height="11" alt="文档" title="文档"></a></h2><table><thead><tr><th>键名</th><th>类型</th><th>唯一</th><th>紧凑</th><th>字段</th><th>基数</th><th>整理</th><th>空</th><th>注释</th></tr></thead><tbody><tr class="odd"><th rowspan="1" class="">PRIMARY</th><td rowspan="1" class="">BTREE</td><td rowspan="1" class="">是</td><td rowspan="1" class="">否</td><td class="">id</td><td class="">0</td><td class="">A</td><td class=""></td><td rowspan="1" class=""></td></tr><tr class="even"><th rowspan="1" class="">uid</th><td rowspan="1" class="">BTREE</td><td rowspan="1" class="">否</td><td rowspan="1" class="">否</td><td class="">uid</td><td class="">0</td><td class="">A</td><td class=""></td><td rowspan="1" class=""></td></tr></tbody></table></div>
+    <div style="margin: 0px 0 20px">
+        <a class="back" href="{:url('index/Index/iot')}">返回</a>
+        <h2>数据库字典</h2>
+    </div>
 
-{include file="api@index/footer"}
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h4>地址信息表</h4>
+            <p>数据请求地址 http://test.iot.whark.cn/api/map/add</p>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+
+                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
+                <tr><td>map_id</td><td>int(8) unsigned</td><td>NO</td><td>ID</td></tr>
+                <tr><td>lng</td><td>int(9) unsigned</td><td>YES</td><td>经度</td></tr>
+                <tr><td>lat</td><td>int(9) unsigned</td><td>YES</td><td>纬度</td></tr>
+                <tr><td>code</td><td>varchar(200)</td><td>YES</td><td>信息</td></tr>
+                <tr><td>create_time</td><td>bigint(11)</td><td>YES</td><td>时间</td></tr>
+                <tr><td>ip</td><td>varchar(16)</td><td>YES</td><td>IP地址</td></tr>
+                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+            </table>
+        </div>
+    </div>
+
+
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h4>RFID信息表</h4>
+            <p>数据请求地址 http://test.iot.whark.cn/api/rfid/add</p>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+
+
+                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
+                <tr><td>rfid_id</td><td>int(11)</td><td>NO</td><td>ID</td></tr>
+                <tr><td>c_user</td><td>varchar(240)</td><td>NO</td><td>RFID卡用户区数据</td></tr>
+                <tr><td>epc_id</td><td>varchar(64)</td><td>NO</td><td>EPC号</td></tr>
+                <tr><td>id_length</td><td>int(10) unsigned</td><td>YES</td><td>EPC长度</td></tr>
+                <tr><td>c_reserve</td><td>varchar(16)</td><td>YES</td><td>RFID卡保留区数据</td></tr>
+                <tr><td>c_epc</td><td>varchar(72)</td><td>YES</td><td>RFID卡EPC区数据</td></tr>
+                <tr><td>c_tid</td><td>varchar(72)</td><td>YES</td><td>RFID卡TID区数据</td></tr>
+                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+                <tr><td>create_time</td><td>bigint(11)</td><td>YES</td><td>创建时间</td></tr>
+                <tr><td>ip</td><td>varchar(16)</td><td>YES</td><td>IP</td></tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h4>物流信息表</h4>
+            <p>数据请求地址 http://test.iot.whark.cn/api/logistics/add</p>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+
+                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
+                <tr><td>id</td><td>int(11)</td><td>NO</td><td>自增ID</td></tr>
+                <tr><td>send_name</td><td>varchar(30)</td><td>NO</td><td>寄件人姓名</td></tr>
+                <tr><td>send_phone</td><td>char(11)</td><td>NO</td><td>寄件人手机号</td></tr>
+                <tr><td>send_province</td><td>char(30)</td><td>NO</td><td>寄件省市</td></tr>
+                <tr><td>send_address</td><td>varchar(100)</td><td>NO</td><td>寄件地址</td></tr>
+                <tr><td>receive_name</td><td>varchar(30)</td><td>NO</td><td>收件人姓名</td></tr>
+                <tr><td>receive_phone</td><td>char(11)</td><td>NO</td><td>收件人手机号</td></tr>
+                <tr><td>receive_province</td><td>char(30)</td><td>NO</td><td>收件人省市</td></tr>
+                <tr><td>receive_address</td><td>varchar(100)</td><td>NO</td><td>收件地址</td></tr>
+                <tr><td>object_type</td><td>varchar(20)</td><td>NO</td><td>物品类型</td></tr>
+                <tr><td>object_weight</td><td>varchar(20)</td><td>YES</td><td>物品重量</td></tr>
+                <tr><td>object_remark</td><td>varchar(200)</td><td>YES</td><td>物品备注</td></tr>
+                <tr><td>pickup_time</td><td>varchar(20)</td><td>YES</td><td>上门取件时间</td></tr>
+                <tr><td>pickup_remark</td><td>varchar(200)</td><td>YES</td><td>上门取件备注</td></tr>
+                <tr><td>order_price</td><td>float</td><td>YES</td><td>订单价格</td></tr>
+                <tr><td>order_time</td><td>bigint(11)</td><td>NO</td><td>下单时间</td></tr>
+                <tr><td>ip</td><td>varchar(16)</td><td>NO</td><td>IP地址</td></tr>
+                <tr><td>postal_code</td><td>varchar(6)</td><td>YES</td><td>收件人邮政编码</td></tr>
+                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+
+            </table>
+        </div>
+    </div>
+
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h3>用户表</h3>
+            <p>数据请求地址 http://test.iot.whark.cn/index/user/add</p>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+
+                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
+                <tr><td>user_id</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+                <tr><td>apikey</td><td>char(32)</td><td>YES</td><td>APIKEY</td></tr>
+                <tr><td>secretkey</td><td>char(32)</td><td>YES</td><td>访问密钥</td></tr>
+                <tr><td>username</td><td>varchar(20)</td><td>NO</td><td>用户名</td></tr>
+                <tr><td>nickname</td><td>varchar(50)</td><td>YES</td><td>昵称</td></tr>
+                <tr><td>email</td><td>varchar(20)</td><td>YES</td><td>邮箱</td></tr>
+                <tr><td>password</td><td>char(32)</td><td>NO</td><td>密码</td></tr>
+                <tr><td>telephone</td><td>char(11)</td><td>YES</td><td>手机号</td></tr>
+                <tr><td>birthday</td><td>varchar(10)</td><td>YES</td><td>生日</td></tr>
+                <tr><td>status</td><td>tinyint(2)</td><td>NO</td><td>状态</td></tr>
+                <tr><td>zcsj</td><td>varchar(10)</td><td>YES</td><td>注册时间</td></tr>
+                <tr><td>zjdl</td><td>varchar(10)</td><td>YES</td><td>最近登录</td></tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h3>商品信息表</h3>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
+                <tr><td>comment_id</td><td>int(8) unsigned</td><td>NO</td><td>ID</td></tr>
+                <tr><td>goods_id</td><td>int(8) unsigned</td><td>YES</td><td>商品ID</td></tr>
+                <tr><td>username</td><td>varchar(50)</td><td>YES</td><td>昵称</td></tr>
+                <tr><td>content</td><td>varchar(250)</td><td>YES</td><td>评论</td></tr>
+                <tr><td>email</td><td>varchar(30)</td><td>YES</td><td>邮箱</td></tr>
+                <tr><td>add_time</td><td>bigint(11)</td><td>YES</td><td>时间</td></tr>
+                <tr><td>ip_address</td><td>varchar(16)</td><td>YES</td><td>IP地址</td></tr>
+                <tr><td>status</td><td>tinyint(2)</td><td>NO</td><td>状态</td></tr>
+                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+
+            </table>
+        </div>
+
+    </div>
+
+    <div style="margin-bottom: 80px">
+
+    </div>
+</div>
+{/block}

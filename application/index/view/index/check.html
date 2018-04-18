@@ -1,0 +1,115 @@
+{extend name="index@base" /}
+
+{block name="title"}请求数据测试{/block}
+
+{block name="page-css"}
+<style>
+    table.hovertable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 16px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+        text-align: center;
+    }
+
+    table.hovertable tr {
+        background-color: #d4e3e5;
+    }
+
+    table.hovertable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table tr:hover {
+        background-color: #bbbbdd;
+    }
+
+    .my-table {
+
+    }
+
+    .my-table .title {
+        padding: 15px 0 0;
+    }
+
+    .my-table .title h4{
+        margin: 0 0 5px;
+        color: #4288ce;
+    }
+
+    .my-table .body {
+        margin-top: 12px;
+    }
+
+</style>
+{/block}
+
+{block name="main"}
+
+<div class="col-lg-10 col-lg-offset-1 col-md-12 main-content">
+
+    <div style="margin: 0px 0 20px">
+        <a class="back" href="{:url('index/Index/iot')}">返回</a>
+        <h2>请求数据测试</h2>
+    </div>
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h4>POST数据</h4>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+
+                <tr><th>字段</th><th>值</th></tr>
+
+                {foreach name="post" item="vo" key="k1"}
+                <tr><td>{$k1}</td><td>{$vo}</td>
+                {/foreach}
+
+            </table>
+        </div>
+    </div>
+
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h4>GET数据</h4>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
+
+                <tr><th>字段</th><th>值</th></tr>
+
+                {foreach name="get" item="g" key="k2"}
+                <tr><td>{$k2}</td><td>{$g}</td>
+                {/foreach}
+
+            </table>
+        </div>
+    </div>
+
+
+
+    <div style="margin-bottom: 80px">
+
+    </div>
+</div>
+{/block}

@@ -1,5 +1,9 @@
-{include file="index/header" title="下单成功"  keywords="物联网智能管理平台" div="centre" /}
+{extend name="index@base" /}
 
-</br></br></br></br></br></br></br></br><h2>恭喜您，下单成功，您的订单号为 {$id} </h2>
+{block name="title"}下单成功{/block}
 
-{include file="index/footer" /}
+{block name="main"}
+
+<h2>恭喜您，下单成功，您的订单号为 {$id} </h2>
+
+{/block}

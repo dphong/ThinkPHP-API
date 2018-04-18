@@ -1,0 +1,263 @@
+{extend name="base" /}
+
+{block name="title"}智能物流系统{/block}
+
+{block name="page-css"}
+
+<style>
+    .navbar-default {
+        margin-bottom: 0px;
+    }
+
+    .index {
+        width: 100%;
+        background-color: rgb(0, 0, 0);
+    }
+
+    .index-picture {
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 550px;
+        background-image: url("/images/index.jpg");
+    }
+
+    .weld-canvas-class {
+        display: inline-block;
+        border-width: 0;
+        border-style: solid;
+        line-height: 1.3;
+        font-size: initial;
+        position: absolute;
+    }
+
+    .index-title {
+        height: 85px;
+        left: 14.6875%;
+        position: absolute;
+        width: 70.625%;
+        z-index: 1;
+    }
+
+    #index-title {
+        top: 286px;
+    }
+
+    #index-subtitle {
+        top: 396px;
+    }
+
+    .title-header {
+        width: 100%;
+        position: static;
+        margin: 40px 0 30px;
+    }
+
+    #avatar-img {
+        width: 100%;
+        position: static;
+        padding: 0 50px;
+    }
+
+    .avatar {
+        height: 600px;
+    }
+
+    @media (max-width: 992px) and (min-width: 500px) {
+        .avatar {
+            height: 360px;
+        }
+    }
+
+    @media (max-width: 499px) {
+        .avatar {
+            height: 250px;
+            padding: 0 20px !important;
+        }
+    }
+
+    .avatar-img {
+        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        background-image: url("/images/author.png");
+        z-index: 2;
+        background-color: black;
+        /*vertical-align: middle;*/
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+    }
+
+    .index-title-div {
+        font-family: Roboto, sans-serif;
+        font-size: 66px;
+        text-align: center;
+        color: rgb(255, 255, 255);
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+    }
+
+    #title {
+        font-size: 66px;
+    }
+
+    #subtitle {
+        font-size: 22px;
+    }
+
+    .index-developer {
+        height: 710px;
+    }
+
+    .index-video {
+        height: 500px;
+    }
+
+    .index-device {
+        height: 650px;
+        margin-bottom: 100px;
+    }
+
+    .device {
+        height: 500px;
+        background-image: url("/images/device.png");
+        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        z-index: 2;
+        background-color: black;
+        /*vertical-align: middle;*/
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin: 0 0 30px;
+    }
+
+    .video {
+        height: 500px;
+        background-image: url("/images/video.png");
+        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        z-index: 2;
+        background-color: black;
+        /*vertical-align: middle;*/
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin: 30px 0 10px;
+    }
+
+    .index-footer {
+        height: 500px;
+        background-image: url("/images/about.png");
+        min-height: 100%;
+        max-width: 100%;
+        max-height: 100%;
+        z-index: 2;
+        background-color: black;
+        /*vertical-align: middle;*/
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin-bottom: 30px;
+    }
+
+    .index-footer .index-about {
+        width: 100%;
+        position: static;
+        margin: 40px 0 30px;
+    }
+
+    .index-footer .index-link {
+
+    }
+</style>
+
+{/block}
+
+{block name="main"}
+
+<div class="index">
+    <div class="index-picture">
+        <a class="index-title" id="index-title">
+            <div class="index-title-div">
+                <p id="title">让物流更智能</p>
+            </div>
+        </a>
+
+        <a class="index-title" id="index-subtitle">
+            <div class="index-title-div">
+                <p id="subtitle">Internet Of Things</p>
+            </div>
+        </a>
+    </div>
+
+    <div class="index-developer">
+        <div class="title-header">
+            <div class="index-title-div">
+                <p style="font-size: 36px;">开发者简介</p>
+            </div>
+        </div>
+
+        <div class="avatar" id="avatar-img">
+            <div class="avatar-img">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="index-device">
+        <div class="title-header">
+            <div class="index-title-div">
+                <p style="font-size: 36px;">当前设备范围</p>
+
+            </div>
+        </div>
+
+        <div class="device">
+
+        </div>
+
+    </div>
+
+    <div class="index-video">
+        <div class="title-header">
+            <div class="index-title-div">
+                <p style="font-size: 36px;">VIDEOS</p>
+
+            </div>
+
+            <div class="video">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="index-footer">
+        <div class="title-header">
+            <div class="index-title-div">
+                <!--<p style="font-size: 36px;">About Polygon</p>-->
+            </div>
+        </div>
+
+        <div class="index-link">
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+{/block}
+
+
+{block name="page-footer-js"}
+
+
+{/block}

@@ -1,0 +1,26 @@
+{extend name="index@base" /}
+
+{block name="title"}相关开发文档{/block}
+
+{block name="main"}
+
+<div>
+    {include file="user/sidebar" /}
+    <div class="col-lg-10 col-md-10 main-content">
+
+        <div>
+            {include file="user/breadcrumb" active="查看数据"/}
+
+            <div class="text-center">
+                <h2 style="margin-top: 40px">智能物流系统持续开发中...</h2></br>
+
+                <p style="line-height: 50px">数据库表，插入数据按照这上面的变量名统一命名， <a href="/sql">http://iot.wlwshow.cn/sql</a></p>
+                <p style="line-height: 50px">Web端我要寄件示例表， <a href="/send">http://iot.wlwshow.cn/send</a></p>
+                <p style="line-height: 50px">POST和GET数据检测示例网页 <a href="/check">http://iot.wlwshow.cn/check</a></p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{/block}

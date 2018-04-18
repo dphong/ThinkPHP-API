@@ -1,60 +1,104 @@
-{include file="index/header" title="个人中心"  keywords="物联网智能管理平台" /}
+{extend name="base" /}
 
-<div class="auto1 pb30 pt20">
+{block name="title"}用户中心{/block}
+
+{block name="main"}
+
+<div>
     {include file="user/sidebar" /}
-        <div class="rmain1">
-            <div class="intro"><a href="/">用户中心</a>&gt;&nbsp;基本资料</div>
-            <div id="uiblc">
-                <table class="table1">
-                    <tbody><tr id="usertr">
-                        <th>用户名：</th>
-                        <td id="username">{$list->username}</td>
-                    </tr>
-                    <tr id="APIKeytr">
-                        <th>APIKey：</th>
-                        <td>
-                            <span id="APIKey">{$list->apikey}</span>
-                            <span style="display: none;" id="resetbtntd"><a href="javascript:void(0)" id="resetbtn" onclick="regenerate()"></a></span>
-                            <p id="APIKeytrerror" style="display: none"><span class="errorLabel" id="APIKeyerror"></span></p>
-                        </td>
-                    </tr>
+    <div class="col-lg-10 col-md-10 main-content">
+        {include file="user/breadcrumb" active="基本资料"/}
 
-                    <tr id="nicknametr">
-                        <th> 昵称：</th>
-                        <td>
-                            <span id="nickname">{$list->nickname}</span>
-                            <p id="nicknametrerror" style="display: none"><span class="errorLabel" id="nicknameerror"></span></p>
-                        </td>
-                    </tr>
+        <div>
+            <table class="table table-striped table-bordered table-hover table-padding-12">
+                <tbody class="text-center">
+                <tr id="username">
+                    <th class="text-center">用户名</th>
+                    <td class="user-info">{$user->username}</td>
+                </tr>
+                <tr id="apikey">
+                    <th class="text-center">APIKey</th>
+                    <td class="input">{$user->apikey}</td>
+                </tr>
+                <tr id="nickname">
+                    <th class="text-center">昵称</th>
+                    <td class="user-info">{$user->nickname}</td>
+                </tr>
+                <tr id="telephone">
+                    <th class="text-center">手机号</th>
+                    <td class="user-info">{$user->telephone}</td>
+                </tr>
+                <tr id="email">
+                    <th class="text-center">邮箱</th>
+                    <td class="user-info">{$user->email}</td>
+                </tr>
+                <tr hidden>
+                    <th class="text-center">用户ID</th>
+                    <td class="user-info" id="user-id">{$user->user_id}</td>
+                </tr>
+                </tbody>
 
-                    <tr id="telephonetr">
-                        <th> 手机号：</th>
-                        <td>
-                            <span id="telephone">{$list->telephone}</span>
-                            <p id="telephonetrerror" style="display: none"><span class="errorLabel" id="telephoneerror"></span></p>
-                        </td>
-                    </tr>
-                    <tr id="emailtr">
-                        <th> 邮箱：</th>
-                        <td>
-                            <span id="email">{$list->email}</span>
-                            <p id="emailtrerror" style="display: none"><span class="errorLabel" id="emailerror"></span></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td id="editOrsave">
-                            <a href="javascript:void(0)" id="edituser" onclick="editUserInfo()" class="btn1 mt10">编辑</a>
-                        </td>
-                    </tr>
-                </tbody></table>
+            </table>
 
-                <div style="display: none"><input type="text" id="userType"></input></div>
-            </div>
-
-
+            <!--<button class="btn btn-default button-center" id="btn-edit" onclick="edit()">编辑</button>-->
         </div>
-
     </div>
 
-{include file="index/footer" /}
+</div>
+
+{/block}
+
+{block name="page-footer-js"}
+<script>
+    var $ = jQuery;
+    $(function(){
+
+        $('table td').click(function(){
+            if(!$(this).is('.input')){
+                var old_value = $(this).text();
+                $(this).addClass('input').html('<input class="text-center" style="width: 21em;" value="'+ $(this).text() +'" />').find('input').focus().blur(function(){
+//                            var thisid = $(this).parent().siblings("th:eq(0)").text();
+                    var thisid = $(this).parent().parent().attr("id");
+                    var thisvalue = $(this).val();
+                    var userId = document.getElementById("user-id").innerHTML;
+
+                    if (thisvalue !== old_value) {
+                        $.ajax({
+                            type: 'PUT',
+                            url: '/users/' + userId,
+                            data: thisid + "=" + thisvalue
+                        })
+                            .done(function (data) {
+                                if (data.status === -1) {
+                                    console.log(old_value);
+                                    $("#" + thisid).children('td').text(old_value);
+                                }
+                                showMsg(data.msg);
+                            })
+                            .fail(function (data) {
+                                $("#" + thisid).children('td').text(old_value);
+                                showMsg("更新失败");
+                            });
+                    }
+                    $(this).parent().removeClass('input').html($(this).val() || 0);
+                });
+            }
+        }).hover(function(){
+            $(this).addClass('hover');
+        },function(){
+            $(this).removeClass('hover');
+        });
+
+    });
+
+    function showMsg(msg)
+    {
+        $(".msg").text(msg);
+        $(".msg_box").show();
+        setTimeout(function () {
+            $(".msg_box").fadeOut();
+        }, 2000)
+    }
+</script>
+
+{/block}

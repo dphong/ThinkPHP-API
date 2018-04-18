@@ -1,9 +1,22 @@
-{include file="api@index/header" title="智能物流系统"  keywords="物联网智能管理平台" /}
+{extend name="index@base" /}
 
-<h2>智能物流系统持续开发中...</h2></br>
+{block name="title"}相关开发文档{/block}
 
-数据库表，插入数据按照这上面的变量名统一命名， <a href="/sql">http://iot.wlwshow.cn/sql</a></br></br>
-Web端我要寄件示例表， <a href="/send">http://iot.wlwshow.cn/send</a></br></br>
-POST和GET数据检测示例网页  <a href="/check">http://iot.wlwshow.cn/check</a></br></br>
+{block name="page-css"}
+<style>
+    p {
+        line-height: 50px;
+    }
+</style>
+{/block}
 
-{include file="api@index/footer"}
+{block name="main"}
+<div class="text-center">
+    <h2 style="margin-top: 40px">智能物流系统持续开发中...</h2></br>
+
+    <p>数据库字典， <a href="{:url('index/index/sql')}">https://iot.whark.cn/sql</a></p>
+    <!--<p>数据库表，插入数据按照这上面的变量名统一命名， <a href="{:url('index/index/sql')}">https://iot.whark.cn/sql</a></p>-->
+    <p>Web端我要寄件示例表， <a href="{:url('index/index/send')}">https://iot.whark.cn/send</a></p>
+    <p>POST和GET请求数据测试，<a href="{:url('index/index/check')}">https://iot.whark.cn/check</a></p>
+</div>
+{/block}

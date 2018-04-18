@@ -1,184 +1,223 @@
-{include file="index/header" title="注册用户"  keywords="物联网智能管理平台" /}
+{extend name="base" /}
+
+{block name="title"}用户注册{/block}
+
+{block name="page-js"}
+
 <script type="text/javascript" src="__PUBLIC__/js/Validform_v5.3.2.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/passwordStrength.js"></script>
 
-<h2>注册用户</h2>
+{/block}
 
-<FORM method="post" class="login center" action="{:url('/index/user/add')}">
-    <table width="100%" style="table-layout:fixed;">
-        <tbody>
-            <tr>
-                <td class="need" style="width:10px;">*</td>
-                <td style="width:80px;">用户名：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" name="username" ajaxurl="/index/user/valid" datatype="*3-16,u|z" sucmsg=" "  nullmsg="请输入用户名" errormsg="用户名仅支持字母、数字和下划线,且不能以数字开头" />
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">用户名至少3个字符，最多16个字符
-                        <span class="dec">
-                            <s class="dec1">◆</s>
-                            <s class="dec2">◆</s>
-                        </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;">*</td>
-                <td style="width:80px;">密码：</td>
-                <td style="width:240px;">
-                    <input type="password" class="inputtxt" name="password" plugin="passwordStrength" datatype="*6-18" sucmsg=" "  nullmsg="请输入密码"  errormsg="密码格式错误，请重新输入" />
-                    <div class="passwordStrength" style="display:block;"><b>密码强度：</b> <span>弱</span><span>中</span><span class="last">强</span></div>
-                </td>
-                <td>
+{block name="main"}
+
+<div class="div-center-380" style="height: 690px">
+    <h2>注册用户</h2>
+    <div class="text-center col-lg-10 col-lg-offset-1">
+
+
+        <FORM method="post" class="login form text-center" action="/index/user/add">
+            <table style="width: 100%;">
+                <tbody>
+                <tr class="col-lg-offset-1">
+                    <td class="col-lg-2 col-sm-1 col-xs-1 need"><p class="text-right">*</p></td>
+                    <td class="col-lg-2 col-sm-2 col-xs-2 vertical-inherit">用户名：</td>
+                    <td class="col-lg-3 col-sm-2 col-xs-2 ">
+                        <input type="text" class="inputtxt" name="username" ajaxurl="/index/user/valid"
+                               datatype="*3-16,u|z"
+                               sucmsg=" " nullmsg="请输入用户名" errormsg="用户名仅支持字母、数字和下划线,且不能以数字开头"/>
+                    </td>
+                    <td class="col-lg-5 col-sm-5 col-xs-5 ">
                         <div class="Validform_checktip"></div>
-                        <div class="info">密码至少6个字符，最多18个字符<span class="dec"><s class="dec1">◆</s><s class="dec2">◆</s></span></div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;">*</td>
-                <td style="width:80px;">确认密码：</td>
-                <td style="width:240px;">
-                    <input type="password" class="inputtxt" name="repassword" recheck="password" datatype="*6-18" sucmsg=" " nullmsg="请确认密码" errormsg="两次密码输入不一致" />
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">请确认密码
-                        <span class="dec">
+                        <div class="info">用户名至少3个字符，最多16个字符
+                            <span class="dec">
                             <s class="dec1">◆</s>
                             <s class="dec2">◆</s>
                         </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;">*</td>
-                <td style="width:80px;">电子邮箱：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" name="email" datatype="e" sucmsg=" "  nullmsg="请输入电子邮箱" />
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">请输入电子邮箱
-                        <span class="dec">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="need"><p class="text-right">*</p></td>
+                    <td class="vertical-inherit">密码：</td>
+                    <td>
+                        <input type="password" class="inputtxt" name="password" plugin="passwordStrength"
+                               datatype="*6-18"
+                               sucmsg=" " nullmsg="请输入密码" errormsg="密码格式错误，请重新输入"/>
+                        <div class="passwordStrength"><b>密码强度：</b> <span>弱</span><span>中</span><span
+                                class="last">强</span>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">密码至少6个字符，最多18个字符<span class="dec"><s class="dec1">◆</s><s
+                                class="dec2">◆</s></span></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="need"><p class="text-right">*</p></td>
+                    <td class="vertical-inherit">确认密码：</td>
+                    <td>
+                        <input type="password" class="inputtxt" name="repassword" recheck="password" datatype="*6-18"
+                               sucmsg=" " nullmsg="请确认密码" errormsg="两次密码输入不一致"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">请确认密码
+                            <span class="dec">
                             <s class="dec1">◆</s>
                             <s class="dec2">◆</s>
                         </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:80px;">昵称：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" ignore="ignore" datatype="*1-49,zh1-16" name="nickname" sucmsg=" "  nullmsg="请输入昵称" errormsg="昵称格式错误，请重新填写" />
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">昵称可以是中文，但不得包含特殊字符
-                        <span class="dec">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="need"><p class="text-right">*</p></td>
+                    <td class="vertical-inherit">电子邮箱：</td>
+                    <td>
+                        <input type="text" class="inputtxt" name="email" datatype="e" sucmsg=" " nullmsg="请输入电子邮箱"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">请输入电子邮箱
+                            <span class="dec">
                             <s class="dec1">◆</s>
                             <s class="dec2">◆</s>
                         </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:80px;">手机号码：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" ignore="ignore" datatype="m" name="telephone" sucmsg=" " nullmsg="请输入手机号码" errormsg="请输入正确的手机号码" />
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">请输入11位手机号码
-                        <span class="dec">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="text-right"></p></td>
+                    <td class="vertical-inherit">昵称：</td>
+                    <td>
+                        <input type="text" class="inputtxt" ignore="ignore" datatype="*1-49,zh1-16" name="nickname"
+                               sucmsg=" " nullmsg="请输入昵称" errormsg="昵称格式错误，请重新填写"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">昵称可以是中文，但不得包含特殊字符
+                            <span class="dec">
                             <s class="dec1">◆</s>
                             <s class="dec2">◆</s>
                         </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;">*</td>
-                <td style="width:70px;">验证码：</td>
-                <td style="width:240px;">
-                    <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false" name="code" datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误" />
-                </td>
-                <td>
-                    <div class="Validform_checktip"></div>
-                    <div class="info">请输入验证码，不区分大小写
-                        <span class="dec">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><p class="text-right"></p></td>
+                    <td class="vertical-inherit">手机号码：</td>
+                    <td>
+                        <input type="text" class="inputtxt" ignore="ignore" datatype="m" name="telephone" sucmsg=" "
+                               nullmsg="请输入手机号码" errormsg="请输入正确的手机号码"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">请输入11位手机号码
+                            <span class="dec">
                             <s class="dec1">◆</s>
                             <s class="dec2">◆</s>
                         </span>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td class="need" style="width:10px;"></td>
-                <td style="width:70px;"></td>
-                <td style="width:200px;">
-                    <div id="captcha_image" style="width:200px;"><div><img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/></div>
-                </td>
-                <td>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="need"><p class="text-right">*</p></td>
+                    <td class="vertical-inherit">验证码：</td>
+                    <td>
+                        <input type="text" class="inputtxt" ajaxurl="/index/user/code" validform_valid="false"
+                               name="code"
+                               datatype="n4-4|s4-4" sucmsg=" " nullmsg="请输入验证码" errormsg="验证码错误"/>
+                    </td>
+                    <td>
+                        <div class="Validform_checktip"></div>
+                        <div class="info">请输入验证码，不区分大小写
+                            <span class="dec">
+                            <s class="dec1">◆</s>
+                            <s class="dec2">◆</s>
+                        </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td class="vertical-inherit"></td>
+                    <td>
+                        <div id="captcha_image" class="text-center">
+                            <div>
+                                <img src="{:captcha_src()}" alt="captcha" style="margin-left: 5px;"/>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
 
-                </td>
-            </tr>
-        </tbody>
-    </table>
-<input type="hidden" name="flag" value=1 />
-<INPUT type="submit" style="margin: 10px 0px 0px 150px;" class="button button-rounded button-small button-primary" value="注册">
-<br/><p style="margin: 25px 0px 0px 140px;" >已有账号？<a href="/login">登录</a></p>
-</FORM>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <input type="hidden" name="flag" value=1/>
+            <INPUT type="submit" style="width: 8em;" class="btn btn-success" value="注册">
+            <br/>
+            <p style="margin-top: 20px">已有账号？<a href="/login">登录</a></p>
+        </FORM>
+    </div>
+</div>
+
+{/block}
+
+
+{block name="page-footer-js"}
 
 <script>
-    $('#captcha_image').click(function(){
-        $(this).find('img').attr('src','/captcha.html?r='+Math.random());
-        $("#inputtxt")[2].validform_valid="false";
+    $('#captcha_image').click(function () {
+        $(this).find('img').attr('src', '/captcha.html?r=' + Math.random());
+        $("#inputtxt")[2].validform_valid = "false";
     });
 </script>
 <script>
 
-$(function(){
-	var getInfoObj=function(){
-			return 	$(this).parents("td").next().find(".info");
-		}
-	$("[datatype]").focusin(function(){
-		if(this.timeout){clearTimeout(this.timeout);}
-		var infoObj=getInfoObj.call(this);
-		if(infoObj.siblings(".Validform_right").length!=0){
-			return;	
-		}
-		infoObj.show().siblings().hide();
-		
-	}).focusout(function(){
-		var infoObj=getInfoObj.call(this);
-		this.timeout=setTimeout(function(){
-			infoObj.hide().siblings(".Validform_wrong,.Validform_loading,.Validform_right").show();
-		},0);
-		
-	});
-	
-	$(".login").Validform({
-		tiptype:2,
-                showAllError:true,
-                ajaxPost:false,
-		usePlugin:{
-			passwordstrength:{
-				minLen:6,
-				maxLen:18,
-				trigger:function(obj,error){
-					if(error){
-						obj.parent().next().find(".passwordStrength").hide().siblings(".info").show();
-                                                //obj.parent().next().find(".Validform_checktip").show();
-					}else{
-						obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();	
-					}
-				}
-			}
-		}
-	});
-})
+    $(function () {
+        var getInfoObj = function () {
+            return $(this).parents("td").next().find(".info");
+        }
+        $("[datatype]").focusin(function () {
+            if (this.timeout) {
+                clearTimeout(this.timeout);
+            }
+            var infoObj = getInfoObj.call(this);
+            if (infoObj.siblings(".Validform_right").length != 0) {
+                return;
+            }
+            infoObj.show().siblings().hide();
+
+        }).focusout(function () {
+            var infoObj = getInfoObj.call(this);
+            this.timeout = setTimeout(function () {
+                infoObj.hide().siblings(".Validform_wrong,.Validform_loading,.Validform_right").show();
+            }, 0);
+
+        });
+
+        $(".login").Validform({
+            tiptype: 2,
+            showAllError: true,
+            ajaxPost: false,
+            usePlugin: {
+                passwordstrength: {
+                    minLen: 6,
+                    maxLen: 18,
+                    trigger: function (obj, error) {
+                        if (error) {
+                            obj.parent().next().find(".passwordStrength").hide().siblings(".info").show();
+                            //obj.parent().next().find(".Validform_checktip").show();
+                        } else {
+                            obj.removeClass("Validform_error").parent().next().find(".passwordStrength").show().siblings().hide();
+                        }
+                    }
+                }
+            }
+        });
+    })
 </script>
-{include file="index/footer" /}
+
+{/block}

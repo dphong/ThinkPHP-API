@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{block name="title"}智能物流系统{/block}</title>
+
+    {block name="keywords"}<meta name="keywords" content="智能物流系统 API">{/block}
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/common.css">-->
+    <!--<link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/buttons.min.css">-->
+    <!--<link charset="utf-8" rel="stylesheet" href="__PUBLIC__/css/style.min.css">-->
+    <!--<script type="text/javascript" src="__PUBLIC__/js/jquery-1.10.2.min.js"></script>-->
+
+
+    <!--<link charset="utf-8" rel="stylesheet" href="/static/common.css">-->
+    <!--<link charset="utf-8" rel="stylesheet" href="/static/buttons.min.css">-->
+    <link charset="utf-8" rel="stylesheet" href="/static/style.min.css">
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script type="text/javascript" src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+
+    </style>
+
+    {block name="page-css"}{/block}
+
+    {block name="page-js"}{/block}
+</head>
+<body>
+
+<div class="container">
+
+    <div class="msg_box">
+        <p class="msg" id="msg">更新成功</p>
+    </div>
+
+    {block name="menu"}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Internet Of Things</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="{:url('index/User/home')}">开发者中心<span class="sr-only">(current)</span></a></li>
+                    <li><a href="{:url('api/Index/sample')}">API接口示例</a></li>
+                    <li><a href="{:url('index/Index/iot')}">相关开发文档</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{:url('index/Message/index')}">通知</a></li>
+
+                    {eq name="$user.username|default=''" value=""}
+                    <li><a href="{:url('index/User/login')}">登录</a></li>
+                    {else/}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{$user.username}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{:url('index/User/home')}">我的信息</a></li>
+                            <li><a href="{:url('index/User/data')}">查看数据</a></li>
+                            <li><a href="{:url('index/User/resetPassword')}">修改密码</a></li>
+                            <li><a href="{:url('index/User/logout')}">退出</a></li>
+                            <!--<li role="separator" class="divider"></li>-->
+                            <!--<li><a href="#">Separated link</a></li>-->
+                        </ul>
+                    </li>
+                    {/eq}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {/block}
+
+
+    {block name="main"}
+    {/block}
+
+
+    {block name="footer"}
+    <footer class="footer navbar-fixed-bottom text-center" id="footer">
+        Copyright &copy; <?php echo '2017-',date("Y");?> <a class="footer-icp" href="/">物联网智能管理平台</a> &nbsp;&nbsp;
+        <a class="footer-icp" href="http://www.miitbeian.gov.cn/">皖ICP备17005522号-1</a>
+    </footer>
+    {/block}
+</div>
+{block name="page-footer-js"}{/block}
+
+</body>
+
+</html>

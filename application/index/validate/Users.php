@@ -27,5 +27,9 @@ class Users extends Validate
             return true;
         else
             return "邮箱必须包含 $rule 域名";
-    }    
+    }
+
+    protected $scene = [
+        'edit'  =>  ['name','age'],
+    ];
 }

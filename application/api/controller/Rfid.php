@@ -6,6 +6,7 @@
  */
 
 namespace app\api\controller;
+use app\index\controller\BaseController;
 use think\Controller;
 use think\Db;
 use think\Url;
@@ -19,17 +20,12 @@ use app\common\util\Myclass;
  *
  * @author HDP
  */
-class Rfid extends Controller{
+class Rfid extends BaseController {
     //模板位置申明
     function __construct()
     {
+        $this->while_rule = false;
         parent::__construct();
-        $this->view->replace(['__PUBLIC__'    =>  'https://whark.oss-cn-hangzhou.aliyuncs.com/thinkphp-api']);
-    }
-    
-    //index
-    public function index()
-    {
     }
     
     //数据插入
@@ -80,32 +76,13 @@ class Rfid extends Controller{
            
     //只查maps表
     public function show() {
-//        $request = Request::instance();
-//        if($request->cookie('uid'))
-//        {
-//            $uid = $request->cookie('uid');
-//            //$list = Db::name('rfids')->where('uid',$uid)->paginate(10);
-//            $rfid = new Rfids();
-//            $list = $rfid->where('uid',$uid)->paginate(10);
-//            $this->assign('list',$list);
-////            $list2 = Rfids::all(['uid'=>$uid]);
-////            $this->assign('list',$list2);
-//            return $this->fetch();
-//        } else {
-//            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
-//            echo '<script language=javascript>window.location.href="/login"</script>';
-//        }
         /*
          * 修复查看数据界面，已登录用户，状态显示异常，并实现分页   DpHong  2017.5.17
          */
         $request = Request::instance();
-        $myclass = new Myclass();
-        $user = $myclass->isLogin();
-        $uid = $request->cookie('uid');
         $rfid = new Rfids();
-        $list = $rfid->where('uid',$uid)->paginate(8);
+        $list = $rfid->where('uid',$this->userId)->paginate(8);
         $this->assign('list',$list);
-        $this->assign('user',$user);
         return $this->fetch();
     }
   
@@ -147,27 +124,5 @@ class Rfid extends Controller{
                 'message' => 203,
                 'data'   => '',
         ));
-    }
-    
-    //示例POST上传
-    public function position() {
-        session_start();
-        //echo $_SESSION['idErr'];
-        if(!empty($_SESSION['idErr']) || !empty($_SESSION['c_userErr']))
-        {
-            $this->assign('idErr',$_SESSION['idErr']);
-            $this->assign('c_userErr',$_SESSION['c_userErr']);
-            $this->assign('id', $_SESSION['id']);
-            $this->assign('c_user',$_SESSION['c_user']);
-        } else
-        {
-            $this->assign('idErr',"");
-            $this->assign('c_userErr',"");
-            $this->assign('id', "");
-            $this->assign('c_user',"");
-        }
-        //echo '';
-        $_SESSION['idErr']=$_SESSION['c_userErr']="";
-        return $this->fetch();
     }
 }
