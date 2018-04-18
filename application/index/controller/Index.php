@@ -2,20 +2,8 @@
 
 namespace app\index\controller;
 
-use think\Controller;
-use think\Db;
-use think\Url;
-use think\Log;
 use think\Request;
 use app\index\model\Users;
-use app\index\model\UserLevel;
-use app\index\model\Test;
-use app\index\model\Region;
-use app\index\model\ShippingArea;
-use org\util\ArrayList;
-use app\common\util\Myclass;
-use think\Session;
-use think\Cookie;
 
 class Index extends BaseController
 {
@@ -61,9 +49,7 @@ class Index extends BaseController
         $result = $this->validate($data, 'Users');   // 数据验证
         if (input('post.flag') == 1) {
             if (true !== $result) {
-                echo "<script language=javascript>alert ('" . $result . "');</script>";
-                echo '<script language=javascript>window.location.href="/reg"</script>';
-                return;
+                self::jumpToUrl('/reg');
             }
         } else if (input('post.flag') == 2) {
             if (true !== $result) {
@@ -71,14 +57,9 @@ class Index extends BaseController
                     'status' => -1,
                     'message' => $result,
                 ));
-                //echo "<script language=javascript>alert ('" . $result  ."');</script>";
-                //echo '<script language=javascript>window.location.href="/reg"</script>';
-                return;
             }
         } else {
-            echo "<script language=javascript>alert ('错误的提交');</script>";
-            echo '<script language=javascript>window.location.href="/send"</script>';
-            return;
+            self::jumpToUrl(url('index/Index/send'), '错误的提交');
         }
         $users = new Users;
         $users->allowField(true)->save($data);  // 数据保存
@@ -101,7 +82,6 @@ class Index extends BaseController
     {
         $request = Request::instance();
         $post_data = input('post.');
-
         $get_data = input('get.');
 
         $this->assign('post', $post_data);

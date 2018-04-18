@@ -1,9 +1,4 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this tempc_usere file, choose Tools | Tempc_useres
- * and open the tempc_usere in the editor.
- */
 
 namespace app\api\controller;
 use app\index\controller\BaseController;
@@ -14,7 +9,6 @@ use app\api\model\Users;
 use think\Validate;
 use app\api\model\LogisticsTable;
 use think\Request;
-use app\common\util\Myclass;
 /**
  * Description of map
  *
@@ -25,6 +19,11 @@ class Logistics extends BaseController {
     function __construct()
     {
         $this->while_rule = false;
+
+        $this->rule = [
+            'show',
+        ];
+
         parent::__construct();
     }
     
@@ -54,28 +53,30 @@ class Logistics extends BaseController {
             ));
         } else {
             //查询apikey
-            $user = Users::get(['apikey'=> $request->param('apikey')]);
-            if($user)
+            if($this->userInfo)
             {
+                $allData = input('post.') + input('get.');
                 $logistics = new LogisticsTable();
-                $logistics->send_name = Request::instance()->isGet() ? input('get.send_name') : input('post.send_name');
-                $logistics->send_phone = Request::instance()->isGet() ? input('get.send_phone') : input('post.send_phone');
-                $logistics->send_province = Request::instance()->isGet() ? input('get.send_province') : input('post.send_province');
-                $logistics->send_address = Request::instance()->isGet() ? input('get.send_address') : input('post.send_address');
-                $logistics->receive_name = Request::instance()->isGet() ? input('get.receive_name') : input('post.receive_name');
-                $logistics->receive_phone = Request::instance()->isGet() ? input('get.receive_phone') : input('post.receive_phone');
-                $logistics->receive_province = Request::instance()->isGet() ? input('get.receive_province') : input('post.receive_province');
-                $logistics->receive_address = Request::instance()->isGet() ? input('get.receive_address') : input('post.receive_address');
-                $logistics->object_type = Request::instance()->isGet() ? input('get.object_type') : input('post.object_type');
-                $logistics->object_weight = Request::instance()->isGet() ? input('get.object_weight') : input('post.object_weight');
-                
-                $logistics->object_remark = $request->param('object_remark');
+                $logistics->send_name = $allData['send_name'];
+                $logistics->send_phone = $allData['send_phone'];
+                $logistics->send_province = $allData['send_province'];
+                $logistics->send_address = $allData['send_address'];
+                $logistics->receive_name = $allData['receive_name'];
+                $logistics->receive_phone = $allData['receive_phone'];
+
+                $logistics->receive_province = $allData['receive_province'];
+                $logistics->receive_address = $allData['receive_address'];
+
+                $logistics->object_type = $allData['object_type'];
+                $logistics->object_weight = $allData['object_weight'];
+                $logistics->object_remark = $allData['object_remark'];
+
                 $logistics->pickup_time = $request->param('pickup_time');
                 $logistics->pickup_remark = $request->param('pickup_remark');
                 $logistics->order_price = $request->param('order_price');
                 $logistics->postal_code = $request->param('postal_code');
                 
-                $logistics->uid = $user->user_id;
+                $logistics->uid = $this->userId;
                 $logistics->allowField(true)->save($logistics);
             } else {
                 return json(array(
@@ -86,8 +87,7 @@ class Logistics extends BaseController {
             
             if(isset($_GET['data_type']))
             {
-                $this->assign('id',$logistics->id);
-                return $this->fetch();
+                $this->success("恭喜您，下单成功，您的订单号为 {$logistics->id} ，页面跳转中...", url('index/Index/index'));
             } else {
                 //数据API使用时，返回JSON数据
                 return json(array(
@@ -98,34 +98,14 @@ class Logistics extends BaseController {
         }
     }
            
-    //只查maps表
+    //只查logistics表
     public function show() {
-//        $request = Request::instance();
-//        if($request->cookie('uid'))
-//        {
-//            $uid = $request->cookie('uid');
-//            //$list = Db::name('logisticss')->where('uid',$uid)->paginate(10);
-//            $logistics = new Logistics();
-//            $list = $logistics->where('uid',$uid)->paginate(10);
-//            $this->assign('list',$list);
-////            $list2 = Logistics::all(['uid'=>$uid]);
-////            $this->assign('list',$list2);
-//            return $this->fetch();
-//        } else {
-//            echo "<script language=javascript>alert ('" . "请登录"  ."');</script>";
-//            echo '<script language=javascript>window.location.href="/login"</script>';
-//        }
         /*
          * 修复查看数据界面，已登录用户，状态显示异常，并实现分页   DpHong  2017.5.17
          */
-        $request = Request::instance();
-        $myclass = new Myclass();
-        $user = $myclass->isLogin();
-        $uid = $request->cookie('uid');
-        $logistics = new Logistics();
-        $list = $logistics->where('uid',$uid)->paginate(8);
+        $logistics = new LogisticsTable();
+        $list = $logistics->where('uid',$this->userId)->paginate(8);
         $this->assign('list',$list);
-        $this->assign('user',$user);
         return $this->fetch();
     }
   
@@ -167,28 +147,5 @@ class Logistics extends BaseController {
                 'message' => 203,
                 'data'   => '',
         ));
-    }
-    
-    //示例POST上传
-    public function position() {
-        session_start();
-        //echo $_SESSION['idErr'];
-        if(!empty($_SESSION['idErr']) || !empty($_SESSION['c_userErr']))
-        {
-            $this->assign('idErr',$_SESSION['idErr']);
-            $this->assign('c_userErr',$_SESSION['c_userErr']);
-            $this->assign('id', $_SESSION['id']);
-            $this->assign('c_user',$_SESSION['c_user']);
-        } else
-        {
-            $this->assign('idErr',"");
-            $this->assign('c_userErr',"");
-            $this->assign('id', "");
-            $this->assign('c_user',"");
-        }
-        //echo '';
-        $_SESSION['idErr']=$_SESSION['c_userErr']="";
-        return $this->fetch();
-        
     }
 }

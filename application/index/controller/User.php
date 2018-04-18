@@ -111,7 +111,7 @@ class User extends BaseController
         $id = $users->user_id;
         $users->apikey = createApi($id);    //根据ID创建API并保存
         $users->password = createPasswd(input('post.password'));
-        $users->zcsj = time();
+        $users->created_at = time();
         $users->save($users);
         if (input('post.flag') == 1) {
             $this->success('创建用户成功，请登录，页面跳转中...', url('index/User/login'));
@@ -151,7 +151,7 @@ class User extends BaseController
                     }
                 }
 
-                $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
+                $validate = createPasswd($user->user_id . $user->username . $user->created_at);
                 cookie('uid', $user->user_id, 31536000);
                 cookie('validate', $validate, 2592000);
                 $this->assign('user', $user);

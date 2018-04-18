@@ -8,7 +8,7 @@ class Users extends Model
     protected function getUserStatusAttr($value)
     {       
         return '正常';
-    }    
+    }
     
     
 //    // 定义关联方法

@@ -43,7 +43,7 @@ class BaseController extends Controller
         $request = Request::instance();
         if ($request->cookie('uid')) {
             $user = Users::get(['user_id' => $request->cookie('uid')]);
-            $validate = createPasswd($user->user_id . $user->username . $user->zcsj);
+            $validate = createPasswd($user->user_id . $user->username . $user->created_at);
             if ($request->cookie('validate') === $validate) {
                 $this->userId = $request->cookie('uid');
                 $this->userInfo = $user;
