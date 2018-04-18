@@ -1,0 +1,92 @@
+{extend name="index@base" /}
+
+{block name="title"}请求数据测试{/block}
+
+{block name="page-css"}
+<style>
+    table.hovertable {
+        font-family: verdana, arial, sans-serif;
+        font-size: 16px;
+        color: #333333;
+        border-width: 1px;
+        border-color: #999999;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+    table.hovertable th {
+        background-color: #c3dde0;
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+        text-align: center;
+    }
+
+    table.hovertable tr {
+        background-color: #d4e3e5;
+    }
+
+    table.hovertable td {
+        border-width: 1px;
+        padding: 8px;
+        border-style: solid;
+        border-color: #a9c6c9;
+    }
+
+    table tr:hover {
+        background-color: #bbbbdd;
+    }
+
+    .my-table {
+
+    }
+
+    .my-table .title {
+        padding: 15px 0 0;
+    }
+
+    .my-table .title h4{
+        margin: 0 0 5px;
+        color: #4288ce;
+    }
+
+    .my-table .body {
+        margin-top: 12px;
+    }
+
+</style>
+{/block}
+
+{block name="main"}
+
+<div class="col-lg-10 col-lg-offset-1 col-md-12 main-content">
+
+    <div style="margin: 0px 0 20px">
+        <a class="back" href="{:url('index/Index/iot')}">返回</a>
+        <h2>请求数据测试</h2>
+    </div>
+
+
+    <div class="my-table">
+
+        <div class="title text-center">
+        </div>
+
+        <div class="body">
+            {foreach name="post" item="vo"}
+            {$vo.key}:{$vo.value}
+            {/foreach}
+            {foreach name="get" item="g" key='k2'}
+            {$k2}|{$g[0]}
+            {/foreach}
+        </div>
+    </div>
+
+
+
+    <div style="margin-bottom: 80px">
+
+    </div>
+</div>
+{/block}

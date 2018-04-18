@@ -101,13 +101,13 @@ class Index extends BaseController
     {
         $request = Request::instance();
         $post_data = input('post.');
-        echo '<center>';
-        echo '</br><h3>POST:</h3></br><h2>';
-        dump($post_data);
+
         $get_data = input('get.');
-        echo '</h2></br></br><h3>GET:</h3></br><h2>';
-        dump($get_data);
-        echo '</h2></center>';
+
+        $this->assign('post', $post_data);
+        $this->assign('get', $get_data);
+
+        return $this->fetch();
     }
 
     public function dataselect()

@@ -14,6 +14,7 @@ class User extends BaseController
     function __construct()
     {
         $this->rule = [
+            '/logout',
             '/login',
             '/reg',
             '/index/user/valid',
@@ -88,28 +89,22 @@ class User extends BaseController
     // 控制器验证
     public function add()
     {
-        $data = input('post.');
+        $data = input('post.') + input('get.');
         $result = $this->validate($data, 'Users');   // 数据验证
-        if (input('post.flag') == 1) {
+        if (isset($data['flag']) && $data['flag'] == 1) {
             if (true !== $result) {
-                echo "<script language=javascript>alert ('" . $result . "');</script>";
-                echo '<script language=javascript>window.location.href="/reg"</script>';
-                return;
+                return $this->json(-1, $result);
+
             }
-        } else if (input('post.flag') == 2) {
+        } else if (isset($data['flag']) && $data['flag'] == 2) {
             if (true !== $result) {
                 return json(array(
                     'status' => -1,
                     'message' => $result,
                 ));
-                //echo "<script language=javascript>alert ('" . $result  ."');</script>";
-                //echo '<script language=javascript>window.location.href="/reg"</script>';
-                return;
             }
         } else {
-            echo "<script language=javascript>alert ('错误的提交');</script>";
-            echo '<script language=javascript>window.location.href="/reg"</script>';
-            return;
+            return $this->json(-1, '错误的提交');
         }
         $users = new Users;
         $users->allowField(true)->save($data);  // 数据保存
@@ -119,7 +114,7 @@ class User extends BaseController
         $users->zcsj = time();
         $users->save($users);
         if (input('post.flag') == 1) {
-            $this->success('创建用户成功，请登录，页面跳转中...', '/login');
+            $this->success('创建用户成功，请登录，页面跳转中...', url('index/User/login'));
         } else {
             return json(array(
                 'status' => 1,
@@ -151,7 +146,7 @@ class User extends BaseController
                     if (!$user) {
                         $user = Users::get(['telephone' => $username, 'password' => $password]);
                         if (!$user) {
-                            self::jumpToUrl('/login', '用户名或密码错误');
+                            self::jumpToUrl(url('index/User/login'), '用户名或密码错误');
                         }
                     }
                 }
@@ -237,7 +232,7 @@ class User extends BaseController
     {
         cookie('uid', null);
         cookie('validate', null);
-        self::jumpToUrl('/login');
+        self::jumpToUrl(url('index/User/login'));
     }
 
 }

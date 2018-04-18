@@ -46,12 +46,13 @@
         padding: 15px 0 0;
     }
 
-    .my-table .title h3{
-        margin: 0;
+    .my-table .title h4{
+        margin: 0 0 5px;
+        color: #4288ce;
     }
 
     .my-table .body {
-
+        margin-top: 12px;
     }
 
 </style>
@@ -66,42 +67,67 @@
         <h2>数据库字典</h2>
     </div>
 
+
     <div class="my-table">
 
         <div class="title text-center">
-            <h3>用户表</h3>
+            <h4>地址信息表</h4>
+            <p>数据请求地址 http://test.iot.whark.cn/api/map/add</p>
         </div>
 
         <div class="body">
-            <table class="table table-striped table-bordered table-hover table-padding-12">
+            <table class="table table-striped table-bordered table-hover">
 
                 <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
-                <tr><td>user_id</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
-                <tr><td>apikey</td><td>char(32)</td><td>YES</td><td>APIKEY</td></tr>
-                <tr><td>secretkey</td><td>char(32)</td><td>YES</td><td>访问密钥</td></tr>
-                <tr><td>username</td><td>varchar(20)</td><td>NO</td><td>用户名</td></tr>
-                <tr><td>nickname</td><td>varchar(50)</td><td>YES</td><td>昵称</td></tr>
-                <tr><td>email</td><td>varchar(20)</td><td>YES</td><td>邮箱</td></tr>
-                <tr><td>password</td><td>char(32)</td><td>NO</td><td>密码</td></tr>
-                <tr><td>telephone</td><td>char(11)</td><td>YES</td><td>手机号</td></tr>
-                <tr><td>birthday</td><td>varchar(10)</td><td>YES</td><td>生日</td></tr>
-                <tr><td>status</td><td>tinyint(2)</td><td>NO</td><td>状态</td></tr>
-                <tr><td>zcsj</td><td>varchar(10)</td><td>YES</td><td>注册时间</td></tr>
-                <tr><td>zjdl</td><td>varchar(10)</td><td>YES</td><td>最近登录</td></tr>
-
+                <tr><td>map_id</td><td>int(8) unsigned</td><td>NO</td><td>ID</td></tr>
+                <tr><td>lng</td><td>int(9) unsigned</td><td>YES</td><td>经度</td></tr>
+                <tr><td>lat</td><td>int(9) unsigned</td><td>YES</td><td>纬度</td></tr>
+                <tr><td>code</td><td>varchar(200)</td><td>YES</td><td>信息</td></tr>
+                <tr><td>create_time</td><td>bigint(11)</td><td>YES</td><td>时间</td></tr>
+                <tr><td>ip</td><td>varchar(16)</td><td>YES</td><td>IP地址</td></tr>
+                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
             </table>
         </div>
     </div>
 
 
+
     <div class="my-table">
 
         <div class="title text-center">
-            <h3>物流信息表</h3>
+            <h4>RFID信息表</h4>
+            <p>数据请求地址 http://test.iot.whark.cn/api/rfid/add</p>
         </div>
 
         <div class="body">
-            <table class="table table-striped table-bordered table-hover table-padding-12">
+            <table class="table table-striped table-bordered table-hover">
+
+
+                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
+                <tr><td>rfid_id</td><td>int(11)</td><td>NO</td><td>ID</td></tr>
+                <tr><td>c_user</td><td>varchar(240)</td><td>NO</td><td>RFID卡用户区数据</td></tr>
+                <tr><td>epc_id</td><td>varchar(64)</td><td>NO</td><td>EPC号</td></tr>
+                <tr><td>id_length</td><td>int(10) unsigned</td><td>YES</td><td>EPC长度</td></tr>
+                <tr><td>c_reserve</td><td>varchar(16)</td><td>YES</td><td>RFID卡保留区数据</td></tr>
+                <tr><td>c_epc</td><td>varchar(72)</td><td>YES</td><td>RFID卡EPC区数据</td></tr>
+                <tr><td>c_tid</td><td>varchar(72)</td><td>YES</td><td>RFID卡TID区数据</td></tr>
+                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+                <tr><td>create_time</td><td>bigint(11)</td><td>YES</td><td>创建时间</td></tr>
+                <tr><td>ip</td><td>varchar(16)</td><td>YES</td><td>IP</td></tr>
+
+            </table>
+        </div>
+    </div>
+
+    <div class="my-table">
+
+        <div class="title text-center">
+            <h4>物流信息表</h4>
+            <p>数据请求地址 http://test.iot.whark.cn/api/logistics/add</p>
+        </div>
+
+        <div class="body">
+            <table class="table table-striped table-bordered table-hover">
 
                 <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
                 <tr><td>id</td><td>int(11)</td><td>NO</td><td>自增ID</td></tr>
@@ -132,51 +158,30 @@
     <div class="my-table">
 
         <div class="title text-center">
-            <h3>RFID信息表</h3>
+            <h3>用户表</h3>
+            <p>数据请求地址 http://test.iot.whark.cn/index/user/add</p>
         </div>
 
         <div class="body">
-            <table class="table table-striped table-bordered table-hover table-padding-12">
-
+            <table class="table table-striped table-bordered table-hover">
 
                 <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
-                <tr><td>rfid_id</td><td>int(11)</td><td>NO</td><td>ID</td></tr>
-                <tr><td>c_user</td><td>varchar(240)</td><td>NO</td><td>RFID卡用户区数据</td></tr>
-                <tr><td>epc_id</td><td>varchar(64)</td><td>NO</td><td>EPC号</td></tr>
-                <tr><td>id_length</td><td>int(10) unsigned</td><td>YES</td><td>EPC长度</td></tr>
-                <tr><td>c_reserve</td><td>varchar(16)</td><td>YES</td><td>RFID卡保留区数据</td></tr>
-                <tr><td>c_epc</td><td>varchar(72)</td><td>YES</td><td>RFID卡EPC区数据</td></tr>
-                <tr><td>c_tid</td><td>varchar(72)</td><td>YES</td><td>RFID卡TID区数据</td></tr>
-                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
-                <tr><td>create_time</td><td>bigint(11)</td><td>YES</td><td>创建时间</td></tr>
-                <tr><td>ip</td><td>varchar(16)</td><td>YES</td><td>IP</td></tr>
+                <tr><td>user_id</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
+                <tr><td>apikey</td><td>char(32)</td><td>YES</td><td>APIKEY</td></tr>
+                <tr><td>secretkey</td><td>char(32)</td><td>YES</td><td>访问密钥</td></tr>
+                <tr><td>username</td><td>varchar(20)</td><td>NO</td><td>用户名</td></tr>
+                <tr><td>nickname</td><td>varchar(50)</td><td>YES</td><td>昵称</td></tr>
+                <tr><td>email</td><td>varchar(20)</td><td>YES</td><td>邮箱</td></tr>
+                <tr><td>password</td><td>char(32)</td><td>NO</td><td>密码</td></tr>
+                <tr><td>telephone</td><td>char(11)</td><td>YES</td><td>手机号</td></tr>
+                <tr><td>birthday</td><td>varchar(10)</td><td>YES</td><td>生日</td></tr>
+                <tr><td>status</td><td>tinyint(2)</td><td>NO</td><td>状态</td></tr>
+                <tr><td>zcsj</td><td>varchar(10)</td><td>YES</td><td>注册时间</td></tr>
+                <tr><td>zjdl</td><td>varchar(10)</td><td>YES</td><td>最近登录</td></tr>
 
             </table>
         </div>
     </div>
-
-
-    <div class="my-table">
-
-        <div class="title text-center">
-            <h3>地址信息表</h3>
-        </div>
-
-        <div class="body">
-            <table class="table table-striped table-bordered table-hover table-padding-12">
-
-                <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
-                <tr><td>map_id</td><td>int(8) unsigned</td><td>NO</td><td>ID</td></tr>
-                <tr><td>lng</td><td>int(9) unsigned</td><td>YES</td><td>经度</td></tr>
-                <tr><td>lat</td><td>int(9) unsigned</td><td>YES</td><td>纬度</td></tr>
-                <tr><td>code</td><td>varchar(200)</td><td>YES</td><td>信息</td></tr>
-                <tr><td>create_time</td><td>bigint(11)</td><td>YES</td><td>时间</td></tr>
-                <tr><td>ip</td><td>varchar(16)</td><td>YES</td><td>IP地址</td></tr>
-                <tr><td>uid</td><td>int(8) unsigned</td><td>NO</td><td>用户ID</td></tr>
-            </table>
-        </div>
-    </div>
-
 
     <div class="my-table">
 
@@ -185,7 +190,7 @@
         </div>
 
         <div class="body">
-            <table class="table table-striped table-bordered table-hover table-padding-12">
+            <table class="table table-striped table-bordered table-hover">
                 <tr><th>字段</th><th>类型</th><th>是否允许为空</th><th>表注释</th></tr>
                 <tr><td>comment_id</td><td>int(8) unsigned</td><td>NO</td><td>ID</td></tr>
                 <tr><td>goods_id</td><td>int(8) unsigned</td><td>YES</td><td>商品ID</td></tr>
