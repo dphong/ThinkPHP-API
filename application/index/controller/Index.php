@@ -9,7 +9,7 @@ class Index extends BaseController
 {
     function __construct()
     {
-        $this->while_rule = false;
+        $this->white_rule = false;
         parent::__construct();
     }
 
@@ -83,6 +83,17 @@ class Index extends BaseController
         $request = Request::instance();
         $post_data = input('post.');
         $get_data = input('get.');
+
+        $headerInfo = $request->header();
+        if (isset($headerInfo['accept']) && $headerInfo['accept'] === 'application/json'
+            || isset($post_data['json']) || isset($get_data['json'])
+        ) {
+            return $this->json(200, 'ok', [
+                'get' => $get_data,
+                'post' => $post_data,
+                'header' => $headerInfo
+            ]);
+        }
 
         $this->assign('post', $post_data);
         $this->assign('get', $get_data);
