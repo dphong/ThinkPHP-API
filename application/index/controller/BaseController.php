@@ -22,7 +22,7 @@ class BaseController extends Controller
     protected $userInfo;
 
     // 是白名单还是黑名单模式
-    protected $while_rule = true;
+    protected $white_rule = true;
 
     // url规则
     protected $rule = [];
@@ -54,8 +54,8 @@ class BaseController extends Controller
         }
 
 
-        if ($this->while_rule && !$this->in_array  // 是白名单，且不在名单中，验证用户
-            || !$this->while_rule && $this->in_array) { // 是黑名单，且在名单中，验证用户
+        if ($this->white_rule && !$this->in_array  // 是白名单，且不在名单中，验证用户
+            || !$this->white_rule && $this->in_array) { // 是黑名单，且在名单中，验证用户
 
             if ($this->expired) {
                 self::jumpToUrl('/login', '登录信息已过期，请重新登录');

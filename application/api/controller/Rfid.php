@@ -24,7 +24,7 @@ class Rfid extends BaseController {
     //模板位置申明
     function __construct()
     {
-        $this->while_rule = false;
+        $this->white_rule = false;
         parent::__construct();
     }
     

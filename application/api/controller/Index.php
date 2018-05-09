@@ -12,7 +12,7 @@ class Index extends BaseController {
     
     function __construct() 
     {
-        $this->while_rule = false;
+        $this->white_rule = false;
         parent::__construct();
     }
     
